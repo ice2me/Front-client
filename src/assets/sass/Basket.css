@@ -1,0 +1,28 @@
+.basket {
+  width: 100%;
+  height: 95%;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+.basket-body {
+  width: 100%;
+  height: inherit;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.basket-order {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.basket-order button {
+  width: 100%;
+}
+
+/*# sourceMappingURL=Basket.css.map */
