@@ -1,22 +1,17 @@
 import { useSelector } from "react-redux"
-import {
-	useLocation,
-	useNavigate
-} from "react-router-dom"
-import arrowDown from "../../assets/icons/arrowDown.svg"
 import React, {
 	useEffect,
 	useState
-} from "react";
-import ProductList from "../ProductList/ProductList";
-import { useGetItemListMutation } from "../../redux/services/categoriesApi";
-import Loader from "../../components/Loader/Loader";
+} from "react"
+import ProductList from "../ProductList/ProductList"
+import { useGetItemListMutation } from "../../redux/services/categoriesApi"
+import Loader from "../../components/Loader/Loader"
 
 
 const HomeCategory = ({nameShop}) => {
 	const {categories} = useSelector(state => state.categories)
 	const [showProductsList, setShowProductsList] = useState(false)
-	const [categoryNameChange, setCategoryNameChange] = useState(null);
+	const [categoryNameChange, setCategoryNameChange] = useState(null)
 	const [categoryIdChange, setCategoryIdChange] = useState(null)
 	const [getItemList, {isLoading: isGetItemListLoading}] = useGetItemListMutation()
 	const categoriesList = categories || []
@@ -57,11 +52,7 @@ const HomeCategory = ({nameShop}) => {
 				categoriesList.length < 1
 				&&
 				<h1 className="productList-arrowDown">
-					Create Category
-					<img
-						src={arrowDown}
-						alt="arrow down"
-					/>
+					This store has not added a product yet
 				</h1>
 			}
 			<div

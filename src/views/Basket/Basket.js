@@ -25,7 +25,10 @@ const Basket = ({
 			.map(item => item.total_price)
 			.reduce((prevValue, curValue) => prevValue + curValue, 0)
 	}, [items])
-	const handleCloseFormToOrder = () => setShowFormToOrder(false)
+	const handleCloseFormToOrder = () => {
+		toggleBasket()
+		setShowFormToOrder(false)
+	}
 	const handleShowFormToOrder = () => setShowFormToOrder(true)
 
 	const addCheckedCard = (card) => {
@@ -89,7 +92,7 @@ const Basket = ({
 						onClick={handleShowFormToOrder}
 						disabled={items?.length === 0}
 					>
-						<span>To Order</span>
+						<span>To Order ({items.length} piece)</span>
 					</Button>
 				</div>
 

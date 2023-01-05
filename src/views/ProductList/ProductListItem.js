@@ -75,7 +75,7 @@ const ProductListItem = ({
 	return (
 		<li
 			key={item?._id}
-			className={`home-body_item ${!item.available_product && 'opacity-50'}`}
+			className={`home-body_item ${!item.available_product ? 'opacity-50' : ''}`}
 		>
 			<img
 				src={item?.image_product ? item?.image_product : productImg}
@@ -118,22 +118,22 @@ const ProductListItem = ({
 				<b> {item?.price_product} {item?.currency_product}</b>
 			</span>
 			</span>
-
-			<div className="home-body_available">
-				<span>Available:</span>
-				<Form.Check
-					type="switch"
-					id="example-checked12"
-					disabled
-					defaultChecked={item?.available_product}
-				/>
-			</div>
 			<span>
 				Total Price: <b>{totalPrice || item?.price_product} {item?.currency_product}</b>
 			</span>
+			{/*<div className="home-body_available">*/}
+			{/*	<span>Available:</span>*/}
+			{/*	<Form.Check*/}
+			{/*		type="switch"*/}
+			{/*		id="example-checked12"*/}
+			{/*		disabled*/}
+			{/*		defaultChecked={item?.available_product}*/}
+			{/*	/>*/}
+			{/*</div>*/}
 			{
-				!basket && <div className='home-body_addProduct-checked'>
-					Added to Basket
+				!basket && <div
+					className='home-body_addProduct-checked'
+				>
 					<div className='home-body_addProduct-checked_inp'>
 						{
 							basket
@@ -157,6 +157,7 @@ const ProductListItem = ({
 				variant="primary"
 				onClick={buyHandler}
 				disabled={!item.available_product}
+				title='Added to basket'
 			>
 				{basket ? 'Edit card' : 'Buy'}
 			</Button>

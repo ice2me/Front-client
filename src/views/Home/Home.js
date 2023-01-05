@@ -14,7 +14,7 @@ const Home = () => {
 	const location = useLocation()
 	const urlSplit = location.pathname.split("/")
 	const nameShop = urlSplit[urlSplit.length - 1]
-
+	// console.log(location)
 	useEffect(() => {
 		async function getListCat() {
 			await getCategories(nameShop)

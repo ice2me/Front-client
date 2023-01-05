@@ -43,7 +43,7 @@ function App() {
           isAuthenticated
         } }
       >
-        <ToastContainer position='top-right' />
+        <ToastContainer position='bottom-right' />
         {/*{*/}
         {/*  (isAuthenticated && user?.email && token)*/}
         {/*    ?*/}

@@ -24,13 +24,10 @@ const categoriesSlice = createSlice({
 			const items = JSON.parse(localStorage.getItem('items'))
 			const createIndex = state.basket.findIndex(el => el._id === action.payload._id)
 			if (createIndex !== -1) {
-				console.log('0')
-				console.log('items', items)
 				const uniqueCard = [...state.basket]
 				uniqueCard[createIndex] = action.payload
 				state.basket = [...uniqueCard]
 			} else {
-				console.log('1')
 				state.basket = [...state.basket, action.payload]
 				localStorage.setItem('items', JSON.stringify(state.basket))
 			}

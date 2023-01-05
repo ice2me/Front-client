@@ -6,7 +6,8 @@ export const APP_ROUTE = {
 	PRODUCTS_LIST: '/products-list',
 	CATEGORIES_LIST: '/categories-list',
 	PROFILE: '/profile',
-	CONTACT_SUPPORT: '/contact-support'
+	CONTACT_SUPPORT: '/contact-support',
+	LINK_SHOP: '/link'
 }
 
 export const AUTH_API = {
