@@ -13,6 +13,7 @@ import arrowDown from "../../assets/icons/arrowDown.svg"
 import ProductListItem from "./ProductListItem";
 import { pushCardToBasket } from "../../redux/slices/categoriesSlice";
 import basket from "../../assets/icons/backetAdded.svg";
+import { FormattedMessage } from "react-intl";
 
 const initialState = {
 	image_product: '',
@@ -39,7 +40,6 @@ const ProductList = ({
 		dispatch(pushCardToBasket(card))
 	}
 
-
 	return (
 		<div className='home productList'>
 			<h1 className="productList-title">
@@ -57,7 +57,9 @@ const ProductList = ({
 			{memoItems?.length < 1
 				?
 				<div className='productList-arrowDown'>
-					<h2>There are no products in this category...</h2>
+					<h2>
+						<FormattedMessage id='thereAreNoProductsInThisCategory' />
+					</h2>
 					<img
 						src={basket}
 						alt="basket"

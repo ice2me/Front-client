@@ -11,6 +11,7 @@ import {
 	Form
 } from "react-bootstrap"
 import { toast } from "react-toastify";
+import { FormattedMessage } from "react-intl";
 
 const defaultCheckedCard = {
 	count: 0,
@@ -113,13 +114,15 @@ const ProductListItem = ({
 				</button>
 			</div>
 			<b>{item?.unit_product}</b>
-			<span> Price:
+			<span>
+				<FormattedMessage id='price' />
 				<span className='home-body_item-price'>
 				<b> {item?.price_product} {item?.currency_product}</b>
 			</span>
 			</span>
 			<span>
-				Total Price: <b>{totalPrice || item?.price_product} {item?.currency_product}</b>
+				<FormattedMessage id='totalPrice' />
+				<b>{totalPrice || item?.price_product} {item?.currency_product}</b>
 			</span>
 			{/*<div className="home-body_available">*/}
 			{/*	<span>Available:</span>*/}
@@ -157,9 +160,8 @@ const ProductListItem = ({
 				variant="primary"
 				onClick={buyHandler}
 				disabled={!item.available_product}
-				title='Added to basket'
 			>
-				{basket ? 'Edit card' : 'Buy'}
+				{basket ? <FormattedMessage id='editCard' /> : <FormattedMessage id='buy' />}
 			</Button>
 			{
 				basket && <button

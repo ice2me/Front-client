@@ -5,13 +5,14 @@ import instagram from "../../assets/icons/instagram.svg"
 import facebook from "../../assets/icons/facebook.svg"
 
 import close from "../../assets/icons/exit.svg"
+import { FormattedMessage } from "react-intl";
 
 const ContactSupport = ({toggleContactSupport, shop}) => {
 	const contact = shop.socials_links
 	return (
 		<div className='profile'>
 			<h1 className="productList-title">
-				Contact Support
+				<FormattedMessage id='contactSupport' />
 				<button
 					className='productList-button'
 					onClick={toggleContactSupport}
@@ -24,7 +25,7 @@ const ContactSupport = ({toggleContactSupport, shop}) => {
 			</h1>
 			<div className="d-flex align-items-center flex-wrap justify-content-center h-50">
 				<h2 className='fs-3'>
-					Shop Contact:
+					<FormattedMessage id='shopContact' />
 				</h2>
 				{
 					contact?.shop_facebook &&
@@ -66,12 +67,12 @@ const ContactSupport = ({toggleContactSupport, shop}) => {
 					</a>
 				}
 				<h2 className='fs-3 text-center mt-5'>
-					If you have any questions regarding products, orders and delivery, then write to the support of the store.
+					<FormattedMessage id='shopContactText' />
 				</h2>
 			</div>
 			<div className="d-flex align-items-center flex-wrap justify-content-center h-50">
 				<h2 className='fs-3'>
-					Developer Contact:
+					<FormattedMessage id='developerContact' />
 				</h2>
 					<a href={`viber://add?number=%380669696402`}>
 						<img
@@ -92,7 +93,7 @@ const ContactSupport = ({toggleContactSupport, shop}) => {
 						/>
 					</a>
 				<h2 className='fs-3 text-center mt-5'>
-					If you have any questions, problems and suggestions for improvement - you can write to developer.
+					<FormattedMessage id='developerContactText' />
 				</h2>
 			</div>
 

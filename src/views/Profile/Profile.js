@@ -5,6 +5,7 @@ import telegram from '../../assets/icons/telegram.svg'
 import instagram from '../../assets/icons/instagram.svg'
 import close from "../../assets/icons/exit.svg"
 import React from "react"
+import { FormattedMessage } from "react-intl";
 
 const Profile = ({
 	profile,
@@ -14,7 +15,7 @@ const Profile = ({
 	return (
 		<div className='profile'>
 			<h1 className="productList-title">
-				Profile {profile.username}
+				<FormattedMessage id='profile' /> {profile.username}
 				<button
 					className='productList-button'
 					onClick={toggleProfile}
@@ -31,9 +32,10 @@ const Profile = ({
 						className="profile-body_photo"
 						style={
 							profile?.image_logo
-							? {backgroundImage: `url(${profile?.image_logo})`}
-							:
-							{backgroundImage: `url(${photo})`}
+								?
+								{backgroundImage: `url(${profile?.image_logo})`}
+								:
+								{backgroundImage: `url(${photo})`}
 						}
 					>
 					</div>
@@ -41,24 +43,34 @@ const Profile = ({
 				<div className='profile-body_wrapper'>
 					<ul className="profile-body_content">
 						<li className="profile-body_content-text">
-							<span>name:</span>
+							<span>
+								<FormattedMessage id='name' />
+							</span>
 							<p>{profile.username}</p>
 						</li>
 						<li className="profile-body_content-text">
-							<span>Phone:</span>
+							<span>
+								<FormattedMessage id='phone' />
+							</span>
 							<p>+{profile.phone}</p>
 						</li>
 						<li className="profile-body_content-text">
-							<span>Email:</span>
+							<span>
+								<FormattedMessage id='email' />
+							</span>
 							<p>{profile.email}</p>
 						</li>
 						<li className="profile-body_content-text">
-							<span>Name shop:</span>
+							<span>
+								<FormattedMessage id='nameShop' />
+							</span>
 							<p>{profile.shop_name}</p>
 						</li>
 						{
 							profile.description && <li className="profile-body_content-text">
-								<span>Description shop:</span>
+								<span>
+									<FormattedMessage id='descriptionShop' />
+								</span>
 								<p className='profile-body_content-text_description'>
 									{profile.description}
 								</p>

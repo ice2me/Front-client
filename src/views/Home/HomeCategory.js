@@ -6,6 +6,7 @@ import React, {
 import ProductList from "../ProductList/ProductList"
 import { useGetItemListMutation } from "../../redux/services/categoriesApi"
 import Loader from "../../components/Loader/Loader"
+import { FormattedMessage } from "react-intl";
 
 
 const HomeCategory = ({nameShop}) => {
@@ -46,13 +47,13 @@ const HomeCategory = ({nameShop}) => {
 	return (
 		<>
 			<h1 className="home-title">
-				Category list
+				<FormattedMessage id="categoryList"/>
 			</h1>
 			{
 				categoriesList.length < 1
 				&&
 				<h1 className="productList-arrowDown">
-					This store has not added a product yet
+					<FormattedMessage id='thisStoreHasNotAddedProductYet'/>
 				</h1>
 			}
 			<div

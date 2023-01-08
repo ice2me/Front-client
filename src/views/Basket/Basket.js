@@ -12,6 +12,7 @@ import {
 	useState
 } from "react"
 import ModalFormToOrder from "../../components/Modal/ModalFormToOrder"
+import { FormattedMessage } from "react-intl";
 
 const Basket = ({
 	toggleBasket,
@@ -46,7 +47,7 @@ const Basket = ({
 			/>
 			<div className='profile'>
 				<h1 className="productList-title">
-					My Basket
+					<FormattedMessage id='myBasket' />
 					<button
 						className='productList-button'
 						onClick={toggleBasket}
@@ -62,7 +63,9 @@ const Basket = ({
 						items.length < 1
 							?
 							<div className='productList-arrowDown'>
-								<h2>You have not selected any product...</h2>
+								<h2>
+									<FormattedMessage id='myBasketFree' />
+								</h2>
 								<img
 									src={basket}
 									alt="basket"
@@ -83,7 +86,9 @@ const Basket = ({
 								}
 							</ul>
 					}
-					<p className='basket-body_total'>Total Amount: {memoTotalPrices}</p>
+					<p className='basket-body_total'>
+						<FormattedMessage id='myBasketTotalAmount' />
+						{memoTotalPrices}</p>
 				</div>
 				<div className='basket-order'>
 					<Button
@@ -92,7 +97,13 @@ const Basket = ({
 						onClick={handleShowFormToOrder}
 						disabled={items?.length === 0}
 					>
-						<span>To Order ({items.length} piece)</span>
+						<span>
+							<FormattedMessage id='toOrder' />
+							(
+							{items.length}
+							<FormattedMessage id='piece' />
+							)
+						</span>
 					</Button>
 				</div>
 

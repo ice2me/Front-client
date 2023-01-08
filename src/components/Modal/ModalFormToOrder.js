@@ -17,6 +17,10 @@ import {
 } from "react-redux"
 import { resetBasket } from "../../redux/slices/categoriesSlice"
 import { toast } from "react-toastify"
+import {
+	FormattedMessage,
+	useIntl
+} from "react-intl";
 
 const ModalFormToOrder = ({
 	show,
@@ -27,6 +31,7 @@ const ModalFormToOrder = ({
 	const [reqMessage, setReqMessage] = useState('')
 	const [itemsArrSplitter, setItemsArrSplitter] = useState([])
 	const {shop} = useSelector(state => state.categories)
+	const { formatMessage } = useIntl()
 	const [postBasketFormClient, {isLoading: isPostBasketFormClientLoading}] = usePostBasketFormClientMutation()
 	const dispatch = useDispatch()
 	const formDateUpdateHandler = (opt) => {
@@ -138,7 +143,7 @@ const ModalFormToOrder = ({
 							>
 								<Modal.Header closeButton>
 									<Modal.Title>
-										To Order Form
+										<FormattedMessage id='toOrderForm' />
 									</Modal.Title>
 								</Modal.Header>
 								<Modal.Body>
@@ -147,7 +152,7 @@ const ModalFormToOrder = ({
 										controlId="exampleForm.ControlInput1"
 									>
 										<Form.Label>
-											Phone
+											<FormattedMessage id='phone' />
 										</Form.Label>
 										<Form.Control
 											type="phone"
@@ -179,14 +184,14 @@ const ModalFormToOrder = ({
 										controlId="exampleForm.ControlInput1"
 									>
 										<Form.Label>
-											Name
+											<FormattedMessage id='name' />
 										</Form.Label>
 										<Form.Control
 											type="text"
 											className={`pe-5  ${touched.username ? "is-touch " : ""} ${
 												errors.username && touched.username ? " is-invalid" : ""
 											} registrationShop-form_input`}
-											placeholder="Your Name"
+											placeholder={formatMessage ({id: 'yourName'})}
 											required
 											onBlur={handleBlur}
 											name='username'
@@ -209,14 +214,14 @@ const ModalFormToOrder = ({
 										variant="secondary"
 										onClick={onHide}
 									>
-										Close
+										<FormattedMessage id='close' />
 									</Button>
 									<Button
 										variant="primary"
 										type='submit'
 										disabled={(!isValid && dirty) || isPostBasketFormClientLoading}
 									>
-										{isPostBasketFormClientLoading ? <LoaderForButton /> : 'Save Changes'}
+										{isPostBasketFormClientLoading ? <LoaderForButton /> : <FormattedMessage id='saveChanges' /> }
 									</Button>
 								</Modal.Footer>
 							</Form>

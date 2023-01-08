@@ -615,7 +615,7 @@ input[type=radio]:focus {
 }
 .productList-wrapper {
   overflow: hidden;
-  padding: 0 10px;
+  padding: 10px;
 }
 .productList-wrapper ul {
   height: 70vh;
@@ -937,6 +937,7 @@ ul li {
 h1, h2, h3, h4, h5, h6 {
   font-size: inherit;
   cursor: default;
+  margin-bottom: 0;
 }
 
 p, span {
