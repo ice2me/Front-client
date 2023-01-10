@@ -34,5 +34,6 @@ export default {
     saveChanges: 'Save Changes',
     close: 'Close',
     yourName: 'Your Name',
+    send: 'Send'
   }
 };

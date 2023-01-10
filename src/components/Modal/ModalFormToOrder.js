@@ -221,7 +221,7 @@ const ModalFormToOrder = ({
 										type='submit'
 										disabled={(!isValid && dirty) || isPostBasketFormClientLoading}
 									>
-										{isPostBasketFormClientLoading ? <LoaderForButton /> : <FormattedMessage id='saveChanges' /> }
+										{isPostBasketFormClientLoading ? <LoaderForButton /> : <FormattedMessage id='send' /> }
 									</Button>
 								</Modal.Footer>
 							</Form>

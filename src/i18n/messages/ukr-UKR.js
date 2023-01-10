@@ -34,5 +34,6 @@ export default {
 		saveChanges: 'Зберегти зміни',
 		close: 'Закрити',
 		yourName: "Ваше ім'я",
+		send: 'Замовити'
 	}
 };
