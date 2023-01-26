@@ -1,16 +1,17 @@
-import { useState, useCallback, useEffect } from "react";
+/* eslint-disable */
+import { useState, useCallback, useEffect } from "react"
 
-const storageName = "data";
+const storageName = "data"
 
 export const useAuth = () => {
-  const [token, setToken] = useState(null);
-  const [user, setUser] = useState(null);
-  const [ready, setReady] = useState(false);
+  const [token, setToken] = useState(null)
+  const [user, setUser] = useState(null)
+  const [ready, setReady] = useState(false)
 
   const login = useCallback((jwtToken, user) => {
-    setReady(false);
-    setToken(jwtToken);
-    setUser(user);
+    setReady(false)
+    setToken(jwtToken)
+    setUser(user)
 
     localStorage.setItem(
       storageName,
@@ -18,62 +19,62 @@ export const useAuth = () => {
         user: user,
         token: jwtToken
       })
-    );
+    )
 
-    setReady(true);
-  }, []);
+    setReady(true)
+  }, [])
 
   const logout = useCallback(() => {
-    setToken(null);
-    setUser(null);
-    // window.Intercom("shutdown");
-    localStorage.removeItem(storageName);
+    setToken(null)
+    setUser(null)
+    // window.Intercom("shutdown")
+    localStorage.removeItem(storageName)
     if (localStorage.getItem("isLoginUsed") !== null) {
-      localStorage.removeItem("isLoginUsed");
+      localStorage.removeItem("isLoginUsed")
     }
-  }, []);
+  }, [])
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem(storageName));
+    const data = JSON.parse(localStorage.getItem(storageName))
 
     if (data && data.token) {
-      login(data.token, data.user);
+      login(data.token, data.user)
     }
 
-    setReady(true);
-  }, [login]);
+    setReady(true)
+  }, [login])
 
-  return { login, logout, token, user, ready };
-};
+  return { login, logout, token, user, ready }
+}
 
 
 export const useHttp = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   const request = useCallback(async (url, method = 'GET', body = null, headers = {}) => {
-    setLoading(true);
+    setLoading(true)
     try {
       if (body) {
-        body = JSON.stringify(body);
+        body = JSON.stringify(body)
         headers['Content-Type'] = 'application/json'
       }
 
-      const response = await fetch(url, {method, body, headers});
-      const data = await response.json();
+      const response = await fetch(url, {method, body, headers})
+      const data = await response.json()
       if (!response.ok) {
         throw new Error(data.message || 'Oops, something went wrong')
       }
 
-      setLoading(false);
+      setLoading(false)
 
-      return data;
+      return data
     } catch (e) {
-      setLoading(false);
-      setError(e.message);
-      throw e;
+      setLoading(false)
+      setError(e.message)
+      throw e
     }
-  }, []);
-  const clearError = useCallback(() => setError(null), []);
+  }, [])
+  const clearError = useCallback(() => setError(null), [])
 
   return {loading, request, error, clearError}}

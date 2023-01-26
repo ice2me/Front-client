@@ -1,0 +1,45 @@
+.navbarApp {
+  width: 250px;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top: 55px;
+  background-color: #fff;
+  position: relative;
+  white-space: nowrap;
+}
+@media screen and (max-width: 992px) {
+  .navbarApp {
+    display: none;
+  }
+}
+.navbarApp_item {
+  width: 100%;
+  padding: 10px 10px 10px 20px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.navbarApp_item img {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+}
+.navbarApp_eye {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  background-color: transparent;
+}
+
+.activeButton {
+  border: 1px solid rgba(80, 81, 96, 0.3);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.hideNavbar {
+  width: 80px;
+}
+
+/*# sourceMappingURL=Navbar.css.map */

@@ -1,4 +1,5 @@
-import { createContext } from "react";
+/* eslint-disable */
+import { createContext } from "react"
 
 function noop() {}
 

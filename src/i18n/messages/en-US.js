@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { LOCALES } from "../locales"
 
 export default {

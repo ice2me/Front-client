@@ -1,9 +1,13 @@
 @import 'App'
 @import 'Header'
 @import 'Home'
-@import 'ProductList'
 @import 'Profile'
+@import 'ProductList'
+@import 'Navbar'
 @import 'Basket'
+@import '_variables'
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap')
 
 *
 	padding: 0
@@ -18,8 +22,10 @@
 	box-sizing: border-box
 
 *:disabled
-	opacity: 0.9
-
+	opacity: 0.5
+*ul
+	padding: 0
+	margin: 0
 a:focus, a:active
 	outline: none
 
@@ -31,17 +37,16 @@ html, body
 	width: 100%
 	line-height: 1
 	font-size: 14px
-	font-family: 'Raleway', sans-serif
+	font-family: $font-fontDefault-family
 	margin: 0 auto
 	outline: none
 	scroll-behavior: smooth
 	overflow: hidden
-	//background-color: rgba(250,250,250, 0.1)
-	background: linear-gradient(0deg, rgba(247, 206, 0, 0.5) 30%, rgba(0, 88, 181, 0.5) 70%)
+	background: rgba($gray-500, 0.1)
 	display: flex
 	align-items: center
 	justify-content: center
-	color: #505160
+	color: $basic-color
 
 input::-ms-clear
 	display: none
@@ -79,6 +84,8 @@ button::-moz-focus-inner
 
 button
 	cursor: pointer
+	span
+		cursor: pointer
 
 button::-moz-focus-inner
 	padding: 0
@@ -100,7 +107,6 @@ ul li
 h1, h2, h3, h4, h5, h6
 	font-size: inherit
 	cursor: default
-	margin-bottom: 0
 
 p, span
 	cursor: default
@@ -130,7 +136,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	display: flex
 	align-items: center
 	justify-content: center
-	background-color: rgba(199, 206, 225, 0.3)
+	background-color: rgba(199,206,225, 0.3)
 
 .loader-wrapperForProduct
 	width: 250px
@@ -143,8 +149,7 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	display: flex
 	align-items: center
 	justify-content: center
-	background-color: rgba(199, 206, 225, 0.3)
-
+	background-color: rgba(199,206,225, 0.3)
 .small-loader
 	width: 10px
 	height: 10px
@@ -155,11 +160,9 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	justify-content: center
 	position: absolute
 	right: 30%
-
 	div
 		width: 40px
 		height: 40px
-
 		img
 			width: 40px
 			height: 40px

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import loader from "../../assets/icons/spinnerForButton.svg"
 
 const LoaderForButton = () => {

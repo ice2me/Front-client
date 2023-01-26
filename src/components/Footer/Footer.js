@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react'
 import myBasket from "../../assets/icons/backet.svg"
 import myProfile from "../../assets/icons/profile-icon.svg"

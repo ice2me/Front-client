@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, {
 	useEffect,
 	useState
@@ -20,7 +21,7 @@ import { toast } from "react-toastify"
 import {
 	FormattedMessage,
 	useIntl
-} from "react-intl";
+} from "react-intl"
 
 const ModalFormToOrder = ({
 	show,

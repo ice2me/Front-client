@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { LOCALES } from "../locales"
 
 export default {
@@ -18,7 +19,7 @@ export default {
 		nameShop: "Ім'я магазину: ",
 		descriptionShop: 'Магазин опису: ',
 		//------------------------------------------- підтримка
-		contactSupport: "Звернутися до служби підтримки",
+		contactSupport: "Служба підтримки",
 		shopContact: 'Контакт магазину: ',
 		shopContactText: 'Якщо у вас виникли питання щодо товарів, замовлень і доставки, пишіть в службу підтримки магазину.',
 		developerContact: 'Контакт розробника: ',

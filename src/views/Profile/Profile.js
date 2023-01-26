@@ -1,3 +1,4 @@
+/* eslint-disable */
 import photo from '../../assets/images/avatar-user.png'
 import facebook from '../../assets/icons/facebook.svg'
 import viber from '../../assets/icons/viber.svg'

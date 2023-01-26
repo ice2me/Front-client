@@ -1,3 +1,4 @@
+/* eslint-disable */
 import close from "../../assets/icons/exit.svg"
 import { Button } from "react-bootstrap"
 import ProductListItem from "../ProductList/ProductListItem"
@@ -86,9 +87,11 @@ const Basket = ({
 								}
 							</ul>
 					}
-					<p className='basket-body_total'>
-						<FormattedMessage id='myBasketTotalAmount' />
-						{memoTotalPrices}</p>
+					{
+						items.length > 1 &&
+						<p className='basket-body_total'>
+							<FormattedMessage id='myBasketTotalAmount' />
+							{memoTotalPrices}</p>}
 				</div>
 				<div className='basket-order'>
 					<Button

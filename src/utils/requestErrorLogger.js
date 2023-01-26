@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { isRejectedWithValue } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { apiBaseUrl } from "./makeUrl";
