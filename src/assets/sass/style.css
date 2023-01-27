@@ -848,6 +848,15 @@ input[type=radio]:focus {
 .profile-body_content-socials_instagram:hover {
   box-shadow: 0 5px 1.875rem rgba(182, 195, 211, 0.6);
 }
+.profile-shadow {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(80, 81, 96, 0.3);
+  z-index: 97;
+}
 
 @keyframes openWindow {
   0% {

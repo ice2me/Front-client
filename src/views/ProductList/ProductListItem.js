@@ -77,7 +77,7 @@ const ProductListItem = ({
 	return (
 		<li
 			key={item?._id}
-			className={`home-body_item ${!item.available_product ? 'opacity-50' : ''}`}
+			className={`home-body_item ${!item.available_product ? 'd-none' : ''}`}
 		>
 			<img
 				src={item?.image_product ? item?.image_product : productImg}

@@ -8,7 +8,7 @@ import {
 	pushCardToBasket
 } from "../../redux/slices/categoriesSlice"
 import { useDispatch } from "react-redux"
-import {
+import React, {
 	useMemo,
 	useState
 } from "react"
@@ -111,6 +111,10 @@ const Basket = ({
 				</div>
 
 			</div>
+			<div
+				onClick={handleCloseFormToOrder}
+				className="profile-shadow"
+			></div>
 		</>
 	)
 }
