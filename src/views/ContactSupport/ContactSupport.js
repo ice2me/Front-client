@@ -28,8 +28,8 @@ const ContactSupport = ({
 						/>
 					</button>
 				</h1>
-				<div className="d-flex align-items-center flex-wrap justify-content-center h-50">
-					<h2 className='fs-3'>
+				<div className=" mt-5 d-flex align-items-center flex-wrap justify-content-center h-25 profile-body_content-socials">
+					<h2>
 						<FormattedMessage id='shopContact' />
 					</h2>
 					{
@@ -71,12 +71,12 @@ const ContactSupport = ({
 							/>
 						</a>
 					}
-					<h2 className='fs-3 text-center mt-5'>
+					<h2 className=' text-center mt-5'>
 						<FormattedMessage id='shopContactText' />
 					</h2>
 				</div>
-				<div className="d-flex align-items-center flex-wrap justify-content-center h-50">
-					<h2 className='fs-3'>
+				<div className="d-flex align-items-center flex-wrap justify-content-center h-20 profile-body_content-socials">
+					<h2>
 						<FormattedMessage id='developerContact' />
 					</h2>
 					<a href={`viber://add?number=%380669696402`}>
@@ -100,7 +100,7 @@ const ContactSupport = ({
 							alt="instagram"
 						/>
 					</a>
-					<h2 className='fs-3 text-center mt-5'>
+					<h2 className=' text-center mt-5'>
 						<FormattedMessage id='developerContactText' />
 					</h2>
 				</div>

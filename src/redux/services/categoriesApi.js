@@ -8,7 +8,8 @@ export const categoriesAPi = createApi({
 	endpoints: (builder) => ({
 		getCategories: builder.mutation({
 			query: (link) => ({
-				url: `${CATEGORIES_API.GET_CATEGORIES}${link}`,
+				// url: `${CATEGORIES_API.GET_CATEGORIES}${link}`,
+				url: `${link}`,
 				method: "GET"
 			})
 		}),
@@ -17,7 +18,8 @@ export const categoriesAPi = createApi({
 				id,
 				link
 			}) => ({
-				url: `${CATEGORIES_API.GET_CATEGORIES}${link}/${id}`,
+				// url: `${CATEGORIES_API.GET_CATEGORIES}${link}/${id}`,
+				url: `${link}/${id}`,
 				method: "GET"
 			})
 		}),
@@ -30,6 +32,12 @@ export const categoriesAPi = createApi({
 				body
 			})
 		}),
+		getAllShop: builder.mutation({
+			query: () => ({
+				url: `${CATEGORIES_API.ALL_SHOPS}`,
+				method: "POST"
+			})
+		}),
 	})
 })
 
@@ -37,4 +45,5 @@ export const {
 	useGetCategoriesMutation,
 	useGetItemListMutation,
 	usePostBasketFormClientMutation,
+	useGetAllShopMutation,
 } = categoriesAPi

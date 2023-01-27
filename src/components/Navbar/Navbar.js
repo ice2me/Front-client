@@ -6,7 +6,8 @@ import contactSupport from "../../assets/icons/contact-support-icon.svg"
 import eye from "../../assets/icons/eye.svg"
 import eyeOff from "../../assets/icons/eye-blocked.svg"
 import {
-	useLocation
+	useLocation,
+	useNavigate
 } from "react-router-dom"
 import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
@@ -18,6 +19,7 @@ import myBasket from "../../assets/icons/backet.svg";
 const Navbar = () => {
 	const [toggleNavbar, setToggleNavbar] = useState(false)
 	const location = useLocation()
+	const navigate = useNavigate()
 
 	const [openProfile, setOpenProfile] = useState(false)
 	const [openContactSupport, setOpenContactSupport] = useState(false)
@@ -116,6 +118,17 @@ const Navbar = () => {
 					title="Shop Profile"
 				/>
 				{!toggleNavbar && <FormattedMessage id='profile' />}
+			</li>
+			<li
+				className="navbarApp_item storeSelection-button"
+				onClick={() => navigate('/')}
+			>
+				<img
+					src={myProducts}
+					alt="Shop Profile"
+					title="Shop Profile"
+				/>
+				{!toggleNavbar && <FormattedMessage id='showAllShops' />}
 			</li>
 		</ul>
 	)

@@ -50,7 +50,7 @@ const categoriesSlice = createSlice({
 				(state,
 					action) => {
 					state.categories = action.payload.categories
-					state.shop = action.payload.shop[0]
+					state.shop = action.payload.shop
 				}
 			)
 			.addMatcher(

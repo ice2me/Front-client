@@ -18,6 +18,8 @@ import React, { useState } from "react";
 import Profile from "../../views/Profile/Profile";
 import ContactSupport from "../../views/ContactSupport/ContactSupport";
 import Basket from "../../views/Basket/Basket";
+import myProducts from "../../assets/icons/note-list-icon.svg";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
 	const [openProfile, setOpenProfile] = useState(false)
@@ -28,6 +30,7 @@ const Header = () => {
 		shop,
 		basket
 	} = useSelector((state) => state.categories)
+	const navigate = useNavigate()
 
 	// const logoutHandler = () => {
 	// 	dispatch(logout())
@@ -141,6 +144,25 @@ const Header = () => {
 										</div>
 									</li>
 									<li
+										className={`navbarApp_item ${location.pathname === APP_ROUTE.PROFILE ? 'activeButton' : ''}`}
+										onClick={toggleBasket}
+									>
+										<img
+											src={myBasket}
+											alt="My basket"
+											title="My basket"
+										/>
+										<span className='header-right_item-link_count'>{
+											basket?.length >= 1
+												?
+												basket?.length
+												:
+												'0'
+										}</span>
+
+										{!toggleNavbar && <FormattedMessage id='myBasket' />}
+									</li>
+									<li
 										className={`navbarApp_item ${(location.pathname === APP_ROUTE.CATEGORIES_LIST ||
 											location.pathname === APP_ROUTE.DEFAULT ||
 											location.pathname === APP_ROUTE.PRODUCTS_LIST)
@@ -167,23 +189,15 @@ const Header = () => {
 										{!toggleNavbar && <FormattedMessage id='profile' />}
 									</li>
 									<li
-										className={`navbarApp_item ${location.pathname === APP_ROUTE.PROFILE ? 'activeButton' : ''}`}
-										onClick={toggleBasket}
+										className="navbarApp_item"
+										onClick={() => navigate('/')}
 									>
 										<img
-											src={myBasket}
-											alt="My basket"
-											title="My basket"
+											src={myProducts}
+											alt="Shop Profile"
+											title="Shop Profile"
 										/>
-										<span className='header-right_item-link_count'>{
-											basket?.length >= 1
-												?
-												basket?.length
-												:
-												'0'
-										}</span>
-
-										{!toggleNavbar && <FormattedMessage id='myBasket' />}
+										{!toggleNavbar && <FormattedMessage id='showAllShops' />}
 									</li>
 								</ul>
 							</div>

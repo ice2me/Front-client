@@ -17,7 +17,7 @@ const Profile = ({
 		<>
 			<div className='profile'>
 				<h1 className="productList-title">
-					<FormattedMessage id='profile' /> {profile.username}
+					<FormattedMessage id='profile' /> {profile?.username}
 					<button
 						className='productList-button'
 						onClick={toggleProfile}
@@ -48,33 +48,33 @@ const Profile = ({
 							<span>
 								<FormattedMessage id='name' />
 							</span>
-								<p>{profile.username}</p>
+								<p>{profile?.username}</p>
 							</li>
 							<li className="profile-body_content-text">
 							<span>
 								<FormattedMessage id='phone' />
 							</span>
-								<p>+{profile.phone}</p>
+								<p>+{profile?.phone}</p>
 							</li>
 							<li className="profile-body_content-text">
 							<span>
 								<FormattedMessage id='email' />
 							</span>
-								<p>{profile.email}</p>
+								<p>{profile?.email}</p>
 							</li>
 							<li className="profile-body_content-text">
 							<span>
 								<FormattedMessage id='nameShop' />
 							</span>
-								<p>{profile.shop_name}</p>
+								<p>{profile?.shop_name}</p>
 							</li>
 							{
-								profile.description && <li className="profile-body_content-text">
+								profile?.description && <li className="profile-body_content-text">
 								<span>
 									<FormattedMessage id='descriptionShop' />
 								</span>
 									<p className='profile-body_content-text_description'>
-										{profile.description}
+										{profile?.description}
 									</p>
 								</li>
 							}

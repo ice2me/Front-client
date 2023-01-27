@@ -1,5 +1,8 @@
 /* eslint-disable */
-import React, { useEffect } from 'react'
+import React, {
+	useEffect,
+	useState
+} from 'react'
 import { useGetCategoriesMutation } from "../../redux/services/categoriesApi"
 import {
 	useLocation,
@@ -8,6 +11,7 @@ import {
 import Loader from "../../components/Loader/Loader"
 import HomeCategory from "./HomeCategory"
 import arrowDown from "../../assets/icons/arrowDown.svg";
+import StoreSelection from "../StoreSelection/StoreSelection";
 
 const Home = () => {
 	const [getCategories, {isLoading: isGetCategoriesLoader}] = useGetCategoriesMutation()
@@ -15,10 +19,13 @@ const Home = () => {
 	const location = useLocation()
 	const urlSplit = location.pathname.split("/")
 	const nameShop = urlSplit[urlSplit.length - 1]
-	// console.log(location)
+
 	useEffect(() => {
 		async function getListCat() {
-			await getCategories(nameShop)
+			const data = await getCategories(nameShop)
+			if (data.error) {
+				navigate('/')
+			}
 		}
 		getListCat()
 	}, [])
@@ -29,7 +36,7 @@ const Home = () => {
 
 	return (
 		<div className='home'>
-			<HomeCategory nameShop={nameShop}/>
+				<HomeCategory nameShop={nameShop} />
 		</div>
 	);
 };

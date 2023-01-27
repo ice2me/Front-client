@@ -35,6 +35,7 @@ export default {
     saveChanges: 'Save Changes',
     close: 'Close',
     yourName: 'Your Name',
-    send: 'Send'
+    send: 'Send',
+    showAllShops: 'Other Stores'
   }
 };

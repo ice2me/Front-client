@@ -42,7 +42,7 @@ const ProductList = ({
 	}
 
 	return (
-		<div className='home productList'>
+		<div className='productList'>
 			<h1 className="productList-title">
 				{categoryNameChange}
 				<button

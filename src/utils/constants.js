@@ -19,7 +19,7 @@ export const AUTH_API = {
 }
 export const CATEGORIES_API = {
 	GET_CATEGORIES: "/link/",
-	POST_CATEGORIES: "/link/order",
+	POST_CATEGORIES: "/order",
 	CREATE_CATEGORIES: "/categories",
 	DELETE_CATEGORIES: "/categories/",
 	UPDATE_CATEGORIES_NAME: "/categories/update-name/",
@@ -28,6 +28,7 @@ export const CATEGORIES_API = {
 	PATCH_CATEGORIES_ITEM_UPDATE: "/categories/product/",
 	PATCH_CATEGORIES_AVAILABLE_ITEM_UPDATE: "/categories/product-available/",
 	DELETE_PRODUCT_ITEM: "/categories/product/",
+	ALL_SHOPS: "/all-shops/",
 }
 
 export const URLS_PROCESSED_IN_COMPONENTS = [
