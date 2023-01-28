@@ -7,8 +7,8 @@
 	right: 0
 	left: 0
 	bottom: 0
-	background-color: #999
-	@include calc("font-size",18,14)
+	background-color: $basic-bg
+	@include calc("font-size",16,14)
 	@include centering
 	z-index: 999999
 	&-wrapper
@@ -16,8 +16,10 @@
 		max-height: 772px
 		width: 100%
 		height: 100%
-		border: 1px solid red
+		border-radius: $border-radius
+		box-shadow: $box-shadow
 		padding: 30px
+		overflow-y: auto
 	&-search
 	&-list
 		margin-top: 30px
@@ -32,7 +34,7 @@
 				height: 550px
 				margin: 0 5px
 				&-text
-					@include calc("font-size",16,12)
+					@include calc("font-size",14,12)
 					height: 220px
 					overflow: auto
 			img

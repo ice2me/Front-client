@@ -27,7 +27,6 @@ const StoreSelection = () => {
 
 		getAllShopsList()
 	}, [])
-	console.log(listShops)
 	if (isAllShopClientLoader) {
 		return <Loader />
 	}
@@ -52,8 +51,8 @@ const StoreSelection = () => {
 				<div className="storeSelection-list">
 					<div className="storeSelection-list_body">
 						{
-							listShops.map(shop => (
-									<Card>
+							listShops.map((shop, index) => (
+									<Card key={shop?.shop_name + index}>
 										<Card.Img
 											variant="top"
 											src={shop?.image_logo === '' ? img : shop?.image_logo}
