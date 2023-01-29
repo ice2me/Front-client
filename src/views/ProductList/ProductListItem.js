@@ -114,7 +114,16 @@ const ProductListItem = ({
 					+
 				</button>
 			</div>
-			<b>{item?.unit_product}</b>
+			<b>{`
+				${counterValue}
+				${item?.unit_product === 'gram' ||
+				item?.unit_product === 'грам' ||
+				item?.unit_product === 'milliliter' ||
+				item?.unit_product === 'мілілітр'
+					? '00'
+					: ''}
+					${item?.unit_product}
+				`}</b>
 			<span>
 				<FormattedMessage id='price' />
 				<span className='home-body_item-price'>
