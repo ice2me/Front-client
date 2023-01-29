@@ -14,5 +14,11 @@ export const getBasketFormSchema = () => {
 			.trim()
 			.required('Mobile is a required field')
 			.matches(PHONE_REGEXP, 'Mobile number is not valid'),
+		city: yup
+			.string(),
+		address: yup
+			.string(),
+		comment_message: yup
+			.string()
 	})
 }

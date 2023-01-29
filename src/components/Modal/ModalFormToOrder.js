@@ -32,13 +32,12 @@ const ModalFormToOrder = ({
 	const [reqMessage, setReqMessage] = useState('')
 	const [itemsArrSplitter, setItemsArrSplitter] = useState([])
 	const {shop} = useSelector(state => state.categories)
-	const { formatMessage } = useIntl()
+	const {formatMessage} = useIntl()
 	const [postBasketFormClient, {isLoading: isPostBasketFormClientLoading}] = usePostBasketFormClientMutation()
 	const dispatch = useDispatch()
 	const formDateUpdateHandler = (opt) => {
 		setForm({...form, ...opt})
 	}
-
 	const arraySplitter = (arr, qtyItems) => {
 		let countItems = 0
 		const lengthArr = arr.length
@@ -67,10 +66,13 @@ const ModalFormToOrder = ({
 		const formDate = {
 			username: values.username,
 			phone: values.phone,
+			city: values.city,
+			address: values.address,
+			comment_message: values.comment_message,
 			items: items,
 			shop_id: shop?._id,
 			shop_email: shop.email,
-			shop_name: shop.shop_name
+			shop_name: shop.shop_name,
 		}
 		try {
 			if (items.length <= 10) {
@@ -122,7 +124,10 @@ const ModalFormToOrder = ({
 						validateOnChange
 						initialValues={{
 							phone: '',
-							username: ''
+							username: '',
+							city: '',
+							address: '',
+							comment_message: ''
 						}}
 						validationSchema={getBasketFormSchema}
 						onSubmit={handleSubmit}
@@ -180,9 +185,10 @@ const ModalFormToOrder = ({
 											</Form.Control.Feedback>
 										)}
 									</Form.Group>
+
 									<Form.Group
 										className="mb-3"
-										controlId="exampleForm.ControlInput1"
+										controlId="exampleForm.ControlInput2"
 									>
 										<Form.Label>
 											<FormattedMessage id='name' />
@@ -192,7 +198,7 @@ const ModalFormToOrder = ({
 											className={`pe-5  ${touched.username ? "is-touch " : ""} ${
 												errors.username && touched.username ? " is-invalid" : ""
 											} registrationShop-form_input`}
-											placeholder={formatMessage ({id: 'yourName'})}
+											placeholder={formatMessage({id: 'yourName'})}
 											required
 											onBlur={handleBlur}
 											name='username'
@@ -209,6 +215,95 @@ const ModalFormToOrder = ({
 											</Form.Control.Feedback>
 										)}
 									</Form.Group>
+
+									<Form.Group
+										className="mb-3"
+										controlId="exampleForm.ControlInput3"
+									>
+										<Form.Label>
+											<FormattedMessage id='city' />
+										</Form.Label>
+										<Form.Control
+											type="text"
+											className={`pe-5  ${touched.city ? "is-touch " : ""} ${
+												errors.city && touched.city ? " is-invalid" : ""
+											} registrationShop-form_input`}
+											placeholder={formatMessage({id: 'city'})}
+											onBlur={handleBlur}
+											name='city'
+											onChange={(e) => {
+												handleChange(e)
+												formDateUpdateHandler({
+													[e.target.name]: e.target.value
+												})
+											}}
+										/>
+										{errors.city && touched.city && (
+											<Form.Control.Feedback type="invalid">
+												{errors.city}
+											</Form.Control.Feedback>
+										)}
+									</Form.Group>
+									<Form.Group
+										className="mb-3"
+										controlId="exampleForm.ControlInput4"
+									>
+										<Form.Label>
+											<FormattedMessage id='address' />
+										</Form.Label>
+										<Form.Control
+											type="text"
+											className={`pe-5  ${touched.address ? "is-touch " : ""} ${
+												errors.address && touched.address ? " is-invalid" : ""
+											} registrationShop-form_input`}
+											placeholder={formatMessage({id: 'address'})}
+											onBlur={handleBlur}
+											name='address'
+											onChange={(e) => {
+												handleChange(e)
+												formDateUpdateHandler({
+													[e.target.name]: e.target.value
+												})
+											}}
+										/>
+										{errors.address && touched.address && (
+											<Form.Control.Feedback type="invalid">
+												{errors.address}
+											</Form.Control.Feedback>
+										)}
+									</Form.Group>
+
+									<Form.Group
+										className="mb-3"
+										controlId="exampleForm.ControlInput5"
+									>
+										<Form.Label>
+											<FormattedMessage id='commentMessage' />
+										</Form.Label>
+										<Form.Control
+											type="text"
+											as="textarea"
+											className={`pe-5  ${touched.comment_message ? "is-touch " : ""} ${
+												errors.comment_message && touched.comment_message ? " is-invalid" : ""
+											} registrationShop-form_input`}
+											placeholder={formatMessage({id: 'commentMessage'})}
+											onBlur={handleBlur}
+											name='comment_message'
+											onChange={(e) => {
+												handleChange(e)
+												formDateUpdateHandler({
+													[e.target.name]: e.target.value
+												})
+											}}
+										/>
+										{errors.comment_message && touched.comment_message && (
+											<Form.Control.Feedback type="invalid">
+												{errors.comment_message}
+											</Form.Control.Feedback>
+										)}
+									</Form.Group>
+
+
 								</Modal.Body>
 								<Modal.Footer>
 									<Button
@@ -222,7 +317,7 @@ const ModalFormToOrder = ({
 										type='submit'
 										disabled={(!isValid && dirty) || isPostBasketFormClientLoading}
 									>
-										{isPostBasketFormClientLoading ? <LoaderForButton /> : <FormattedMessage id='send' /> }
+										{isPostBasketFormClientLoading ? <LoaderForButton /> : <FormattedMessage id='send' />}
 									</Button>
 								</Modal.Footer>
 							</Form>

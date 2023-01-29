@@ -114,16 +114,15 @@ const ProductListItem = ({
 					+
 				</button>
 			</div>
-			<b>{`
-				${counterValue}
-				${item?.unit_product === 'gram' ||
+			<span><b>{`
+				${counterValue}${item?.unit_product === 'gram' ||
 				item?.unit_product === 'грам' ||
 				item?.unit_product === 'milliliter' ||
 				item?.unit_product === 'мілілітр'
 					? '00'
 					: ''}
 					${item?.unit_product}
-				`}</b>
+				`}</b></span>
 			<span>
 				<FormattedMessage id='price' />
 				<span className='home-body_item-price'>
@@ -134,15 +133,6 @@ const ProductListItem = ({
 				<FormattedMessage id='totalPrice' />
 				<b>{totalPrice || item?.price_product} {item?.currency_product}</b>
 			</span>
-			{/*<div className="home-body_available">*/}
-			{/*	<span>Available:</span>*/}
-			{/*	<Form.Check*/}
-			{/*		type="switch"*/}
-			{/*		id="example-checked12"*/}
-			{/*		disabled*/}
-			{/*		defaultChecked={item?.available_product}*/}
-			{/*	/>*/}
-			{/*</div>*/}
 			{
 				!basket && <div
 					className='home-body_addProduct-checked'

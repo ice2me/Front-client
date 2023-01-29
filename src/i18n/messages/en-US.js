@@ -36,6 +36,9 @@ export default {
     close: 'Close',
     yourName: 'Your Name',
     send: 'Send',
-    showAllShops: 'Other Stores'
+    showAllShops: 'Other Stores',
+    city: 'City',
+    address: 'Address',
+    commentMessage: 'Comment'
   }
 };

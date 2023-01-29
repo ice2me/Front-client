@@ -36,6 +36,9 @@ export default {
 		close: 'Закрити',
 		yourName: "Ваше ім'я",
 		send: 'Замовити',
-		showAllShops: 'Інші Магазини'
+		showAllShops: 'Інші Магазини',
+		city: 'Місто',
+		address: 'Адреса',
+		commentMessage: 'Коментар'
 	}
 };
