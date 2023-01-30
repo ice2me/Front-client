@@ -38,15 +38,15 @@ const StoreSelection = () => {
 		<div className='storeSelection'>
 			<div className="storeSelection-wrapper">
 				<div className="storeSelection-search">
-					<Form className="d-flex">
-						<Form.Control
-							type="search"
-							placeholder="Search"
-							className="me-2"
-							aria-label="Search"
-						/>
-						<Button variant="primary">Search</Button>
-					</Form>
+					{/*<Form className="d-flex">*/}
+					{/*	<Form.Control*/}
+					{/*		type="search"*/}
+					{/*		placeholder="Search"*/}
+					{/*		className="me-2"*/}
+					{/*		aria-label="Search"*/}
+					{/*	/>*/}
+					{/*	<Button variant="primary">Search</Button>*/}
+					{/*</Form>*/}
 				</div>
 				<div className="storeSelection-list">
 					<div className="storeSelection-list_body">

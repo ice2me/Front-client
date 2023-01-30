@@ -1063,6 +1063,12 @@ input[type=radio]:focus {
 .storeSelection-list_body img {
   height: 200px;
 }
+.storeSelection-list_body button {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .storeSelection-button {
   position: absolute;
   bottom: 10px;
