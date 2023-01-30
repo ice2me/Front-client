@@ -11,7 +11,6 @@ import {
 import { Formik } from "formik"
 import { getBasketFormSchema } from "../../utils/validation/yupUpdateUser"
 import { usePostBasketFormClientMutation } from "../../redux/services/categoriesApi"
-import LoaderForButton from "../Loader/LoaderForButton"
 import {
 	useDispatch,
 	useSelector
@@ -22,6 +21,7 @@ import {
 	FormattedMessage,
 	useIntl
 } from "react-intl"
+import Loader from "../Loader/Loader";
 
 const ModalFormToOrder = ({
 	show,
@@ -101,6 +101,10 @@ const ModalFormToOrder = ({
 			console.log(e)
 			resetForm()
 		}
+	}
+
+	if (isPostBasketFormClientLoading) {
+		return <Loader />
 	}
 
 	return (
@@ -317,7 +321,7 @@ const ModalFormToOrder = ({
 										type='submit'
 										disabled={(!isValid && dirty) || isPostBasketFormClientLoading}
 									>
-										{isPostBasketFormClientLoading ? <LoaderForButton /> : <FormattedMessage id='send' />}
+										<FormattedMessage id='send' />
 									</Button>
 								</Modal.Footer>
 							</Form>
