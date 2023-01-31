@@ -8,8 +8,7 @@ export const categoriesAPi = createApi({
 	endpoints: (builder) => ({
 		getCategories: builder.mutation({
 			query: (link) => ({
-				// url: `${CATEGORIES_API.GET_CATEGORIES}${link}`,
-				url: `${link}`,
+				url: `/client/${link}`,
 				method: "GET"
 			})
 		}),
@@ -18,8 +17,7 @@ export const categoriesAPi = createApi({
 				id,
 				link
 			}) => ({
-				// url: `${CATEGORIES_API.GET_CATEGORIES}${link}/${id}`,
-				url: `${link}/${id}`,
+				url: `/client/${link}/${id}`,
 				method: "GET"
 			})
 		}),

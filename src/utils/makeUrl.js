@@ -1,8 +1,7 @@
 export const apiBaseUrl =
 	process.env.NODE_ENV === "development"
-		? "http://client.theke.com.ua/api"
-		// ? "http://localhost:8080/"
-		// : `${window.location.origin}/api/`
-		: `${window.location.origin}/`
+		? "http://client.theke.com.ua/api/"
+		// ? "http://localhost:8080/api/"
+		: `${window.location.origin}/api/`
 
 export const makeUrl = (urlSuff) => `${apiBaseUrl}/${urlSuff}`
