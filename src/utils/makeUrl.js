@@ -1,6 +1,6 @@
 export const apiBaseUrl =
 	process.env.NODE_ENV === "development"
-		? "http://backend:8080/"
+		? "http://client.theke.com.ua/api"
 		// ? "http://localhost:8080/"
 		// : `${window.location.origin}/api/`
 		: `${window.location.origin}/`
