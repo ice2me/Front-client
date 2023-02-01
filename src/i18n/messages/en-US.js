@@ -18,6 +18,7 @@ export default {
     email: 'Email: ',
     nameShop: 'Name Shop: ',
     descriptionShop: 'Description Shop: ',
+    description: 'Show Description Product',
     //----------------------------------------support
     contactSupport: 'Contact Support',
     shopContact: 'Shop Contact: ',

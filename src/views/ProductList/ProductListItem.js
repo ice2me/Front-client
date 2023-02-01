@@ -13,6 +13,7 @@ import {
 } from "react-bootstrap"
 import { toast } from "react-toastify";
 import { FormattedMessage } from "react-intl";
+import close from '../../assets/icons/exit.svg'
 
 const defaultCheckedCard = {
 	count: 0,
@@ -30,6 +31,7 @@ const ProductListItem = ({
 	const [totalPrice, setTotalPrice] = useState(basket ? item.total_price : null)
 	const [activeIconAddBasketCard, setActiveIconAddBasketCard] = useState(false)
 	const [valueCard, setValueCard] = useState(basket ? item : defaultCheckedCard)
+	const [showDescription, setShowDescription] = useState(false)
 
 	useEffect(() => {
 		setValueCard({
@@ -85,7 +87,30 @@ const ProductListItem = ({
 			/>
 			<h3>{item?.name_product}</h3>
 			{
-				item?.description_product && <p>{item?.description_product}</p>
+				item?.description_product
+					?
+					<div
+						className='home-body_item-description'
+						onClick={() => setShowDescription(true)}
+					>
+						<span><FormattedMessage id='description' /> </span>
+						<div style={{zIndex: showDescription ? '999' : '-1'}}>
+							<button
+								onClick={(e) => {
+									e.stopPropagation()
+									setShowDescription(false)
+								}}
+							>
+								<img
+									src={close}
+									alt="close"
+								/>
+							</button>
+							{item?.description_product ? item?.description_product : ''}
+						</div>
+					</div>
+					:
+					<div className='category-body_item-description'></div>
 			}
 			<div className='home-body_counter'>
 				<button
