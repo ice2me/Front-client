@@ -754,10 +754,11 @@ input[type=radio]:focus {
   justify-content: flex-start;
   padding: 30px;
 }
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 992px) {
   .profile-body {
     height: 97%;
     flex-direction: column;
+    align-items: center;
   }
 }
 .profile-body_wrapper {
