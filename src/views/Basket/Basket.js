@@ -7,7 +7,10 @@ import {
 	deleteCardToBasket,
 	pushCardToBasket
 } from "../../redux/slices/categoriesSlice"
-import { useDispatch } from "react-redux"
+import {
+	useDispatch,
+	useSelector
+} from "react-redux"
 import React, {
 	useMemo,
 	useState
@@ -20,7 +23,9 @@ const Basket = ({
 	items
 }) => {
 	const [showFormToOrder, setShowFormToOrder] = useState(false)
+	const {shop} = useSelector(state => state.categories)
 	const dispatch = useDispatch()
+	const variantTrading = shop?.variant_trading
 
 	const memoTotalPrices = useMemo(() => {
 		return items
@@ -82,6 +87,7 @@ const Basket = ({
 											basket
 											addCheckedCard={addCheckedCard}
 											deleteCard={deleteCard}
+											variantTrading={variantTrading}
 										/>
 									))
 								}
