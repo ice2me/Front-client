@@ -47,7 +47,7 @@ const ProductListItem = ({
 		}
 		addCheckedCard(tehCard)
 		setActiveIconAddBasketCard(true)
-		toast(`add to basket: ${item?.name_product}`)
+		// toast(`add to basket: ${item?.name_product}`)
 	}
 
 	const counterPlus = () => {

@@ -78,7 +78,7 @@ const ModalFormToOrder = ({
 			if (items.length <= 10) {
 				const {data} = await postBasketFormClient(formDate)
 				dispatch(resetBasket())
-				toast(data?.message)
+				// toast(data?.message)
 				setReqMessage(data?.message)
 				resetForm()
 				setTimeout(() => onHide(), 2500)
@@ -92,7 +92,7 @@ const ModalFormToOrder = ({
 					dataReq.push(data)
 				}
 				dispatch(resetBasket())
-				toast(dataReq[0]?.message)
+				// toast(dataReq[0]?.message)
 				setReqMessage(dataReq[0]?.message)
 				resetForm()
 				setTimeout(() => onHide(), 2500)
