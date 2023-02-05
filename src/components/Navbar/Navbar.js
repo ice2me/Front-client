@@ -28,6 +28,8 @@ const Navbar = () => {
 		shop,
 		basket
 	} = useSelector((state) => state.categories)
+	const variantTrading = shop?.variant_trading
+	const openShopForUser = shop?.open_shop
 
 	// const logoutHandler = () => {
 	// 	dispatch(logout())
@@ -85,27 +87,31 @@ const Navbar = () => {
 				/>
 				{!toggleNavbar && <FormattedMessage id='contactSupport' />}
 			</li>
-			<li
-				className={`navbarApp_item
+			{
+				variantTrading === "Shop"
+				&&
+				<li
+					className={`navbarApp_item
 					${location.pathname === APP_ROUTE.PROFILE ? 'activeButton' : ''}
 					`}
-				onClick={toggleBasket}
-			>
-				<img
-					src={myBasket}
-					alt="My basket"
-					title="My basket"
-				/>
-				<span className='header-right_item-link_count'>{
-					basket?.length >= 1
-						?
-						basket?.length
-						:
-						'0'
-				}</span>
+					onClick={toggleBasket}
+				>
+					<img
+						src={myBasket}
+						alt="My basket"
+						title="My basket"
+					/>
+					<span className='header-right_item-link_count'>{
+						basket?.length >= 1
+							?
+							basket?.length
+							:
+							'0'
+					}</span>
 
-				{!toggleNavbar && <FormattedMessage id='myBasket' />}
-			</li>
+					{!toggleNavbar && <FormattedMessage id='myBasket' />}
+				</li>
+			}
 			<li
 				className={`navbarApp_item
 					${location.pathname === APP_ROUTE.CONTACT_SUPPORT ? 'activeButton' : ''}
@@ -119,17 +125,20 @@ const Navbar = () => {
 				/>
 				{!toggleNavbar && <FormattedMessage id='profile' />}
 			</li>
-			<li
-				className="navbarApp_item storeSelection-button"
-				onClick={() => navigate('/')}
-			>
-				<img
-					src={myProducts}
-					alt="Shop Profile"
-					title="Shop Profile"
-				/>
-				{!toggleNavbar && <FormattedMessage id='showAllShops' />}
-			</li>
+			{openShopForUser
+				&&
+				<li
+					className="navbarApp_item storeSelection-button"
+					onClick={() => navigate('/')}
+				>
+					<img
+						src={myProducts}
+						alt="Shop Profile"
+						title="Shop Profile"
+					/>
+					{!toggleNavbar && <FormattedMessage id='showAllShops' />}
+				</li>
+			}
 		</ul>
 	)
 }

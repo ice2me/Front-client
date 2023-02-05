@@ -34,6 +34,7 @@ const StoreSelection = () => {
 	const reLink = (linkName) => {
 		navigate(`${linkName}`)
 	}
+
 	return (
 		<div className='storeSelection'>
 			<div className="storeSelection-wrapper">
@@ -58,7 +59,10 @@ const StoreSelection = () => {
 											src={shop?.image_logo === '' ? img : shop?.image_logo}
 										/>
 										<Card.Body>
-											<Card.Title>{shop?.shop_name}</Card.Title>
+											<Card.Title>
+												<b>{shop?.shop_name}</b>
+												<i>{shop?.variant_trading}</i>
+											</Card.Title>
 											<Card.Text>{shop?.description}</Card.Text>
 											<Button
 												variant="primary"

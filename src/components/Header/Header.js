@@ -31,6 +31,8 @@ const Header = () => {
 		basket
 	} = useSelector((state) => state.categories)
 	const navigate = useNavigate()
+	const variantTrading = shop?.variant_trading
+	const openShopForUser = shop?.open_shop
 
 	// const logoutHandler = () => {
 	// 	dispatch(logout())
@@ -71,6 +73,9 @@ const Header = () => {
 					alt="theke logo"
 				/>
 				<div className="header-left">
+					<span className="header-left_status mx-3">
+						<b>{shop?.variant_trading}:</b>
+					</span>
 					<div
 						className='header-left_logo'
 						style={
@@ -83,8 +88,8 @@ const Header = () => {
 					>
 					</div>
 					<span className="header-left_status">
-					{shop?.shop_name}
-				</span>
+						{shop?.shop_name}
+					</span>
 				</div>
 			</div>
 
@@ -128,6 +133,9 @@ const Header = () => {
 							<div className="header-mob_center">
 								<ul className='header-mob_center-wrapper'>
 									<li className='d-inline-flex align-items-center'>
+										<span className="header-left_status mx-3">
+											<b>{shop?.variant_trading}:</b>
+										</span>
 										<div
 											className='header-mob-left_logo'
 											style={
@@ -143,25 +151,29 @@ const Header = () => {
 											<span className="header-mob_left_status">{shop?.shop_name}</span>
 										</div>
 									</li>
-									<li
-										className={`navbarApp_item ${location.pathname === APP_ROUTE.PROFILE ? 'activeButton' : ''}`}
-										onClick={toggleBasket}
-									>
-										<img
-											src={myBasket}
-											alt="My basket"
-											title="My basket"
-										/>
-										<span className='header-right_item-link_count'>{
-											basket?.length >= 1
-												?
-												basket?.length
-												:
-												'0'
-										}</span>
+									{
+										variantTrading === "Shop"
+										&&
+										<li
+											className={`navbarApp_item ${location.pathname === APP_ROUTE.PROFILE ? 'activeButton' : ''}`}
+											onClick={toggleBasket}
+										>
+											<img
+												src={myBasket}
+												alt="My basket"
+												title="My basket"
+											/>
+											<span className='header-right_item-link_count'>{
+												basket?.length >= 1
+													?
+													basket?.length
+													:
+													'0'
+											}</span>
 
-										{!toggleNavbar && <FormattedMessage id='myBasket' />}
-									</li>
+											{!toggleNavbar && <FormattedMessage id='myBasket' />}
+										</li>
+									}
 									<li
 										className={`navbarApp_item ${(location.pathname === APP_ROUTE.CATEGORIES_LIST ||
 											location.pathname === APP_ROUTE.DEFAULT ||
@@ -188,17 +200,22 @@ const Header = () => {
 										/>
 										{!toggleNavbar && <FormattedMessage id='profile' />}
 									</li>
-									<li
-										className="navbarApp_item"
-										onClick={() => navigate('/')}
-									>
-										<img
-											src={myProducts}
-											alt="Shop Profile"
-											title="Shop Profile"
-										/>
-										{!toggleNavbar && <FormattedMessage id='showAllShops' />}
-									</li>
+									{
+										openShopForUser
+										&&
+										<li
+											className="navbarApp_item"
+											onClick={() => navigate('/')}
+										>
+											<img
+												src={myProducts}
+												alt="Shop Profile"
+												title="Shop Profile"
+											/>
+											{!toggleNavbar && <FormattedMessage id='showAllShops' />}
+										</li>
+									}
+
 								</ul>
 							</div>
 						</Nav>

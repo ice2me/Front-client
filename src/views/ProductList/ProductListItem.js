@@ -25,7 +25,8 @@ const ProductListItem = ({
 	item,
 	basket,
 	addCheckedCard,
-	deleteCard
+	deleteCard,
+	variantTrading
 }) => {
 	const [counterValue, setCounterValue] = useState(basket ? item.count : 1)
 	const [totalPrice, setTotalPrice] = useState(basket ? item.total_price : null)
@@ -158,7 +159,7 @@ const ProductListItem = ({
 				<FormattedMessage id='totalPrice' />
 				<b>{totalPrice || item?.price_product} {item?.currency_product}</b>
 			</span>
-			{
+			{variantTrading === 'Shop' &&
 				!basket && <div
 					className='home-body_addProduct-checked'
 				>
@@ -179,15 +180,17 @@ const ProductListItem = ({
 					</div>
 				</div>
 			}
-
-			<Button
-				className='home-body_addProduct-buy'
-				variant="primary"
-				onClick={buyHandler}
-				disabled={!item.available_product}
-			>
-				{basket ? <FormattedMessage id='editCard' /> : <FormattedMessage id='buy' />}
-			</Button>
+			{
+				variantTrading === 'Shop' &&
+				<Button
+					className='home-body_addProduct-buy'
+					variant="primary"
+					onClick={buyHandler}
+					disabled={!item.available_product}
+				>
+					{basket ? <FormattedMessage id='editCard' /> : <FormattedMessage id='buy' />}
+				</Button>
+			}
 			{
 				basket && <button
 					className="home-body_addProduct home-body_addProduct-delete"

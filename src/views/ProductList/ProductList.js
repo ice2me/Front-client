@@ -30,8 +30,9 @@ const ProductList = ({
 	hideList,
 	categoryNameChange
 }) => {
-	const {items} = useSelector(state => state.categories)
+	const {items, shop} = useSelector(state => state.categories)
 	const dispatch = useDispatch()
+	const variantTrading = shop?.variant_trading
 
 	const memoItems = useMemo(() => {
 		return items
@@ -75,6 +76,7 @@ const ProductList = ({
 								key={item?._id}
 								item={item}
 								addCheckedCard={addCheckedCard}
+								variantTrading={variantTrading}
 							/>
 						))
 						}

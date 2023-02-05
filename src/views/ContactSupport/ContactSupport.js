@@ -13,8 +13,6 @@ const ContactSupport = ({
 	shop
 }) => {
 	const contact = shop.socials_links
-	console.log(shop.email)
-	console.log(shop.phone)
 	return (
 		<>
 			<div className='profile'>
