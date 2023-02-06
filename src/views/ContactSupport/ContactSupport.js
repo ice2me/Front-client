@@ -38,7 +38,7 @@ const ContactSupport = ({
 					<a href={`tel:${shop.phone}`}>
 						<FormattedMessage id='phone' />
 						{shop.phone}</a>
-					<div>
+					<div className='mt-5'>
 						{
 							contact?.shop_facebook &&
 							<a href={contact?.shop_facebook}>
@@ -81,7 +81,7 @@ const ContactSupport = ({
 					</h2>
 				</div>
 
-				<div className="d-flex align-items-start flex-column justify-content-center h-20 profile-body_content-socials">
+				<div className="d-flex align-items-start flex-column justify-content-center h-20 profile-body_content-socials mt-5">
 					<h2>
 						<FormattedMessage id='developerContact' />
 					</h2>
