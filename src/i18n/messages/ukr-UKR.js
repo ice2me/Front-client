@@ -16,6 +16,7 @@ export default {
 		name: "Ім'я: ",
 		phone: 'Телефон: ',
 		email: 'Електронна пошта: ',
+		enterEmail: 'Ваш email',
 		nameShop: "Ім'я магазину: ",
 		descriptionShop: 'Магазин опису: ',
 		description: 'Показати опис продукту',

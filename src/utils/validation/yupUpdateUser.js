@@ -1,6 +1,9 @@
 /* eslint-disable */
 import * as yup from "yup"
-import { PHONE_REGEXP} from "../constants"
+import {
+	EMAIL_REGEXP,
+	PHONE_REGEXP
+} from "../constants"
 
 export const getBasketFormSchema = () => {
 	return yup.object().shape({
@@ -14,6 +17,11 @@ export const getBasketFormSchema = () => {
 			.trim()
 			.required('Mobile is a required field')
 			.matches(PHONE_REGEXP, 'Mobile number is not valid'),
+		email: yup
+			.string()
+			.trim()
+			.email('Email must be a valid email')
+			.matches(EMAIL_REGEXP, 'Email must be a valid email'),
 		city: yup
 			.string(),
 		address: yup

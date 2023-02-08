@@ -87,6 +87,12 @@ const ProductListItem = ({
 				alt="photo product"
 			/>
 			<h3>{item?.name_product}</h3>
+			<span className='text-center'>
+				<FormattedMessage id='price' />
+				<span className='home-body_item-price'>
+				<b>{item?.price_product} {item?.currency_product}</b>
+			</span>
+			</span>
 			{
 				item?.description_product
 					?
@@ -94,7 +100,7 @@ const ProductListItem = ({
 						className='home-body_item-description'
 						onClick={() => setShowDescription(true)}
 					>
-						<span><FormattedMessage id='description' /> </span>
+						<span>{item?.description_product} </span>
 						<div style={{zIndex: showDescription ? '999' : '-1'}}>
 							<button
 								onClick={(e) => {
@@ -108,6 +114,17 @@ const ProductListItem = ({
 								/>
 							</button>
 							{item?.description_product ? item?.description_product : ''}
+							<button
+								onClick={(e) => {
+									e.stopPropagation()
+									setShowDescription(false)
+								}}
+							>
+								<img
+									src={close}
+									alt="close"
+								/>
+							</button>
 						</div>
 					</div>
 					:
@@ -122,15 +139,31 @@ const ProductListItem = ({
 				>
 					-
 				</button>
-				<input
-					type="number"
-					min="1"
-					max="9999"
-					value={counterValue}
-					onChange={(e) => {
-						valueInputNumber(e.target.value)
-					}}
-				/>
+				<div className='home-body_counter-number'>
+					<input
+						type="number"
+						min="1"
+						max="9999"
+						value={counterValue}
+						onChange={(e) => {
+							valueInputNumber(e.target.value)
+						}}
+					/>
+					<b>
+						{`
+				${item?.unit_product === 'gram'
+						||
+						item?.unit_product === 'грам'
+						||
+						item?.unit_product === 'milliliter'
+						||
+						item?.unit_product === 'мілілітр'
+							? '00'
+							: ''}
+					${item?.unit_product}
+				`}
+					</b>
+				</div>
 				<button
 					onClick={() => {
 						counterPlus()
@@ -140,21 +173,22 @@ const ProductListItem = ({
 					+
 				</button>
 			</div>
-			<span><b>{`
-				${counterValue}${item?.unit_product === 'gram' ||
-				item?.unit_product === 'грам' ||
-				item?.unit_product === 'milliliter' ||
-				item?.unit_product === 'мілілітр'
-					? '00'
-					: ''}
-					${item?.unit_product}
-				`}</b></span>
-			<span>
-				<FormattedMessage id='price' />
-				<span className='home-body_item-price'>
-				<b> {item?.price_product} {item?.currency_product}</b>
-			</span>
-			</span>
+			{/*<span>*/}
+			{/*	<b>*/}
+			{/*		{`*/}
+			{/*	${counterValue}${item?.unit_product === 'gram'*/}
+			{/*		||*/}
+			{/*		item?.unit_product === 'грам'*/}
+			{/*		||*/}
+			{/*		item?.unit_product === 'milliliter'*/}
+			{/*		||*/}
+			{/*		item?.unit_product === 'мілілітр'*/}
+			{/*			? '00'*/}
+			{/*			: ''}*/}
+			{/*		${item?.unit_product}*/}
+			{/*	`}*/}
+			{/*	</b>*/}
+			{/*</span>*/}
 			<span>
 				<FormattedMessage id='totalPrice' />
 				<b>{totalPrice || item?.price_product} {item?.currency_product}</b>

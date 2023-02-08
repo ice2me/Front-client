@@ -97,7 +97,8 @@ const Basket = ({
 						items.length > 1 &&
 						<p className='basket-body_total'>
 							<FormattedMessage id='myBasketTotalAmount' />
-							{memoTotalPrices}</p>}
+							{memoTotalPrices}₴
+						</p>}
 				</div>
 				<div className='basket-order'>
 					<Button

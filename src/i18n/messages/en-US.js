@@ -16,6 +16,7 @@ export default {
     name: 'Name: ',
     phone: 'Phone: ',
     email: 'Email: ',
+    enterEmail: 'Enter email',
     nameShop: 'Name Shop: ',
     descriptionShop: 'Description Shop: ',
     description: 'Show Description Product',

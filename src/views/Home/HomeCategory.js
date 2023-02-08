@@ -68,17 +68,17 @@ const HomeCategory = ({nameShop}) => {
 							<div
 								className='home-body_accordingHeader-item'
 								key={category?._id}
+								onClick={() => {
+									setCategoryIdChange(category?._id)
+									setCategoryNameChange(category?.category_name)
+									showList()
+								}}
 							>
-						<span
+						<p
 							data-category={category?.category_name}
-							onClick={() => {
-								setCategoryIdChange(category?._id)
-								setCategoryNameChange(category?.category_name)
-								showList()
-							}}
 						>
 							{category?.category_name}
-						</span>
+						</p>
 							</div>
 						))
 					}

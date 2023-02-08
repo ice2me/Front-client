@@ -66,6 +66,7 @@ const ModalFormToOrder = ({
 		const formDate = {
 			username: values.username,
 			phone: values.phone,
+			user_email: values.user_email,
 			city: values.city,
 			address: values.address,
 			comment_message: values.comment_message,
@@ -129,6 +130,7 @@ const ModalFormToOrder = ({
 						initialValues={{
 							phone: '',
 							username: '',
+							user_email: '',
 							city: '',
 							address: '',
 							comment_message: ''
@@ -216,6 +218,34 @@ const ModalFormToOrder = ({
 										{errors.username && touched.username && (
 											<Form.Control.Feedback type="invalid">
 												{errors.username}
+											</Form.Control.Feedback>
+										)}
+									</Form.Group>
+
+									<Form.Group className="registrationShop-form_label">
+										<div className='registrationShop-form_title'>
+											<Form.Label>
+												<FormattedMessage id="email" />
+											</Form.Label>
+										</div>
+										<Form.Control
+											className={`pe-5  ${touched.email ? "is-touch " : ""} ${
+												errors.email && touched.email ? " is-invalid" : ""
+											} registrationShop-form_input`}
+											type="email"
+											placeholder={formatMessage({id: 'enterEmail'})}
+											name='user_email'
+											onBlur={handleBlur}
+											onChange={(e) => {
+												handleChange(e)
+												formDateUpdateHandler({
+													[e.target.name]: e.target.value
+												})
+											}}
+										/>
+										{errors.email && touched.email && (
+											<Form.Control.Feedback type="invalid">
+												{errors.email}
 											</Form.Control.Feedback>
 										)}
 									</Form.Group>

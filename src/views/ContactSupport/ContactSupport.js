@@ -98,15 +98,6 @@ const ContactSupport = ({
 								alt="telegram"
 							/>
 						</a>
-						<a
-							href={`https://www.instagram.com/serhiizuiev/`}
-							target='_blank'
-						>
-							<img
-								src={instagram}
-								alt="instagram"
-							/>
-						</a>
 					</div>
 					<h2 className=' text-center mt-5'>
 						<FormattedMessage id='developerContactText' />
