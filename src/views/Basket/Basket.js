@@ -24,6 +24,7 @@ const Basket = ({
 }) => {
 	const [showFormToOrder, setShowFormToOrder] = useState(false)
 	const {shop} = useSelector(state => state.categories)
+	const [isEditHandler, setIsEditHandler] = useState(false)
 	const dispatch = useDispatch()
 	const variantTrading = shop?.variant_trading
 
@@ -88,13 +89,14 @@ const Basket = ({
 											addCheckedCard={addCheckedCard}
 											deleteCard={deleteCard}
 											variantTrading={variantTrading}
+											setIsEditHandler={setIsEditHandler}
 										/>
 									))
 								}
 							</ul>
 					}
 					{
-						items.length > 1 &&
+						items.length >= 1 &&
 						<p className='basket-body_total'>
 							<FormattedMessage id='myBasketTotalAmount' />
 							{memoTotalPrices}₴
@@ -105,7 +107,7 @@ const Basket = ({
 						variant="primary"
 						size="lg"
 						onClick={handleShowFormToOrder}
-						disabled={items?.length === 0}
+						disabled={items?.length === 0 || isEditHandler}
 					>
 						<span>
 							<FormattedMessage id='toOrder' />

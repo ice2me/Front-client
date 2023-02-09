@@ -10,16 +10,21 @@ import {
 	useNavigate
 } from "react-router-dom"
 import { FormattedMessage } from "react-intl";
-import { useSelector } from "react-redux";
+import {
+	useDispatch,
+	useSelector
+} from "react-redux";
 import Profile from "../../views/Profile/Profile";
 import ContactSupport from "../../views/ContactSupport/ContactSupport";
 import Basket from "../../views/Basket/Basket";
 import myBasket from "../../assets/icons/backet.svg";
+import { resetBasketLIst } from "../../redux/slices/categoriesSlice";
 
 const Navbar = () => {
-	const [toggleNavbar, setToggleNavbar] = useState(false)
+	const [toggleNavbar, setToggleNavbar] = useState(true)
 	const location = useLocation()
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
 
 	const [openProfile, setOpenProfile] = useState(false)
 	const [openContactSupport, setOpenContactSupport] = useState(false)
@@ -62,6 +67,11 @@ const Navbar = () => {
 		/>
 	}
 
+	const goAllShopsList = () => {
+		navigate('/')
+		dispatch(resetBasketLIst())
+	}
+
 	return (
 		<ul className={`navbarApp ${toggleNavbar ? "hideNavbar" : ""}`}>
 			<button
@@ -92,8 +102,7 @@ const Navbar = () => {
 				&&
 				<li
 					className={`navbarApp_item
-					${location.pathname === APP_ROUTE.PROFILE ? 'activeButton' : ''}
-					`}
+					${location.pathname === APP_ROUTE.PROFILE ? 'activeButton' : ''}`}
 					onClick={toggleBasket}
 				>
 					<img
@@ -129,7 +138,7 @@ const Navbar = () => {
 				&&
 				<li
 					className="navbarApp_item storeSelection-button"
-					onClick={() => navigate('/')}
+					onClick={goAllShopsList}
 				>
 					<img
 						src={myProducts}

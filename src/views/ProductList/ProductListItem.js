@@ -26,20 +26,23 @@ const ProductListItem = ({
 	basket,
 	addCheckedCard,
 	deleteCard,
-	variantTrading
+	variantTrading,
+	setIsEditHandler
 }) => {
 	const [counterValue, setCounterValue] = useState(basket ? item.count : 1)
 	const [totalPrice, setTotalPrice] = useState(basket ? item.total_price : null)
 	const [activeIconAddBasketCard, setActiveIconAddBasketCard] = useState(false)
 	const [valueCard, setValueCard] = useState(basket ? item : defaultCheckedCard)
 	const [showDescription, setShowDescription] = useState(false)
+	const [isEditWatcher, setIsEditWatcher] = useState(false)
 
 	useEffect(() => {
 		setValueCard({
 			count: counterValue || item.price_product,
 			total_price: totalPrice || item.price_product
 		})
-	}, [counterValue, totalPrice])
+		basket && setIsEditHandler(isEditWatcher)
+	}, [counterValue, totalPrice, isEditWatcher])
 	const buyHandler = () => {
 		const tehCard = {
 			...item, ...valueCard,
@@ -47,19 +50,21 @@ const ProductListItem = ({
 		}
 		addCheckedCard(tehCard)
 		setActiveIconAddBasketCard(true)
-		// toast(`add to basket: ${item?.name_product}`)
+		basket && setIsEditWatcher(false)
 	}
 
 	const counterPlus = () => {
 		if (counterValue >= 1) {
 			setCounterValue(parseInt(counterValue + 1))
 			setTotalPrice(parseInt(counterValue + 1) * item?.price_product)
+			basket && setIsEditWatcher(true)
 		}
 	}
 	const counterMinus = () => {
 		if (counterValue >= 2) {
 			setCounterValue(parseInt(counterValue - 1))
 			setTotalPrice(totalPrice - item?.price_product)
+			basket && setIsEditWatcher(true)
 		}
 	}
 
@@ -67,8 +72,10 @@ const ProductListItem = ({
 		if (value >= 1) {
 			setCounterValue(parseInt(value))
 			setTotalPrice(parseInt(value) * item?.price_product)
+			basket && setIsEditWatcher(true)
 		} else {
 			setCounterValue(1)
+			basket && setIsEditWatcher(true)
 		}
 	}
 
@@ -220,7 +227,7 @@ const ProductListItem = ({
 					className='home-body_addProduct-buy'
 					variant="primary"
 					onClick={buyHandler}
-					disabled={!item.available_product}
+					disabled={!item.available_product || basket && !isEditWatcher}
 				>
 					{basket ? <FormattedMessage id='editCard' /> : <FormattedMessage id='buy' />}
 				</Button>

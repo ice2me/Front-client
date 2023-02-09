@@ -20,6 +20,9 @@ const categoriesSlice = createSlice({
 		resetItemsLIst: (state, action) => {
 			state.items = []
 		},
+		resetBasketLIst: (state, action) => {
+			state.basket = []
+		},
 		pushCardToBasket: (state, action) => {
 			const items = JSON.parse(localStorage.getItem('items'))
 			const createIndex = state.basket.findIndex(el => el._id === action.payload._id)
@@ -71,5 +74,6 @@ export const {
 	pushCardToBasket,
 	deleteCardToBasket,
 	resetBasket,
+	resetBasketLIst
 } = actions;
 export default reducer
