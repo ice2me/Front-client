@@ -30,7 +30,8 @@ const ModalFormToOrder = ({
 }) => {
 	const [form, setForm] = useState({})
 	const [reqMessage, setReqMessage] = useState('')
-	const [itemsArrSplitter, setItemsArrSplitter] = useState([])
+	// const [itemsArrSplitter, setItemsArrSplitter] = useState([])
+	const [productsArr, setProductsArr] = useState([])
 	const {shop} = useSelector(state => state.categories)
 	const {formatMessage} = useIntl()
 	const [postBasketFormClient, {isLoading: isPostBasketFormClientLoading}] = usePostBasketFormClientMutation()
@@ -38,25 +39,41 @@ const ModalFormToOrder = ({
 	const formDateUpdateHandler = (opt) => {
 		setForm({...form, ...opt})
 	}
-	const arraySplitter = (arr, qtyItems) => {
-		let countItems = 0
-		const lengthArr = arr.length
-		const resultArr = []
-		const splitter = (arr) => {
-			if (countItems >= lengthArr) {
-				return
-			}
-			resultArr.push(arr.slice(countItems, countItems + qtyItems))
-			countItems = countItems + qtyItems
-			splitter(arr)
-		}
-		splitter(arr)
-		return resultArr
-	}
+	// const arraySplitter = (arr, qtyItems) => {
+	// 	let countItems = 0
+	// 	const lengthArr = arr.length
+	// 	const resultArr = []
+	// 	const splitter = (arr) => {
+	// 		if (countItems >= lengthArr) {
+	// 			return
+	// 		}
+	// 		resultArr.push(arr.slice(countItems, countItems + qtyItems))
+	// 		countItems = countItems + qtyItems
+	// 		splitter(arr)
+	// 	}
+	// 	splitter(arr)
+	// 	return resultArr
+	// }
+
+	// useEffect(() => {
+	// 	setItemsArrSplitter(arraySplitter(items, 10))
+	// }, [items])
 
 	useEffect(() => {
-		setItemsArrSplitter(arraySplitter(items, 10))
+		const productArrForMessage = items.map(item => {
+			console.log(item)
+			const e = new Object()
+			e.name_product = item.name_product,
+			e.price_product = item.price_product,
+			e.unit_product = item.unit_product,
+			e.total_price = item.total_price
+			e. currency_product = item. currency_product
+			e. count = item. count
+			return e
+		})
+		setProductsArr(productArrForMessage)
 	}, [items])
+
 
 	const handleSubmit = async (values,
 		{
@@ -70,34 +87,36 @@ const ModalFormToOrder = ({
 			city: values.city,
 			address: values.address,
 			comment_message: values.comment_message,
-			items: items,
+			items: productsArr,
 			shop_id: shop?._id,
 			shop_email: shop.email,
 			shop_name: shop.shop_name,
 		}
+
 		try {
-			if (items.length <= 10) {
+			// if (items.length <= 10) {
 				const {data} = await postBasketFormClient(formDate)
 				dispatch(resetBasket())
 				// toast(data?.message)
 				setReqMessage(data?.message)
 				resetForm()
 				setTimeout(() => onHide(), 2500)
-			} else {
-				const dataReq = []
-				for (let i = 0; i < itemsArrSplitter.length; i++) {
-					const {data} = await postBasketFormClient({
-						...formDate,
-						items: itemsArrSplitter[i]
-					})
-					dataReq.push(data)
-				}
-				dispatch(resetBasket())
-				// toast(dataReq[0]?.message)
-				setReqMessage(dataReq[0]?.message)
-				resetForm()
-				setTimeout(() => onHide(), 2500)
-			}
+			// }
+			// else {
+			// 	const dataReq = []
+			// 	for (let i = 0; i < itemsArrSplitter.length; i++) {
+			// 		const {data} = await postBasketFormClient({
+			// 			...formDate,
+			// 			items: itemsArrSplitter[i]
+			// 		})
+			// 		dataReq.push(data)
+			// 	}
+			// 	dispatch(resetBasket())
+			// 	// toast(dataReq[0]?.message)
+			// 	setReqMessage(dataReq[0]?.message)
+			// 	resetForm()
+			// 	setTimeout(() => onHide(), 2500)
+			// }
 		} catch (e) {
 			console.log(e)
 			resetForm()
