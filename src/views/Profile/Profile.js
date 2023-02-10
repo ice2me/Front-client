@@ -7,6 +7,7 @@ import instagram from '../../assets/icons/instagram.svg'
 import close from "../../assets/icons/exit.svg"
 import React from "react"
 import { FormattedMessage } from "react-intl";
+import { addSpace } from "../../utils/toggleSpaceString";
 
 const Profile = ({
 	profile,
@@ -60,7 +61,7 @@ const Profile = ({
 							<span>
 								<FormattedMessage id='nameShop' />
 							</span>
-								<p>{profile?.shop_name}</p>
+								<p>{addSpace(profile?.shop_name)}</p>
 							</li>
 							{
 								profile?.description && <li className="profile-body_content-text">

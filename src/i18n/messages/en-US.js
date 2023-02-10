@@ -32,6 +32,10 @@ export default {
     myBasketTotalAmount: 'Total Amount:',
     toOrder: 'To Order ',
     piece: ' piece',
+    //------------------------------------------Header
+    shopLink: '{total}',
+    Shop: 'Shop',
+    Menu: 'Menu',
     //----------------------------------------modal
     toOrderForm: 'To Order Form',
     saveChanges: 'Save Changes',

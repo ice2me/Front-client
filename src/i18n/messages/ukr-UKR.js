@@ -32,6 +32,10 @@ export default {
 		myBasketTotalAmount: 'Загальна сума: ',
 		toOrder: 'Замовити ',
 		piece: ' штук ',
+		//------------------------------------------Header
+		shopLink: "{total}",
+		Shop: 'Магазин',
+		Menu: 'Меню',
 		//------------------------------------------модальний
 		toOrderForm: 'Форма замовлення',
 		saveChanges: 'Зберегти зміни',

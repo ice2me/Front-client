@@ -9,17 +9,24 @@ import {
 	Nav,
 	Navbar
 } from "react-bootstrap";
-import { FormattedMessage } from "react-intl";
+import {
+	FormattedMessage,
+	useIntl
+} from "react-intl";
 import { APP_ROUTE } from "../../utils/constants";
 import contactSupport from "../../assets/icons/contact-support-icon.svg";
 import myBasket from "../../assets/icons/backet.svg";
 import myProfile from "../../assets/icons/profile-icon.svg";
-import React, { useState } from "react";
+import React, {
+	useEffect,
+	useState
+} from "react";
 import Profile from "../../views/Profile/Profile";
 import ContactSupport from "../../views/ContactSupport/ContactSupport";
 import Basket from "../../views/Basket/Basket";
 import myProducts from "../../assets/icons/note-list-icon.svg";
 import { useNavigate } from "react-router-dom";
+import { addSpace } from "../../utils/toggleSpaceString";
 
 const Header = () => {
 	const [openProfile, setOpenProfile] = useState(false)
@@ -31,6 +38,7 @@ const Header = () => {
 		basket
 	} = useSelector((state) => state.categories)
 	const navigate = useNavigate()
+	const {formatMessage} = useIntl()
 	const variantTrading = shop?.variant_trading
 	const openShopForUser = shop?.open_shop
 
@@ -74,7 +82,10 @@ const Header = () => {
 				/>
 				<div className="header-left">
 					<span className="header-left_status mx-3">
-						<b>{shop?.variant_trading}:</b>
+						<FormattedMessage
+							id='shopLink'
+							values={{total: formatMessage({id: `${variantTrading}`})}}
+						/>
 					</span>
 					<div
 						className='header-left_logo'
@@ -88,7 +99,7 @@ const Header = () => {
 					>
 					</div>
 					<span className="header-left_status">
-						{shop?.shop_name}
+						{addSpace(shop?.shop_name)}
 					</span>
 				</div>
 			</div>
@@ -134,7 +145,12 @@ const Header = () => {
 								<ul className='header-mob_center-wrapper'>
 									<li className='d-inline-flex align-items-center'>
 										<span className="header-left_status mx-3">
-											<b>{shop?.variant_trading}:</b>
+											<b>
+												<FormattedMessage
+												id='shopLink'
+												values={{total: formatMessage({id: `${variantTrading}`})}}
+											/>
+											</b>
 										</span>
 										<div
 											className='header-mob-left_logo'
@@ -148,7 +164,9 @@ const Header = () => {
 										>
 										</div>
 										<div className="header-mob_left">
-											<span className="header-mob_left_status">{shop?.shop_name}</span>
+											<span className="header-mob_left_status">
+												{addSpace(shop?.shop_name)}
+											</span>
 										</div>
 									</li>
 									{

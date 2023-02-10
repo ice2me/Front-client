@@ -61,7 +61,6 @@ const ModalFormToOrder = ({
 
 	useEffect(() => {
 		const productArrForMessage = items.map(item => {
-			console.log(item)
 			const e = new Object()
 			e.name_product = item.name_product,
 			e.price_product = item.price_product,
