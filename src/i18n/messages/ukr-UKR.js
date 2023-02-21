@@ -18,7 +18,7 @@ export default {
 		email: 'Електронна пошта: ',
 		enterEmail: 'Ваш email',
 		nameShop: "Ім'я магазину: ",
-		descriptionShop: 'Магазин опису: ',
+		descriptionShop: 'Опис:',
 		description: 'Показати опис продукту',
 		//------------------------------------------- підтримка
 		contactSupport: "Служба підтримки",
@@ -31,7 +31,11 @@ export default {
 		myBasketFree: "Ви не вибрали жодного товару...",
 		myBasketTotalAmount: 'Загальна сума: ',
 		toOrder: 'Замовити ',
-		piece: ' штук ',
+		kilogram: 'кілограм',
+		gram: 'грам',
+		liter: 'літр',
+		milliliter: 'мілілітр',
+		piece: 'шт.',
 		//------------------------------------------Header
 		shopLink: "{total}",
 		Shop: 'Магазин',
@@ -45,6 +49,6 @@ export default {
 		showAllShops: 'Інші Магазини',
 		city: 'Місто',
 		address: 'Адреса',
-		commentMessage: 'Коментар'
+		commentMessage: 'Коментар',
 	}
 };

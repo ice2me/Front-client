@@ -36,6 +36,7 @@ const ModalFormToOrder = ({
 	const {formatMessage} = useIntl()
 	const [postBasketFormClient, {isLoading: isPostBasketFormClientLoading}] = usePostBasketFormClientMutation()
 	const dispatch = useDispatch()
+
 	const formDateUpdateHandler = (opt) => {
 		setForm({...form, ...opt})
 	}
@@ -88,8 +89,9 @@ const ModalFormToOrder = ({
 			comment_message: values.comment_message,
 			items: productsArr,
 			shop_id: shop?._id,
-			shop_email: shop.email,
-			shop_name: shop.shop_name,
+			shop_email: shop?.email,
+			shop_name: shop?.shop_name,
+			calculate_total_cost: shop?.calculate_total_cost
 		}
 
 		try {

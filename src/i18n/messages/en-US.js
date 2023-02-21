@@ -18,7 +18,7 @@ export default {
     email: 'Email: ',
     enterEmail: 'Enter email',
     nameShop: 'Name Shop: ',
-    descriptionShop: 'Description Shop: ',
+    descriptionShop: 'Description: ',
     description: 'Show Description Product',
     //----------------------------------------support
     contactSupport: 'Contact Support',
@@ -31,6 +31,10 @@ export default {
     myBasketFree: 'You have not selected any product...',
     myBasketTotalAmount: 'Total Amount:',
     toOrder: 'To Order ',
+    kilogram: 'kilogram',
+    gram: 'gram',
+    liter: 'liter',
+    milliliter: 'milliliter',
     piece: ' piece',
     //------------------------------------------Header
     shopLink: '{total}',

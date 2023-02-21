@@ -49,3 +49,52 @@
 		display: flex
 		align-items: center
 		justify-content: center
+	&-item
+		&_otherOptions
+			width: 100%
+			padding: 0 10px
+			@include calc("font-size",14,10)
+			position: relative
+			button
+				margin: 0
+				cursor: pointer
+				background-color: transparent
+			&-wrapper
+				margin-top: 3px
+				@include centering
+				position: relative
+				left: 5px
+				right: 5px
+				z-index: 20
+				button
+					width: 30px
+					height: 25px
+					background-color: #505160
+					color: #fff
+					font-size: 20px
+					display: flex
+					align-items: center
+					justify-content: center
+
+					&:nth-child(1)
+						border-bottom-left-radius: 12px
+						border-top-left-radius: 12px
+
+					&:nth-child(3)
+						border-bottom-right-radius: 12px
+						border-top-right-radius: 12px
+
+					&:disabled
+						opacity: 0.5
+
+			input
+				height: 25px
+				text-align: center
+				font-size: 16px
+			&-inp
+				input
+					&::placeholder
+						padding: 0
+						font-size: 12px !important
+			&-select
+				min-width: max-content

@@ -137,7 +137,7 @@
 		&_item
 			width: 250px
 			min-width: 50px
-			height: 380px
+			min-height: 400px
 			box-shadow: 0 0 10px 3px rgb(0 0 0 / 10%)
 			display: flex
 			align-items: center
@@ -157,14 +157,15 @@
 
 			h3
 				width: inherit
-				min-height: 25px
+				min-height: 40px
 				font-size: 16px
 				font-weight: bold
-				white-space: nowrap
-				overflow: hidden
+				white-space: normal
+				overflow: auto
 				text-overflow: ellipsis
 				padding: 0 3px
 				text-align: center
+				max-height: 60px
 			span
 				width: 90%
 				font-size: 14px
@@ -215,16 +216,15 @@
 			display: flex
 			align-items: center
 			justify-content: center
-			margin-bottom: 15px
 			&-number
 				input
-					width: 30px
+					width: 50px
 				b
 					padding: 0 3px
 					font-size: 12px
 
 			button
-				width: 50px
+				width: 30px
 				height: 25px
 				background-color: #505160
 				color: #fff

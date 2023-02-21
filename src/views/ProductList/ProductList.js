@@ -33,6 +33,7 @@ const ProductList = ({
 	const {items, shop} = useSelector(state => state.categories)
 	const dispatch = useDispatch()
 	const variantTrading = shop?.variant_trading
+	const calculateTotalCost = shop?.calculate_total_cost
 
 	const memoItems = useMemo(() => {
 		return items
@@ -77,6 +78,7 @@ const ProductList = ({
 								item={item}
 								addCheckedCard={addCheckedCard}
 								variantTrading={variantTrading}
+								calculateTotalCost={calculateTotalCost}
 							/>
 						))
 						}

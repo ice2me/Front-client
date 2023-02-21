@@ -366,7 +366,7 @@
 .home-body_item {
   width: 250px;
   min-width: 50px;
-  height: 380px;
+  min-height: 400px;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
@@ -387,14 +387,15 @@
 }
 .home-body_item h3 {
   width: inherit;
-  min-height: 25px;
+  min-height: 40px;
   font-size: 16px;
   font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
+  white-space: normal;
+  overflow: auto;
   text-overflow: ellipsis;
   padding: 0 3px;
   text-align: center;
+  max-height: 60px;
 }
 .home-body_item span {
   width: 90%;
@@ -452,17 +453,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
 }
 .home-body_counter-number input {
-  width: 30px;
+  width: 50px;
 }
 .home-body_counter-number b {
   padding: 0 3px;
   font-size: 12px;
 }
 .home-body_counter button {
-  width: 50px;
+  width: 30px;
   height: 25px;
   background-color: #505160;
   color: #fff;
@@ -981,6 +981,60 @@ input[type=radio]:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.productList-item_otherOptions {
+  width: 100%;
+  padding: 0 10px;
+  font-size: calc(10px + (14 - 10) * ((100vw - 320px) / (1440 - 320)));
+  position: relative;
+}
+.productList-item_otherOptions button {
+  margin: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+.productList-item_otherOptions-wrapper {
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 5px;
+  right: 5px;
+  z-index: 20;
+}
+.productList-item_otherOptions-wrapper button {
+  width: 30px;
+  height: 25px;
+  background-color: #505160;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.productList-item_otherOptions-wrapper button:nth-child(1) {
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+}
+.productList-item_otherOptions-wrapper button:nth-child(3) {
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.productList-item_otherOptions-wrapper button:disabled {
+  opacity: 0.5;
+}
+.productList-item_otherOptions input {
+  height: 25px;
+  text-align: center;
+  font-size: 16px;
+}
+.productList-item_otherOptions-inp input::placeholder {
+  padding: 0;
+  font-size: 12px !important;
+}
+.productList-item_otherOptions-select {
+  min-width: max-content;
 }
 
 .navbarApp {

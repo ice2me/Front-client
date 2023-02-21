@@ -27,6 +27,7 @@ const Basket = ({
 	const [isEditHandler, setIsEditHandler] = useState(false)
 	const dispatch = useDispatch()
 	const variantTrading = shop?.variant_trading
+	const calculateTotalCost = shop?.calculate_total_cost
 
 	const memoTotalPrices = useMemo(() => {
 		return items
@@ -45,6 +46,7 @@ const Basket = ({
 	const deleteCard = (id) => {
 		dispatch((deleteCardToBasket(id)))
 	}
+
 	return (
 		<>
 			<ModalFormToOrder
@@ -96,11 +98,14 @@ const Basket = ({
 							</ul>
 					}
 					{
-						items.length >= 1 &&
-						<p className='basket-body_total'>
-							<FormattedMessage id='myBasketTotalAmount' />
-							{memoTotalPrices}₴
-						</p>}
+						calculateTotalCost && (
+							items.length >= 1 &&
+							<p className='basket-body_total'>
+								<FormattedMessage id='myBasketTotalAmount' />
+								{memoTotalPrices}₴
+							</p>
+						)
+					}
 				</div>
 				<div className='basket-order'>
 					<Button
