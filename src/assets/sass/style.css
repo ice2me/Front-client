@@ -1002,6 +1002,7 @@ input[type=radio]:focus {
   left: 5px;
   right: 5px;
   z-index: 20;
+  background-color: #fff;
 }
 .productList-item_otherOptions-wrapper button {
   width: 30px;

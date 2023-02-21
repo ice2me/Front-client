@@ -179,7 +179,7 @@ const ProductListItem = ({
 						<b>
 							{`
 								
-					${item?.unit_product}
+					${otherUnitProduct ? otherUnitProduct : item?.unit_product }
 				`}
 						</b>
 					</div>
