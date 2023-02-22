@@ -2,7 +2,7 @@ import React, {
 	useEffect,
 	useState
 } from 'react'
-import productImg from "../../assets/images/NoPhoto.png"
+import productImg from "../../assets/icons/happySocks.svg"
 import deleteCardIcon from "../../assets/icons/delete.svg"
 import basketAdd from "../../assets/icons/backetAdded.svg"
 import basketNotAdd from "../../assets/icons/backet.svg"
@@ -91,7 +91,7 @@ const ProductListItem = ({
 			setTotalPrice((parseInt(value) * item?.price_product))
 			basket && setIsEditWatcher(true)
 		} else {
-			setCounterValue(1)
+			setCounterValue("")
 			basket && setIsEditWatcher(true)
 		}
 	}
@@ -246,7 +246,7 @@ const ProductListItem = ({
 								<input
 									type="number"
 									min="1"
-									max="9999"
+									max="99999"
 									value={counterValue}
 									onChange={(e) => {
 										valueInputNumber(e.target.value)
@@ -257,7 +257,7 @@ const ProductListItem = ({
 								onClick={() => {
 									counterPlus()
 								}}
-								disabled={counterValue === 9999}
+								disabled={counterValue === 99999}
 							>
 								+
 							</button>
