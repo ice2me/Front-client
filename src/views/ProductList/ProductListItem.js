@@ -38,6 +38,7 @@ const ProductListItem = ({
 	const [showDescription, setShowDescription] = useState(false)
 	const [otherOptions, setOtherOptions] = useState(false)
 	const [isEditWatcher, setIsEditWatcher] = useState(false)
+	const [messageAddInBasket, setMessageAddInBasket] = useState(false)
 	const [otherUnitProduct, setOtherUnitProduct] = useState(item.unit_product
 		|| null)
 	const {formatMessage} = useIntl()
@@ -58,6 +59,8 @@ const ProductListItem = ({
 		addCheckedCard(tehCard)
 		setActiveIconAddBasketCard(true)
 		basket && setIsEditWatcher(false)
+		setMessageAddInBasket(true)
+		setTimeout(() => setMessageAddInBasket(false), 2000)
 	}
 
 	const calculationTotalPrice = () => {
@@ -296,14 +299,29 @@ const ProductListItem = ({
 			}
 			{
 				variantTrading === 'Shop' &&
-				<Button
-					className='home-body_addProduct-buy'
-					variant="primary"
-					onClick={buyHandler}
-					disabled={!item.available_product || basket && !isEditWatcher}
-				>
-					{basket ? <FormattedMessage id='editCard' /> : <FormattedMessage id='buy' />}
-				</Button>
+				(
+					messageAddInBasket
+						?
+						 <Button
+								className='home-body_addProduct-buy'
+								variant="light"
+								onClick={buyHandler}
+							>
+							 {basket ? <FormattedMessage id='editCard' />: <FormattedMessage id='addedToBasket' />}
+							</Button>
+						:
+						<Button
+						className='home-body_addProduct-buy'
+						variant="primary"
+						onClick={() => {
+							buyHandler()
+						}}
+						disabled={!item.available_product || basket && !isEditWatcher}
+					>
+						{basket ? <FormattedMessage id='editCard' /> : <FormattedMessage id='buy' />}
+					</Button>
+				)
+
 			}
 			{
 				basket && <button
