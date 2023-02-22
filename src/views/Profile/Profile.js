@@ -77,7 +77,11 @@ const Profile = ({
 						<div className="profile-body_content-socials">
 							{
 								profile?.socials_links.shop_facebook &&
-								<a href={profile?.socials_links.shop_facebook}>
+								<a
+									href={profile?.socials_links.shop_facebook}
+									target="_blank"
+									rel="noreferrer noopener"
+								>
 									<img
 										src={facebook}
 										alt="facebook"
@@ -87,17 +91,24 @@ const Profile = ({
 
 							{
 								profile?.socials_links.shop_viber &&
-								<a href={`viber://add?number=%${profile?.socials_links.shop_viber}`}>
-									<img
-										src={viber}
-										alt="viber"
-									/>
+								<a
+									href={`${profile?.socials_links?.shop_viber}`}
+									target="_blank"
+									rel="noreferrer noopener"
+								><img
+									src={viber}
+									alt="viber"
+								/>
 								</a>
 							}
 
 							{
 								profile?.socials_links.shop_telegram &&
-								<a href={`tg://resolve?domain=${profile?.socials_links.shop_telegram}`}>
+								<a
+									href={`tg://resolve?domain=${profile?.socials_links.shop_telegram}`}
+									target="_blank"
+									rel="noreferrer noopener"
+								>
 									<img
 										src={telegram}
 										alt="telegram"
@@ -107,7 +118,11 @@ const Profile = ({
 
 							{
 								profile?.socials_links.shop_instagram &&
-								<a href={`https://www.instagram.com/${profile?.socials_links.shop_instagram}/`}>
+								<a
+									href={`https://www.instagram.com/${profile?.socials_links.shop_instagram}/`}
+									target="_blank"
+									rel="noreferrer noopener"
+								>
 									<img
 										className='profile-body_content-socials_instagram'
 										src={instagram}
