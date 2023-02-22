@@ -220,11 +220,16 @@
   box-shadow: 0 0 10px 3px rgba(80, 81, 96, 0.1);
   color: #505160;
   background-color: #fff;
-  margin-top: 15px;
+  margin-top: 8px;
   border-radius: 10px;
   z-index: 5;
   padding: 20px 0;
   font-size: calc(12px + (18 - 12) * ((100vw - 320px) / (1440 - 320)));
+}
+@media screen and (max-width: 992px) {
+  .home {
+    margin-top: 0;
+  }
 }
 .home-title {
   text-align: center;
@@ -723,6 +728,19 @@ input[type=radio]:focus {
   font-weight: bold;
   margin-left: 8px;
   color: #505160;
+  cursor: pointer;
+}
+
+.basket-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  cursor: pointer;
+}
+.basket-fixed_count {
+  top: -10px;
+  left: 25px;
   cursor: pointer;
 }
 

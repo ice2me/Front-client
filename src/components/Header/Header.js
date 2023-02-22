@@ -107,7 +107,7 @@ const Header = () => {
 			<Navbar
 				bg="light"
 				expand="lg"
-				sticky='top'
+				// sticky='bottom'
 				className="header-mob"
 				collapseOnSelect='true'
 			>
@@ -227,8 +227,8 @@ const Header = () => {
 										>
 											<img
 												src={myProducts}
-												alt="Shop Profile"
-												title="Shop Profile"
+												alt="Shops"
+												title="Shops"
 											/>
 											{!toggleNavbar && <FormattedMessage id='showAllShops' />}
 										</li>
@@ -240,6 +240,23 @@ const Header = () => {
 					</Navbar.Collapse>
 				</Container>
 			</Navbar>
+			<div
+				className={`basket-fixed ${location.pathname === APP_ROUTE.PROFILE ? 'activeButton' : ''}`}
+				onClick={toggleBasket}
+			>
+				<img
+					src={myBasket}
+					alt="My basket"
+					title="My basket"
+				/>
+				<span className='header-right_item-link_count basket-fixed_count'>{
+					basket?.length >= 1
+						?
+						basket?.length
+						:
+						'0'
+				}</span>
+			</div>
 		</>
 
 	)
