@@ -18,7 +18,10 @@ import { FormattedMessage } from "react-intl";
 import { useSelector } from "react-redux";
 import Basket from "../Basket/Basket";
 
-const Home = () => {
+const Home = ({
+	toggleViewHandler,
+	toggleView
+}) => {
 	const [getCategories, {isLoading: isGetCategoriesLoader}] = useGetCategoriesMutation()
 	const navigate = useNavigate()
 	const location = useLocation()
@@ -43,7 +46,11 @@ const Home = () => {
 
 	return (
 		<div className='home'>
-			<HomeCategory nameShop={nameShop} />
+			<HomeCategory
+				nameShop={nameShop}
+				toggleViewHandler={toggleViewHandler}
+				toggleView={toggleView}
+			/>
 		</div>
 	);
 };

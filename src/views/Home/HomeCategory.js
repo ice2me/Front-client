@@ -8,9 +8,15 @@ import ProductList from "../ProductList/ProductList"
 import { useGetItemListMutation } from "../../redux/services/categoriesApi"
 import Loader from "../../components/Loader/Loader"
 import { FormattedMessage } from "react-intl";
+import squareView from '../../assets/icons/checkbox-unchecked.svg'
+import listView from '../../assets/icons/list.svg'
 
 
-const HomeCategory = ({nameShop}) => {
+const HomeCategory = ({
+	nameShop,
+	toggleViewHandler,
+	toggleView
+}) => {
 	const {categories} = useSelector(state => state.categories)
 	const [showProductsList, setShowProductsList] = useState(false)
 	const [categoryNameChange, setCategoryNameChange] = useState(null)
@@ -48,25 +54,27 @@ const HomeCategory = ({nameShop}) => {
 	return (
 		<>
 			<h1 className="home-title">
-				<FormattedMessage id="categoryList"/>
+				<FormattedMessage id="categoryList" />
 			</h1>
 			{
 				categoriesList.length < 1
 				&&
 				<h1 className="productList-arrowDown">
-					<FormattedMessage id='thisStoreHasNotAddedProductYet'/>
+					<FormattedMessage id='thisStoreHasNotAddedProductYet' />
 				</h1>
 			}
 			<div
-				className="home-body_accordingHeader"
+				className='home-body_accordingHeader'
 			>
 				<div
-					className="home-body_accordingHeader-wrapper"
+					className={`home-body_accordingHeader-wrapper ${toggleView ? 'category-body_wrapper-listView' : ''}
+				`}
 				>
 					{
 						categoriesList?.map((category, index) => (
 							<div
-								className='home-body_accordingHeader-item'
+								className={`home-body_accordingHeader-item ${toggleView ? 'category-body_accordingHeader-listView' : ''}
+								`}
 								key={category?._id}
 								onClick={() => {
 									setCategoryIdChange(category?._id)
@@ -74,14 +82,36 @@ const HomeCategory = ({nameShop}) => {
 									showList()
 								}}
 							>
-						<p
-							data-category={category?.category_name}
-						>
-							{category?.category_name}
-						</p>
+								<p
+									data-category={category?.category_name}
+								>
+									{category?.category_name}
+								</p>
 							</div>
 						))
 					}
+				</div>
+				<div className='category-body_wrapper-view'>
+					<button
+						className="category-body_wrapper-view_button"
+						onClick={toggleViewHandler}
+					>
+						{
+							toggleView
+								?
+								<img
+									src={squareView}
+									alt="List View"
+								/>
+								:
+								<img
+									src={listView}
+									alt="Square View"
+								/>
+						}
+
+
+					</button>
 				</div>
 			</div>
 		</>
