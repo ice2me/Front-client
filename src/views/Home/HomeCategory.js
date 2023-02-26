@@ -10,6 +10,7 @@ import Loader from "../../components/Loader/Loader"
 import { FormattedMessage } from "react-intl";
 import squareView from '../../assets/icons/checkbox-unchecked.svg'
 import listView from '../../assets/icons/list.svg'
+import noImage from '../../assets/icons/happySocks.svg'
 
 
 const HomeCategory = ({
@@ -81,11 +82,34 @@ const HomeCategory = ({
 									setCategoryNameChange(category?.category_name)
 									showList()
 								}}
+								style={{
+									backgroundImage: `${toggleView
+										?
+										''
+										:
+										`url(${
+											category?.category_image
+												?
+												category?.category_image
+												:
+												noImage
+										})`}`
+								}}
 							>
+								{
+									toggleView
+									&&
+									<img
+										src={category?.category_image ? category?.category_image : noImage}
+										alt='no Image'
+									/>
+								}
 								<p
 									data-category={category?.category_name}
 								>
-									{category?.category_name}
+									<b>
+										{category?.category_name}
+									</b>
 								</p>
 							</div>
 						))
