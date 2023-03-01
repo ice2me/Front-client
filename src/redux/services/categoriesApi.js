@@ -36,6 +36,23 @@ export const categoriesAPi = createApi({
 				method: "POST"
 			})
 		}),
+		searchProduct: builder.mutation({
+			query: ({
+				id,
+				product_name
+			}) => ({
+				url: `${CATEGORIES_API.SEARCH_PRODUCT}?user_id=${id}&product_name=${product_name}`,
+				method: "POST"
+			})
+		}),
+		searchTag: builder.mutation({
+			query: ({
+				id
+			}) => ({
+				url: `${CATEGORIES_API.SEARCH_PRODUCT_TAG}?user_id=${id}`,
+				method: "POST"
+			})
+		}),
 	})
 })
 
@@ -44,4 +61,6 @@ export const {
 	useGetItemListMutation,
 	usePostBasketFormClientMutation,
 	useGetAllShopMutation,
+	useSearchProductMutation,
+	useSearchTagMutation
 } = categoriesAPi

@@ -20,6 +20,8 @@ export default {
 		nameShop: "Ім'я магазину: ",
 		descriptionShop: 'Опис:',
 		description: 'Показати опис продукту',
+		search: 'Пошук',
+		nameProduct: "Ім`я продукту",
 		//------------------------------------------- підтримка
 		contactSupport: "Служба підтримки",
 		shopContact: 'Контакт магазину: ',

@@ -81,12 +81,12 @@ const Header = () => {
 					alt="theke logo"
 				/>
 				<div className="header-left">
-					<span className="header-left_status mx-3">
-						<FormattedMessage
-							id='shopLink'
-							values={{total: formatMessage({id: `${variantTrading}`})}}
-						/>
-					</span>
+					{/*<span className="header-left_status mx-3">*/}
+					{/*	<FormattedMessage*/}
+					{/*		id='shopLink'*/}
+					{/*		values={{total: formatMessage({id: `${variantTrading}`})}}*/}
+					{/*	/>*/}
+					{/*</span>*/}
 					<div
 						className='header-left_logo'
 						style={
@@ -145,12 +145,12 @@ const Header = () => {
 								<ul className='header-mob_center-wrapper'>
 									<li className='d-inline-flex align-items-center'>
 										<span className="header-left_status mx-3">
-											<b>
-												<FormattedMessage
-												id='shopLink'
-												values={{total: formatMessage({id: `${variantTrading}`})}}
-											/>
-											</b>
+											{/*<b>*/}
+											{/*	<FormattedMessage*/}
+											{/*	id='shopLink'*/}
+											{/*	values={{total: formatMessage({id: `${variantTrading}`})}}*/}
+											{/*/>*/}
+											{/*</b>*/}
 										</span>
 										<div
 											className='header-mob-left_logo'

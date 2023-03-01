@@ -28,7 +28,8 @@ const initialState = {
 
 const ProductList = ({
 	hideList,
-	categoryNameChange
+	categoryNameChange,
+	searchReq
 }) => {
 	const {items, shop} = useSelector(state => state.categories)
 	const dispatch = useDispatch()
@@ -36,7 +37,7 @@ const ProductList = ({
 	const calculateTotalCost = shop?.calculate_total_cost
 
 	const memoItems = useMemo(() => {
-		return items
+		return searchReq? searchReq : items
 	}, [items])
 
 	const addCheckedCard = (card) => {

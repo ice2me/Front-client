@@ -20,6 +20,8 @@ export default {
     nameShop: 'Name Shop: ',
     descriptionShop: 'Description: ',
     description: 'Show Description Product',
+    search: 'Search',
+    nameProduct: 'Name Product',
     //----------------------------------------support
     contactSupport: 'Contact Support',
     shopContact: 'Shop Contact: ',
