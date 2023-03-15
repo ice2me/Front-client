@@ -263,10 +263,10 @@
   }
 }
 .home-header_wrapper button {
-  border: rgb(80, 81, 96);
+  border: rgb(39, 71, 114);
 }
 .home-header_wrapper button:disabled {
-  background-color: rgb(80, 81, 96);
+  background-color: rgb(39, 71, 114);
 }
 .home-header_wrapper img {
   width: 20px;
@@ -877,7 +877,7 @@ input[type=radio]:focus {
   border: 2px solid rgb(247, 250, 255);
 }
 .category-body_accordingHeader-listView:hover, .category-body_accordingHeader-listView:focus, .category-body_accordingHeader-listView:active {
-  border: 2px solid rgb(80, 81, 96);
+  border: 2px solid rgb(39, 71, 114);
 }
 .category-body_accordingHeader-listView img {
   width: 35px;
@@ -1074,7 +1074,7 @@ input[type=radio]:focus {
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(80, 81, 96, 0.3);
+  background-color: rgba(39, 71, 114, 0.3);
   z-index: 97;
 }
 
@@ -1246,7 +1246,7 @@ input[type=radio]:focus {
 }
 
 .activeButton {
-  border: 1px solid rgba(80, 81, 96, 0.3);
+  border: 1px solid rgba(39, 71, 114, 0.3);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -1407,7 +1407,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(80, 81, 96);
+  color: rgb(39, 71, 114);
 }
 
 input::-ms-clear {
