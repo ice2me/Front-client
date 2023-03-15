@@ -902,7 +902,7 @@ input[type=radio]:focus {
   background-color: transparent;
 }
 
-.show {
+#basic-typeahead-single {
   transform: translate(0, 35px) !important;
 }
 
