@@ -9,7 +9,6 @@
 	height: 90%
 	position: relative
 	box-shadow: 0 0 10px 3px rgba(80,81,96, 0.1)
-	color: #505160
 	background-color: $white
 	margin-top: 8px
 	border-radius: $border-radius
@@ -35,7 +34,6 @@
 				margin-top: 8px
 				margin-right: 0
 			button
-				//background-color: $basic-color
 				border: $basic-color
 				&:disabled
 					background-color: $basic-color
@@ -67,7 +65,7 @@
 		width: 50px
 		height: 50px
 		border-radius: 6px
-		background-color: #505160
+		background-color: $basic-color
 		position: absolute
 		top: 20px
 		right: 3%
@@ -91,14 +89,14 @@
 			cursor: pointer
 			&:before
 				content: attr(data-button)
-				border: 2px solid #505160
+				border: 2px solid $basic-color
 				width: 160px
 				height: 40px
 				display: flex
 				align-items: center
 				justify-content: center
 				border-radius: 6px
-				background-color: #505160
+				background-color: $basic-color
 				position: absolute
 				color: #fff
 				top: 7px
@@ -110,7 +108,7 @@
 				border: 0 solid transparent
 				border-bottom-width: 20px
 				border-top-width: 20px
-				border-left: 15px solid #505160
+				border-left: 15px solid $basic-color
 				position: absolute
 				top: 7px
 				left: -18px
@@ -142,7 +140,7 @@
 			display: flex
 			align-items: center
 			justify-content: flex-start
-			background-color: #505160
+			background-color: $basic-color
 			border-radius: 4px
 			z-index: 999
 			input
@@ -266,7 +264,7 @@
 			button
 				width: 30px
 				height: 25px
-				background-color: #505160
+				background-color: $basic-color
 				color: #fff
 				font-size: 20px
 				display: flex
@@ -291,7 +289,7 @@
 
 		&_available
 			width: 90%
-			color: #505160
+			color: $basic-color
 			margin-right: 5px
 			font-size: 18px
 			text-align: start
@@ -314,7 +312,7 @@
 				margin-right: 5px
 
 			&-toggle
-				color: #505160
+				color: $basic-color
 
 		&_addProduct
 			border-radius: 6px
@@ -358,7 +356,7 @@
 			width: 80px
 			height: 80px
 			border-radius: 6px
-			background-color: #505160
+			background-color: $basic-color
 			margin-right: 20px
 			@media screen and (max-width: 680px)
 				width: 40px
@@ -503,7 +501,7 @@ input[type="radio"]:focus
 		font-size: 16px
 		font-weight: bold
 		margin-left: 8px
-		color: #505160
+		color: $basic-color
 		cursor: pointer
 
 .basket-fixed
