@@ -17,6 +17,8 @@ export const AUTH_API = {
 	ME: "/auth/me",
 	DELETE_USER: "/auth/delete",
 }
+
+export const API_KEY_NOVAPOSHTA = '8fb294797025dd893102c2a6cd157c1a'
 export const CATEGORIES_API = {
 	GET_CATEGORIES: "/link/",
 	POST_CATEGORIES: "client/order",

@@ -1,12 +1,15 @@
 /* eslint-disable */
 import React, {
+	useCallback,
 	useEffect,
 	useState
 } from 'react'
 import {
 	Button,
 	Form,
-	Modal
+	Modal,
+	Tab,
+	Tabs
 } from "react-bootstrap"
 import { Formik } from "formik"
 import { getBasketFormSchema } from "../../utils/validation/yupUpdateUser"
@@ -22,6 +25,9 @@ import {
 	useIntl
 } from "react-intl"
 import Loader from "../Loader/Loader";
+import NovaPoshta from "novaposhta/src/NovaPoshta";
+import { Typeahead } from "react-bootstrap-typeahead";
+import { API_KEY_NOVAPOSHTA } from "../../utils/constants";
 
 const ModalFormToOrder = ({
 	show,
@@ -36,6 +42,52 @@ const ModalFormToOrder = ({
 	const {formatMessage} = useIntl()
 	const [postBasketFormClient, {isLoading: isPostBasketFormClientLoading}] = usePostBasketFormClientMutation()
 	const dispatch = useDispatch()
+	// TODO NOVAPOSHTA SECTION START_______________________________
+	const apiNovaposhta = new NovaPoshta({ apiKey: API_KEY_NOVAPOSHTA })
+// TODO NOVAPOSHTA CITIES_______________________________
+	const [getNovaposhtaAllInfo, setGetNovaposhtaAllInfo] = useState([])
+	const [namingNovaposhtaCities, setNamingNovaposhtaCities] = useState([])
+	const [changeNovaposhtaCities, setChangeNovaposhtaCities] = useState([])
+// TODO NOVAPOSHTA branch_______________________________
+	const [namingNovaposhtaBranch, setNamingNovaposhtaBranch] = useState([])
+	const [changeNovaposhtaBranch, setChangeNovaposhtaBranch] = useState([])
+
+	const getUnique = (arr) => {
+		return arr.filter((el, ind) => ind === arr.indexOf(el));
+	}
+	// TODO NOVAPOSHTA BRANCH Functions start_______________________________
+	const getNovaposhtaInfoHandler = useCallback(async () => {
+		try {
+			const {data} = await apiNovaposhta.address.getWarehouses({REF: ''})
+			setGetNovaposhtaAllInfo(data)
+
+			const tehDataCities = data.map(item => item.CityDescription)
+			const tehUniqNamesCities = getUnique(tehDataCities)
+			setNamingNovaposhtaCities(tehUniqNamesCities)
+		}catch (e) {
+			if (Array.isArray(e)) {
+				e.forEach((error) => console.log(`[${ error.code || '-' }] ${ error.en || error.uk || error.ru || error.message }`))
+			}
+		}
+	}, [])
+
+	useEffect(() => {
+		getNovaposhtaInfoHandler()
+	}, [])
+
+
+	useEffect(() => {
+		let arr = []
+		getNovaposhtaAllInfo.map(item => {
+			if (item.CityDescription === changeNovaposhtaCities[0]) {
+				return arr = [...arr, item.Description]
+			}
+		})
+		setNamingNovaposhtaBranch(arr)
+	}, [changeNovaposhtaCities])
+	// TODO NOVAPOSHTA BRANCH Functions finish_______________________________
+
+	// TODO NOVAPOSHTA SECTION END_______________________________
 
 	const formDateUpdateHandler = (opt) => {
 		setForm({...form, ...opt})
@@ -64,11 +116,11 @@ const ModalFormToOrder = ({
 		const productArrForMessage = items.map(item => {
 			const e = new Object()
 			e.name_product = item.name_product,
-			e.price_product = item.price_product,
-			e.unit_product = item.unit_product,
-			e.total_price = item.total_price
-			e. currency_product = item. currency_product
-			e. count = item. count
+				e.price_product = item.price_product,
+				e.unit_product = item.unit_product,
+				e.total_price = item.total_price
+			e.currency_product = item.currency_product
+			e.count = item.count
 			return e
 		})
 		setProductsArr(productArrForMessage)
@@ -84,8 +136,8 @@ const ModalFormToOrder = ({
 			username: values.username,
 			phone: values.phone,
 			user_email: values.user_email,
-			city: values.city,
-			address: values.address,
+			city: values.city || changeNovaposhtaCities[0],
+			address: values.address || changeNovaposhtaBranch[0],
 			comment_message: values.comment_message,
 			items: productsArr,
 			shop_id: shop?._id,
@@ -96,12 +148,12 @@ const ModalFormToOrder = ({
 
 		try {
 			// if (items.length <= 10) {
-				const {data} = await postBasketFormClient(formDate)
-				dispatch(resetBasket())
-				// toast(data?.message)
-				setReqMessage(data?.message)
-				resetForm()
-				setTimeout(() => onHide(), 2500)
+			const {data} = await postBasketFormClient(formDate)
+			dispatch(resetBasket())
+			// toast(data?.message)
+			setReqMessage(data?.message)
+			resetForm()
+			setTimeout(() => onHide(), 2500)
 			// }
 			// else {
 			// 	const dataReq = []
@@ -135,7 +187,7 @@ const ModalFormToOrder = ({
 			centered
 			backdrop="static"
 			keyboard={true}
-			size={reqMessage ? 'lg' : 'sm'}
+			size={'lg'}
 		>
 			{
 				reqMessage
@@ -184,7 +236,7 @@ const ModalFormToOrder = ({
 										controlId="exampleForm.ControlInput1"
 									>
 										<Form.Label>
-											<FormattedMessage id='phone' />
+											<FormattedMessage id='phone' />*
 										</Form.Label>
 										<Form.Control
 											type="phone"
@@ -217,7 +269,7 @@ const ModalFormToOrder = ({
 										controlId="exampleForm.ControlInput2"
 									>
 										<Form.Label>
-											<FormattedMessage id='name' />
+											<FormattedMessage id='name' />*
 										</Form.Label>
 										<Form.Control
 											type="text"
@@ -269,64 +321,116 @@ const ModalFormToOrder = ({
 											</Form.Control.Feedback>
 										)}
 									</Form.Group>
+{/*TODO *********************DELIVERY SECTION START******************************/}
+									<Tabs defaultActiveKey={'delivery'} className='mt-3 delivery-header' >
+{/*TODO *********************DELIVERY BLOCK******************************/}
+										<Tab
+											className='delivery-window'
+											eventKey={'delivery'}
+											title={'delivery'}
+										>
+											<Form.Group
+												className="mb-3"
+												controlId="exampleForm.ControlInput3"
+											>
+												<Form.Label>
+													<FormattedMessage id='city' />
+												</Form.Label>
+												<Form.Control
+													type="text"
+													className={`pe-5  ${touched.city ? "is-touch " : ""} ${
+														errors.city && touched.city ? " is-invalid" : ""
+													} registrationShop-form_input`}
+													placeholder={formatMessage({id: 'city'})}
+													onBlur={handleBlur}
+													name='city'
+													onChange={(e) => {
+														handleChange(e)
+														formDateUpdateHandler({
+															[e.target.name]: e.target.value
+														})
+													}}
+												/>
+												{errors.city && touched.city && (
+													<Form.Control.Feedback type="invalid">
+														{errors.city}
+													</Form.Control.Feedback>
+												)}
+											</Form.Group>
+											<Form.Group
+												className="mb-3"
+												controlId="exampleForm.ControlInput4"
+											>
+												<Form.Label>
+													<FormattedMessage id='address' />
+												</Form.Label>
+												<Form.Control
+													type="text"
+													className={`pe-5  ${touched.address ? "is-touch " : ""} ${
+														errors.address && touched.address ? " is-invalid" : ""
+													} registrationShop-form_input`}
+													placeholder={formatMessage({id: 'address'})}
+													onBlur={handleBlur}
+													name='address'
+													onChange={(e) => {
+														handleChange(e)
+														formDateUpdateHandler({
+															[e.target.name]: e.target.value
+														})
+													}}
+												/>
+												{errors.address && touched.address && (
+													<Form.Control.Feedback type="invalid">
+														{errors.address}
+													</Form.Control.Feedback>
+												)}
+											</Form.Group>
+										</Tab>
+{/*TODO *********************NOVAPOSHTA SECTION******************************/}
+										<Tab
+											className='delivery-window'
+											eventKey={'novaposhta'}
+											title={'novaposhta'}
+										>
+											<Form.Group
+												className="mb-3"
+												controlId="exampleForm.ControlInput5"
+											>
+											<Form.Label>
+												<FormattedMessage id='city' />
+											</Form.Label>
+											<Typeahead
+												id="basic-typeahead-single"
+												labelKey="searchProduct"
+												onChange={setChangeNovaposhtaCities}
+												options={namingNovaposhtaCities}
+												// placeholder={formatMessage({id: 'nameProduct'})}
+												placeholder={'Cities'}
+												selected={changeNovaposhtaCities}
+											/>
+										</Form.Group>
 
-									<Form.Group
-										className="mb-3"
-										controlId="exampleForm.ControlInput3"
-									>
-										<Form.Label>
-											<FormattedMessage id='city' />
-										</Form.Label>
-										<Form.Control
-											type="text"
-											className={`pe-5  ${touched.city ? "is-touch " : ""} ${
-												errors.city && touched.city ? " is-invalid" : ""
-											} registrationShop-form_input`}
-											placeholder={formatMessage({id: 'city'})}
-											onBlur={handleBlur}
-											name='city'
-											onChange={(e) => {
-												handleChange(e)
-												formDateUpdateHandler({
-													[e.target.name]: e.target.value
-												})
-											}}
-										/>
-										{errors.city && touched.city && (
-											<Form.Control.Feedback type="invalid">
-												{errors.city}
-											</Form.Control.Feedback>
-										)}
-									</Form.Group>
-									<Form.Group
-										className="mb-3"
-										controlId="exampleForm.ControlInput4"
-									>
-										<Form.Label>
-											<FormattedMessage id='address' />
-										</Form.Label>
-										<Form.Control
-											type="text"
-											className={`pe-5  ${touched.address ? "is-touch " : ""} ${
-												errors.address && touched.address ? " is-invalid" : ""
-											} registrationShop-form_input`}
-											placeholder={formatMessage({id: 'address'})}
-											onBlur={handleBlur}
-											name='address'
-											onChange={(e) => {
-												handleChange(e)
-												formDateUpdateHandler({
-													[e.target.name]: e.target.value
-												})
-											}}
-										/>
-										{errors.address && touched.address && (
-											<Form.Control.Feedback type="invalid">
-												{errors.address}
-											</Form.Control.Feedback>
-										)}
-									</Form.Group>
-
+											<Form.Group
+												className="mb-3"
+												controlId="exampleForm.ControlInput6"
+											>
+												<Form.Label>
+													{/*<FormattedMessage id='city' />*/}
+													Otdelenie
+												</Form.Label>
+											<Typeahead
+												id="basic-typeahead-single"
+												labelKey="searchProduct"
+												onChange={setChangeNovaposhtaBranch}
+												options={namingNovaposhtaBranch}
+												// placeholder={formatMessage({id: 'nameProduct'})}
+												placeholder={'Branch'}
+												selected={changeNovaposhtaBranch}
+											/>
+											</Form.Group>
+										</Tab>
+									</Tabs>
+{/*TODO *********************DELIVERY SECTION FINISH******************************/}
 									<Form.Group
 										className="mb-3"
 										controlId="exampleForm.ControlInput5"
