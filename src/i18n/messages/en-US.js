@@ -50,6 +50,9 @@ export default {
     send: 'Send',
     showAllShops: 'Other Stores',
     city: 'City',
+    novaposhtaOffice: 'Nova Poshta Office',
+    addressDelivery: 'Address Delivery',
+    novaposhta: 'Nova Poshta',
     address: 'Address',
     commentMessage: 'Comment'
   }

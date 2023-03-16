@@ -50,6 +50,9 @@ export default {
 		send: 'Замовити',
 		showAllShops: 'Інші Магазини',
 		city: 'Місто',
+		novaposhtaOffice: 'Відділення Нової Пошти',
+		addressDelivery: 'Адресна доставка',
+		novaposhta: 'Нова Пошта',
 		address: 'Адреса',
 		commentMessage: 'Коментар',
 	}

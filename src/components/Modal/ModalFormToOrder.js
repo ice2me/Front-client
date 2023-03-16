@@ -327,7 +327,7 @@ const ModalFormToOrder = ({
 										<Tab
 											className='delivery-window'
 											eventKey={'delivery'}
-											title={'delivery'}
+											title={formatMessage({id: 'addressDelivery'})}
 										>
 											<Form.Group
 												className="mb-3"
@@ -390,7 +390,7 @@ const ModalFormToOrder = ({
 										<Tab
 											className='delivery-window'
 											eventKey={'novaposhta'}
-											title={'novaposhta'}
+											title={formatMessage({id: 'novaposhta'})}
 										>
 											<Form.Group
 												className="mb-3"
@@ -404,8 +404,7 @@ const ModalFormToOrder = ({
 												labelKey="searchProduct"
 												onChange={setChangeNovaposhtaCities}
 												options={namingNovaposhtaCities}
-												// placeholder={formatMessage({id: 'nameProduct'})}
-												placeholder={'Cities'}
+												placeholder={formatMessage({id: 'city'})}
 												selected={changeNovaposhtaCities}
 											/>
 										</Form.Group>
@@ -415,16 +414,14 @@ const ModalFormToOrder = ({
 												controlId="exampleForm.ControlInput6"
 											>
 												<Form.Label>
-													{/*<FormattedMessage id='city' />*/}
-													Otdelenie
+													<FormattedMessage id='novaposhtaOffice' />
 												</Form.Label>
 											<Typeahead
 												id="basic-typeahead-single"
 												labelKey="searchProduct"
 												onChange={setChangeNovaposhtaBranch}
 												options={namingNovaposhtaBranch}
-												// placeholder={formatMessage({id: 'nameProduct'})}
-												placeholder={'Branch'}
+												placeholder={formatMessage({id: 'novaposhtaOffice'})}
 												selected={changeNovaposhtaBranch}
 											/>
 											</Form.Group>
