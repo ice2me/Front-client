@@ -43,7 +43,7 @@ const ModalFormToOrder = ({
 	const [postBasketFormClient, {isLoading: isPostBasketFormClientLoading}] = usePostBasketFormClientMutation()
 	const dispatch = useDispatch()
 	// TODO NOVAPOSHTA SECTION START_______________________________
-	const apiNovaposhta = new NovaPoshta({ apiKey: API_KEY_NOVAPOSHTA })
+	const apiNovaposhta = new NovaPoshta({apiKey: API_KEY_NOVAPOSHTA})
 // TODO NOVAPOSHTA CITIES_______________________________
 	const [getNovaposhtaAllInfo, setGetNovaposhtaAllInfo] = useState([])
 	const [namingNovaposhtaCities, setNamingNovaposhtaCities] = useState([])
@@ -64,15 +64,11 @@ const ModalFormToOrder = ({
 			const tehDataCities = data.map(item => item.CityDescription)
 			const tehUniqNamesCities = getUnique(tehDataCities)
 			setNamingNovaposhtaCities(tehUniqNamesCities)
-		}catch (e) {
+		} catch (e) {
 			if (Array.isArray(e)) {
-				e.forEach((error) => console.log(`[${ error.code || '-' }] ${ error.en || error.uk || error.ru || error.message }`))
+				e.forEach((error) => console.log(`[${error.code || '-'}] ${error.en || error.uk || error.ru || error.message}`))
 			}
 		}
-	}, [])
-
-	useEffect(() => {
-		getNovaposhtaInfoHandler()
 	}, [])
 
 
@@ -125,7 +121,6 @@ const ModalFormToOrder = ({
 		})
 		setProductsArr(productArrForMessage)
 	}, [items])
-
 
 	const handleSubmit = async (values,
 		{
@@ -321,9 +316,15 @@ const ModalFormToOrder = ({
 											</Form.Control.Feedback>
 										)}
 									</Form.Group>
-{/*TODO *********************DELIVERY SECTION START******************************/}
-									<Tabs defaultActiveKey={'delivery'} className='mt-3 delivery-header' >
-{/*TODO *********************DELIVERY BLOCK******************************/}
+									{/*TODO *********************DELIVERY SECTION START******************************/}
+									<Tabs
+										defaultActiveKey={'delivery'}
+										className='mt-3 delivery-header'
+										onClick={() => {
+											getNovaposhtaAllInfo.length < 1 && getNovaposhtaInfoHandler()
+										}}
+									>
+										{/*TODO *********************DELIVERY BLOCK******************************/}
 										<Tab
 											className='delivery-window'
 											eventKey={'delivery'}
@@ -386,7 +387,7 @@ const ModalFormToOrder = ({
 												)}
 											</Form.Group>
 										</Tab>
-{/*TODO *********************NOVAPOSHTA SECTION******************************/}
+										{/*TODO *********************NOVAPOSHTA SECTION******************************/}
 										<Tab
 											className='delivery-window'
 											eventKey={'novaposhta'}
@@ -396,18 +397,18 @@ const ModalFormToOrder = ({
 												className="mb-3"
 												controlId="exampleForm.ControlInput5"
 											>
-											<Form.Label>
-												<FormattedMessage id='city' />
-											</Form.Label>
-											<Typeahead
-												id="basic-typeahead-single"
-												labelKey="searchProduct"
-												onChange={setChangeNovaposhtaCities}
-												options={namingNovaposhtaCities}
-												placeholder={formatMessage({id: 'city'})}
-												selected={changeNovaposhtaCities}
-											/>
-										</Form.Group>
+												<Form.Label>
+													<FormattedMessage id='city' />
+												</Form.Label>
+												<Typeahead
+													id="basic-typeahead-single"
+													labelKey="searchProduct"
+													onChange={setChangeNovaposhtaCities}
+													options={namingNovaposhtaCities}
+													placeholder={formatMessage({id: 'city'})}
+													selected={changeNovaposhtaCities}
+												/>
+											</Form.Group>
 
 											<Form.Group
 												className="mb-3"
@@ -416,18 +417,18 @@ const ModalFormToOrder = ({
 												<Form.Label>
 													<FormattedMessage id='novaposhtaOffice' />
 												</Form.Label>
-											<Typeahead
-												id="basic-typeahead-single"
-												labelKey="searchProduct"
-												onChange={setChangeNovaposhtaBranch}
-												options={namingNovaposhtaBranch}
-												placeholder={formatMessage({id: 'novaposhtaOffice'})}
-												selected={changeNovaposhtaBranch}
-											/>
+												<Typeahead
+													id="basic-typeahead-single"
+													labelKey="searchProduct"
+													onChange={setChangeNovaposhtaBranch}
+													options={namingNovaposhtaBranch}
+													placeholder={formatMessage({id: 'novaposhtaOffice'})}
+													selected={changeNovaposhtaBranch}
+												/>
 											</Form.Group>
 										</Tab>
 									</Tabs>
-{/*TODO *********************DELIVERY SECTION FINISH******************************/}
+									{/*TODO *********************DELIVERY SECTION FINISH******************************/}
 									<Form.Group
 										className="mb-3"
 										controlId="exampleForm.ControlInput5"
