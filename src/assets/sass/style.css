@@ -62,7 +62,7 @@
   }
 }
 .header img {
-  height: 40px;
+  height: 30px;
 }
 .header-left {
   display: flex;
@@ -155,8 +155,8 @@
   background-size: cover;
 }
 .header-mob-left_theke {
-  width: 150px;
-  height: 35px;
+  width: 130px;
+  height: 30px;
 }
 .header-mob-left_basket {
   padding: 10px 10px 10px 20px;

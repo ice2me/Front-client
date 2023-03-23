@@ -76,17 +76,13 @@ const Header = () => {
 	return (
 		<>
 			<div className="header">
-				<img
-					src={thekeLogo}
-					alt="theke logo"
-				/>
+				<a href='https://theke.com.ua'>
+					<img
+						src={thekeLogo}
+						alt="theke logo"
+					/>
+				</a>
 				<div className="header-left">
-					{/*<span className="header-left_status mx-3">*/}
-					{/*	<FormattedMessage*/}
-					{/*		id='shopLink'*/}
-					{/*		values={{total: formatMessage({id: `${variantTrading}`})}}*/}
-					{/*	/>*/}
-					{/*</span>*/}
 					<div
 						className='header-left_logo'
 						style={
@@ -107,17 +103,27 @@ const Header = () => {
 			<Navbar
 				bg="light"
 				expand="lg"
-				// sticky='bottom'
 				className="header-mob"
 				collapseOnSelect='true'
 			>
 				<Container className='d-flex'>
 					<div className="header-mob-left">
-						<img
-							className='header-mob-left_theke'
-							src={thekeLogo}
-							alt="theke logo"
-						/>
+						<div
+							className='header-mob-left_logo'
+							style={
+								shop?.image_logo
+									?
+									{backgroundImage: `url(${shop?.image_logo})`}
+									:
+									{backgroundImage: `url(${photo})`}
+							}
+						>
+						</div>
+						<div className="header-mob_left">
+											<span className="header-mob_left_status">
+												{addSpace(shop?.shop_name)}
+											</span>
+						</div>
 					</div>
 					<div
 						className={`header-mob-left_basket
@@ -145,29 +151,14 @@ const Header = () => {
 								<ul className='header-mob_center-wrapper'>
 									<li className='d-inline-flex align-items-center'>
 										<span className="header-left_status mx-3">
-											{/*<b>*/}
-											{/*	<FormattedMessage*/}
-											{/*	id='shopLink'*/}
-											{/*	values={{total: formatMessage({id: `${variantTrading}`})}}*/}
-											{/*/>*/}
-											{/*</b>*/}
 										</span>
-										<div
-											className='header-mob-left_logo'
-											style={
-												shop?.image_logo
-													?
-													{backgroundImage: `url(${shop?.image_logo})`}
-													:
-													{backgroundImage: `url(${photo})`}
-											}
-										>
-										</div>
-										<div className="header-mob_left">
-											<span className="header-mob_left_status">
-												{addSpace(shop?.shop_name)}
-											</span>
-										</div>
+										<a href='https://theke.com.ua'>
+											<img
+												className='header-mob-left_theke'
+												src={thekeLogo}
+												alt="theke logo"
+											/>
+										</a>
 									</li>
 									{
 										variantTrading === "Shop"
