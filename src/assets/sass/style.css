@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 #root {
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   overflow: hidden;
   display: flex;
@@ -18,8 +20,8 @@
 }
 
 .appWrapper {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +40,7 @@
 }
 .contentBox-children {
   width: 100%;
-  height: inherit;
+  height: 100%;
   padding: 20px 40px;
   background-color: rgb(247, 250, 255);
 }
@@ -1425,9 +1427,6 @@ html, body {
   scroll-behavior: smooth;
   overflow: hidden;
   background: rgba(147, 166, 191, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: rgb(39, 71, 114);
 }
 
