@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { useSelector } from "react-redux"
+import {useSelector} from "react-redux"
 import React, {
 	useEffect,
 	useState
@@ -24,13 +24,14 @@ import {
 	InputGroup
 } from "react-bootstrap";
 import searchIcon from '../../assets/icons/search.svg'
-import { Typeahead } from "react-bootstrap-typeahead";
+import {Typeahead} from "react-bootstrap-typeahead";
 
 
 const HomeCategory = ({
 	nameShop,
 	toggleViewHandler,
-	toggleView
+	toggleView,
+	errorMessage
 }) => {
 	const {
 		categories,
@@ -98,13 +99,13 @@ const HomeCategory = ({
 	}, [searchValueArr])
 
 	if (showProductsList) {
-		return isGetItemListLoading ? <Loader /> : <ProductList
+		return isGetItemListLoading ? <Loader/> : <ProductList
 			hideList={hideList}
 			categoryNameChange={categoryNameChange}
 			searchReq={null}
 		/>
 	} else if (showSearchWindow) {
-		return isSearchProductLoading ? <Loader /> : <ProductList
+		return isSearchProductLoading ? <Loader/> : <ProductList
 			hideList={toggleSearchWindow}
 			categoryNameChange={formatMessage({id: 'search'})}
 			searchReq={reqSearchProduct}
@@ -115,41 +116,49 @@ const HomeCategory = ({
 		<>
 			<div className='home-header'>
 				<h1 className="home-title">
-					<FormattedMessage id="categoryList" />
+					<FormattedMessage id="categoryList"/>
 				</h1>
-				<Form className='home-header_wrapper'>
-					<img
-						src={searchIcon}
-						alt=""
-					/>
-					<Form.Group>
-						<Typeahead
-							id="basic-typeahead-single"
-							labelKey="searchProduct"
-							onChange={setSearchValueArr}
-							options={optionsSearch}
-							placeholder={formatMessage({id: 'nameProduct'})}
-							selected={searchValueArr}
+				{
+					shop?.paid_subscription === true &&
+					<Form className='home-header_wrapper'>
+						<img
+							src={searchIcon}
+							alt=""
 						/>
-					</Form.Group>
-					<Button
-						onClick={searchHandler}
-						disabled={searchValueArr.length < 1}
-					>
-						{isSearchTagLoading
-							?
-							'Loading'
-							:
-							<FormattedMessage id='search' />
-						}</Button>
-				</Form>
+						<Form.Group>
+							<Typeahead
+								id="basic-typeahead-single"
+								labelKey="searchProduct"
+								onChange={setSearchValueArr}
+								options={optionsSearch}
+								placeholder={formatMessage({id: 'nameProduct'})}
+								selected={searchValueArr}
+							/>
+						</Form.Group>
+						<Button
+							onClick={searchHandler}
+							disabled={searchValueArr.length < 1}
+						>
+							{isSearchTagLoading
+								?
+								'Loading'
+								:
+								<FormattedMessage id='search'/>
+							}</Button>
+					</Form>
+				}
 
 			</div>
 			{
 				categoriesList.length < 1
 				&&
 				<h1 className="productList-arrowDown">
-					<FormattedMessage id='thisStoreHasNotAddedProductYet' />
+					{
+						shop?.paid_subscription === false
+							?
+							errorMessage
+							:
+							<FormattedMessage id='thisStoreHasNotAddedProductYet'/>}
 				</h1>
 			}
 			<div
@@ -160,7 +169,8 @@ const HomeCategory = ({
 				`}
 				>
 					{
-						categoriesList?.map((category, index) => (
+						categoriesList?.map((category,
+							index) => (
 							<div
 								className={`home-body_accordingHeader-item ${toggleView ? 'category-body_accordingHeader-listView' : ''}
 								`}

@@ -22,6 +22,7 @@ const Home = ({
 	toggleViewHandler,
 	toggleView
 }) => {
+	const [errorMessage, setErrorMessage] = useState('')
 	const [getCategories, {isLoading: isGetCategoriesLoader}] = useGetCategoriesMutation()
 	const navigate = useNavigate()
 	const location = useLocation()
@@ -32,6 +33,9 @@ const Home = ({
 	useEffect(() => {
 		async function getListCat() {
 			const data = await getCategories(nameShop)
+			if (data?.data?.shop?.paid_subscription === false) {
+				setErrorMessage(data.data.message)
+			}
 			if (data.error) {
 				navigate('/')
 			}
@@ -50,6 +54,7 @@ const Home = ({
 				nameShop={nameShop}
 				toggleViewHandler={toggleViewHandler}
 				toggleView={toggleView}
+				errorMessage={errorMessage}
 			/>
 		</div>
 	);
