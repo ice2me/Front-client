@@ -3,14 +3,13 @@ import {
 	Routes,
 	useLocation
 } from "react-router-dom"
-import Home from "./views/Home/Home"
-import { APP_ROUTE } from "./utils/constants"
 import React, {
 	useCallback,
 	useEffect,
 	useState
 } from "react"
-import StoreSelection from "./views/StoreSelection/StoreSelection"
+import { APP_ROUTE } from "./utils/constants"
+import Home from "./pages/Home/Home"
 
 export const RoutesLink = () => {
 	const location = useLocation()
@@ -29,33 +28,23 @@ export const RoutesLink = () => {
 
 	useEffect(() => {
 		getLocalStorageViewOption()
+		document.title = nameShop
 	}, [])
 
 	return (
-		<Routes>
+		<Routes >
 			<Route
 				path={APP_ROUTE.DEFAULT}
-				element={<StoreSelection />}
+				element={<Home />}
 			/>
 			<Route
 				path={APP_ROUTE.ENTRY}
-				element={<StoreSelection />}
+				element={<Home />}
 			/>
 			<Route
 				path={nameShop}
-				element={<Home
-					toggleViewHandler={toggleViewHandler}
-					toggleView={toggleView}
-				/>}
+				element={<Home />}
 			/>
-		</Routes>
-	)
-}
-export const RoutesLinkLogin = () => {
-	return (
-		<Routes>
-			{/*<Route path={APP_ROUTE.ENTRY} element={<Login/>}/>*/}
-			{/*<Route path={APP_ROUTE.LOGIN} element={<Login/>}/>*/}
-		</Routes>
+		</Routes >
 	)
 }

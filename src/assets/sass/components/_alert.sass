@@ -1,0 +1,26 @@
+@import '../_variables'
+
+.alertForAddProductInBasket
+	position: fixed
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	background-color: rgba(144,160,183, 0.5)
+	z-index: 5
+	@include centering
+	&-wrapper
+		background-color: $bg-white-color
+		padding: 30px
+		border-radius: $border-radius
+		flex-wrap: wrap
+		@include centering
+		&_text
+			font-size: 22px
+			font-weight: 600
+			color: $orange-number
+		&_subtext
+			font-size: 18px
+			font-weight: 500
+			color: $color-text
+			margin-left: 3px

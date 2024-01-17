@@ -1,0 +1,184 @@
+@import '../_variables'
+
+.product-info
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	background-color: $bg-grey-color
+	z-index: 5
+	overflow-x: hidden
+	&_wrapper
+		overflow: hidden
+		overflow-x: auto
+		@media screen and (max-width: 992px)
+			display: none
+		&-title
+		&-content
+			padding: 30px 0
+			&_top
+				width: 100%
+				display: flex
+				align-items: flex-start
+				justify-content: flex-start
+				&-photo
+					max-width: 384px
+					width: 100%
+					height: 272px
+					border-radius: $border-radius
+					margin-right: 30px
+					background-repeat: no-repeat
+					background-size: cover
+					background-position: center
+				&-body
+					max-width: 384px
+					width: 100%
+					height: 272px
+					display: flex
+					justify-content: space-between
+					flex-direction: column
+					&_title
+						font-size: 24px
+						font-weight: 600
+					&_block
+						margin: 20px 0
+						display: flex
+						align-items: center
+						justify-content: space-between
+						&-price
+							&:first-child
+								font-size: 24px
+								color: $color-text-opacity
+							&:last-child
+								font-size: 16px
+								color: $orange-number
+						&-count
+							font-size: 32px
+							color: $color-text
+							font-weight: 600
+						&-counter
+							display: flex
+							align-items: center
+							justify-content: flex-end
+							font-size: 20px
+							&_minus
+								width: 50px
+								height: 50px
+								background-color: transparent
+								border: 1px solid $color-text-opacity
+							&_num
+								width: 50px
+								height: 50px
+								@include centering
+								margin: 0
+								background-color: transparent
+								border-top: 1px solid $color-text-opacity
+								border-bottom: 1px solid $color-text-opacity
+							&_plus
+								width: 50px
+								height: 50px
+								background-color: transparent
+								border: 1px solid $color-text-opacity
+			&_bottom
+				margin-top: 40px
+				&-title
+					font-size: 18px
+					font-weight: 500
+					margin-bottom: 20px
+				&-text
+					max-width: 70%
+					max-height: 350px
+					min-height: 100px
+					height: 100%
+					padding-right: 10px
+					overflow-x: auto
+					font-size: 14px
+					line-height: 18px
+
+.product-infoMob
+	&_wrapper
+		overflow: hidden
+		overflow-x: auto
+		@media screen and (min-width: 992px)
+			display: none
+		&-title
+		&-content
+			padding: 30px 0
+			&_top
+				width: 100%
+				display: flex
+				align-items: flex-start
+				justify-content: center
+				&-photo
+					max-width: 384px
+					width: 100%
+					min-height: 248px
+					height: 272px
+					border-radius: $border-radius
+					background-repeat: no-repeat
+					background-size: cover
+					background-position: center
+				&-body
+					max-width: 384px
+					width: 100%
+					height: max-content
+					display: flex
+					justify-content: space-between
+					flex-direction: column
+					&_title
+						font-size: 24px
+						font-weight: 600
+					&_block
+						margin: 20px 0
+						display: flex
+						align-items: center
+						justify-content: space-between
+						&-price
+							&:first-child
+								font-size: 16px
+								color: $orange-number
+							&:last-child
+								font-size: 24px
+								color: $color-text-opacity
+						&-count
+							font-size: 32px
+							color: $color-text
+							font-weight: 600
+						&-counter
+							display: flex
+							align-items: center
+							justify-content: flex-end
+							font-size: 20px
+							&_minus
+								width: 50px
+								height: 50px
+								background-color: transparent
+								border: 1px solid $color-text-opacity
+							&_num
+								width: 50px
+								height: 50px
+								@include centering
+								margin: 0
+								background-color: transparent
+								border-top: 1px solid $color-text-opacity
+								border-bottom: 1px solid $color-text-opacity
+							&_plus
+								width: 50px
+								height: 50px
+								background-color: transparent
+								border: 1px solid $color-text-opacity
+			&_bottom
+				margin-top: 40px
+				&-title
+					font-size: 18px
+					font-weight: 500
+					margin-bottom: 20px
+				&-text
+					width: 100%
+					min-height: 100px
+					height: 100%
+					padding-right: 10px
+					//overflow-x: auto
+					font-size: 14px
+					line-height: 18px

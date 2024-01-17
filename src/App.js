@@ -1,52 +1,24 @@
-/* eslint-disable */
-import {
-	RoutesLink,
-	// RoutesLinkLogin
-} from "./routes"
+import { useState } from "react"
 import Layout from "./components/Layout/Layout"
-import { ToastContainer } from "react-toastify"
 import {
 	useDispatch,
-	useSelector
 } from "react-redux"
-import {
-	useEffect,
-	useState
-} from "react"
-import 'react-toastify/dist/ReactToastify.css'
 import { AuthContext } from "./context/auth.context"
 import { useLoginMutation } from "./redux/services/authApi"
 import { logout as logoutAction } from "./redux/slices/userSlice"
-import Loader from "./components/Loader/Loader"
-import { IntlProvider } from "react-intl"
 import messages from "./i18n/messages/index"
 import { LOCALES } from "./i18n/locales"
+import { IntlProvider } from "react-intl"
+import { RoutesLink } from "./routes"
 
 function App() {
 	const [languageLocal, setLanguageLocal] = useState(LOCALES.UKR)
-	const {
-		userStore: {
-			user,
-			token,
-			isLogin
-		}
-	} = useSelector((state) => ({userStore: state.userStore}));
-	const dispatch = useDispatch();
-	const logout = () => dispatch(logoutAction());
-	const [login] = useLoginMutation();
-	const isAuthenticated = Boolean(token);
-
-	useEffect(() => {
-		if (isLogin) <Loader />
-		if (window.navigator.language === LOCALES.EN) {
-			setLanguageLocal( LOCALES.EN)
-		} else {
-			setLanguageLocal( LOCALES.UKR)
-		}
-	}, [isLogin])
+	const dispatch = useDispatch()
+	const logout = () => dispatch(logoutAction())
+	const [login] = useLoginMutation()
 
 	return (
-		<div className="app">
+		<div className='app'>
 			<IntlProvider
 				locale={languageLocal}
 				messages={messages[languageLocal]}
@@ -54,26 +26,17 @@ function App() {
 			>
 				<AuthContext.Provider
 					value={{
-						token,
 						login,
-						logout,
-						user,
-						isAuthenticated
+						logout
 					}}
 				>
-					<ToastContainer position='bottom-right' />
-					{/*{*/}
-					{/*  (isAuthenticated && user?.email && token)*/}
-					{/*    ?*/}
-					<Layout>
+          <Layout >
 						<RoutesLink />
-					</Layout>
-					{/*    : <RoutesLinkLogin />*/}
-					{/*}*/}
-				</AuthContext.Provider>
-			</IntlProvider>
-		</div>
-	);
+					</Layout >
+				</AuthContext.Provider >
+			</IntlProvider >
+		</div >
+	)
 }
 
 export default App

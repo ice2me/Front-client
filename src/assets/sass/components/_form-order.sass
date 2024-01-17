@@ -1,0 +1,58 @@
+@import '../_variables'
+
+.formOrder
+	&-form
+		background-color: $bg-grey-color
+		&_wrapper
+			display: flex
+			align-items: flex-start
+			justify-content: space-around
+			@media screen and (max-width: 992px)
+				flex-direction: column
+		&_block
+			width: 50%
+			padding: 0 10px
+			@media screen and (max-width: 992px)
+				width: 100%
+				margin-top: 10px
+			.delivery-header
+				height: 48px
+				.nav-item
+					height: inherit
+					font-weight: 600
+					@media screen and (max-width: 340px)
+						font-size: 12px
+					.nav-link
+						height: inherit
+						color: $color-text-light
+					.active
+						height: inherit
+						color:  $color-text !important
+			.tab-content
+				margin-top: 14px
+				.form-control
+					height: 48px
+		.form-label
+			font-size: 14px
+			font-weight: 600
+		&_input
+			height: 48px
+			background-color: $bg-white-color
+			&::placeholder
+				color: $color-text-light
+			&-req
+				color: red
+			&-text
+				padding: 0 10px
+				margin-top: 10px
+		&_buttonBackForm
+			background-color: $color-text-opacity
+			border: 1px solid $color-text-opacity
+		&_buttonForm
+			width: 150px
+			background-color: $orange-number
+			border: 1px solid $orange-number
+			font-weight: 600
+			&:hover, &:active, &:focus
+				background-color: $green-button
+				border: 1px solid $green-button

@@ -1,37 +1,17 @@
-.basket {
-  width: 100%;
-  height: 95%;
-  overflow: hidden;
-  padding-bottom: 20px;
-}
-.basket-body {
-  width: 100%;
-  height: 90%;
-  overflow: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-.basket-body_total {
-  width: 100%;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: right;
-}
-.basket-order {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.basket-order button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
+/* Error: Undefined variable.
+ *    ,
+ * 33 |     background-color: $basic-bg-opacity
+ *    |                       ^^^^^^^^^^^^^^^^^
+ *    '
+ *   Basket.sass 33:20  root stylesheet */
 
-/*# sourceMappingURL=Basket.css.map */
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Undefined variable.\a    \2577 \a 33 \2502      background-color: $basic-bg-opacity\d\a    \2502                        ^^^^^^^^^^^^^^^^^\a    \2575 \a   Basket.sass 33:20  root stylesheet";
+}

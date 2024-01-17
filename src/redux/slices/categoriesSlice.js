@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { categoriesAPi } from "../services/categoriesApi";
+import { categoriesAPi } from "../services/categoriesApi"
 
 const initialState = {
 	shop: {},
 	categories: [],
 	items: [],
-	basket: []
+	basket: [],
+	search: [],
+	basketWindow: false,
+	searchWindow: false
 };
 
 
@@ -14,22 +17,22 @@ const categoriesSlice = createSlice({
 	initialState,
 	reducers: {
 		resetCategories: () => initialState,
-		setCategoriesInList: (state, action) => {
-			state.categories = action.payload
+		toggleBasketWindow: (state, action) => {
+			state.basketWindow = action.payload
 		},
-		resetItemsLIst: (state, action) => {
-			state.items = []
+		toggleSearchWindow: (state, action) => {
+			state.searchWindow = action.payload
 		},
 		resetBasketLIst: (state, action) => {
 			state.basket = []
 		},
 		pushCardToBasket: (state, action) => {
-			const items = JSON.parse(localStorage.getItem('items'))
 			const createIndex = state.basket.findIndex(el => el._id === action.payload._id)
 			if (createIndex !== -1) {
 				const uniqueCard = [...state.basket]
 				uniqueCard[createIndex] = action.payload
 				state.basket = [...uniqueCard]
+				localStorage.setItem('items', JSON.stringify(state.basket))
 			} else {
 				state.basket = [...state.basket, action.payload]
 				localStorage.setItem('items', JSON.stringify(state.basket))
@@ -57,6 +60,13 @@ const categoriesSlice = createSlice({
 				}
 			)
 			.addMatcher(
+				categoriesAPi.endpoints.searchProduct.matchFulfilled,
+				(state,
+					action) => {
+					state.search = action.payload
+				}
+			)
+			.addMatcher(
 				categoriesAPi.endpoints.getItemList.matchFulfilled,
 				(state,
 					action) => {
@@ -74,6 +84,8 @@ export const {
 	pushCardToBasket,
 	deleteCardToBasket,
 	resetBasket,
-	resetBasketLIst
+	resetBasketLIst,
+	toggleBasketWindow,
+	toggleSearchWindow
 } = actions;
 export default reducer

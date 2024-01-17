@@ -3,11 +3,7 @@ export const APP_ROUTE = {
 	ENTRY: "*",
 	LOGIN: '/login',
 	SIGNUP: '/registration',
-	PRODUCTS_LIST: '/products-list',
-	CATEGORIES_LIST: '/categories-list',
-	PROFILE: '/profile',
-	CONTACT_SUPPORT: '/contact-support',
-	LINK_SHOP: '/link'
+	PRODUCTS: '/products',
 }
 
 export const AUTH_API = {
@@ -39,7 +35,9 @@ export const URLS_PROCESSED_IN_COMPONENTS = [
 	AUTH_API.SIGNUP,
 	AUTH_API.LOGIN,
 	AUTH_API.ME
-];
+]
+
+export const LINK_FOR_LOGO = 'https://theke.com.ua'
 
 export const EMAIL_REGEXP = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 export const PASSWORD_REGEXP = /^[a-zA-Z0-9!@#$%^&*()\\[\]{}\-_+=~`|:;"'<>,./?]{6,}$/

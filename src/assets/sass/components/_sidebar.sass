@@ -1,0 +1,294 @@
+@import '../_variables'
+
+.sidebar
+	width: 150px
+	height: 812px
+	@include centering
+	animation: ShowBlockSidebarBlock ease 0.7s forwards
+	@media screen and (max-width: 992px)
+		display: none
+	&-wrapper
+		width: 93px
+		height: 752px
+		background-color: $color-text
+		position: absolute
+		z-index: 3
+		border-radius: 10px
+		display: flex
+		align-items: flex-start
+		justify-content: space-between
+		flex-direction: column
+		animation: HideBlockSidebar ease 0.7s forwards
+
+		&_top
+			padding: 30px 15px
+
+			&-item
+				padding: 20px
+				display: flex
+				align-items: center
+				justify-content: flex-start
+				position: relative
+				cursor: pointer
+
+				&:nth-child(1)
+					.sidebar-wrapper_top-item_icon
+						background-image: url('../../icons/side-menu-product-list-icon.svg')
+
+					&:hover
+						.sidebar-wrapper_top-item_icon
+							background-image: url('../../icons/side-menu-product-list-icon-orange.svg')
+
+						.sidebar-wrapper_top-item_title
+							color: $orange-number
+
+				&:nth-child(2)
+					.sidebar-wrapper_top-item_icon
+						background-image: url('../../icons/side-menu-basket-icon.svg')
+
+					&:hover
+						.sidebar-wrapper_top-item_icon
+							background-image: url('../../icons/side-menu-basket-icon-orange.svg')
+
+						.sidebar-wrapper_top-item_title
+							color: $orange-number
+
+				&:nth-child(3)
+					.sidebar-wrapper_top-item_icon
+						background-image: url('../../icons/side-menu-profile-shop-icon.svg')
+
+					&:hover
+						.sidebar-wrapper_top-item_icon
+							background-image: url('../../icons/side-menu-profile-shop-icon-orange.svg')
+
+						.sidebar-wrapper_top-item_title
+							color: $orange-number
+
+				&_icon
+					margin-right: 10px
+					width: 30px
+					height: 30px
+					background-repeat: no-repeat
+					background-position: center
+					cursor: pointer
+				&_title
+					font-size: 11px
+					color: $color-text-light
+					animation: ShowTitleSidebar ease 1.2s forwards
+					cursor: pointer
+
+		&_center
+			width: 37px
+			height: 85px
+			position: absolute
+			top: 50%
+			right: -20px
+			transform: translate(0, -50%)
+			z-index: 1
+
+			&:after
+				content: ''
+				width: 20px
+				height: 100px
+				background-color: $color-text
+				position: absolute
+				left: -3px
+				top: -7px
+
+			&-image
+				position: absolute
+				z-index: -1
+				top: 0
+				right: 0
+				left: 0
+				bottom: 0
+
+			&-arrow
+				position: absolute
+				right: 0
+				top: 37%
+
+		&_bottom
+			padding: 30px 15px
+
+			&-item
+				padding: 20px
+				display: flex
+				align-items: center
+				justify-content: flex-start
+				cursor: pointer
+
+				&:nth-child(1)
+					.sidebar-wrapper_bottom-item_icon
+						background-image: url('../../icons/side-menu-messages-icon.svg')
+
+					&:hover
+						.sidebar-wrapper_bottom-item_icon
+							background-image: url('../../icons/side-menu-messages-icon-orange.svg')
+
+						.sidebar-wrapper_bottom-item_title
+							color: $orange-number
+
+				&_icon
+					margin-right: 10px
+					width: 30px
+					height: 30px
+					background-repeat: no-repeat
+					background-position: center
+					cursor: pointer
+
+				&_title
+					font-size: 11px
+					color: $color-text-light
+					animation: ShowTitleSidebar ease 1.2s forwards
+					cursor: pointer
+
+
+	&-min
+		width: 209px
+		animation: ShowBlockSidebar ease 0.7s forwards
+.min-sidebar
+	width: 359px
+	animation: HideBlockSidebarBlock ease 0.7s forwards
+
+.sidebar-mob
+	padding: 5px 10px
+	position: fixed
+	bottom: 0
+	left: 0
+	right: 0
+	background-color: $bg-white-color
+	z-index: 10
+	@media screen and (min-width: 992px)
+		display: none
+	&_wrapper
+		&-block
+			display: flex
+			align-items: center
+			justify-content: center
+			&_item
+				margin: 0 20px
+				display: flex
+				align-items: center
+				justify-content: flex-start
+				flex-direction: column
+				position: relative
+				@media screen and (max-width: 320px)
+					margin: 0 10px
+				&:nth-child(1)
+					.sidebar-mob_wrapper-block_item-icon
+						//background-image: url('../../icons/side-menu-product-list-icon.svg')
+						background-image: url('../../icons/side-menu-profile-shop-icon.svg')
+
+					&:hover
+						.sidebar-mob_wrapper-block_item-icon
+							background-image: url('../../icons/side-menu-profile-shop-icon-orange.svg')
+
+						.sidebar-mob_wrapper-block_item-title
+							color: $orange-number
+
+				&:nth-child(2)
+					.sidebar-mob_wrapper-block_item-icon
+						background-image: url('../../icons/side-menu-messages-icon.svg')
+
+					&:hover
+						.sidebar-mob_wrapper-block_item-icon
+							background-image: url('../../icons/side-menu-messages-icon-orange.svg')
+
+						.sidebar-mob_wrapper-block_item-title
+							color: $orange-number
+
+				&:nth-child(3)
+					.sidebar-mob_wrapper-block_item-icon
+						background-image: url('../../icons/side-menu-product-list-icon.svg')
+
+					&:hover
+						.sidebar-mob_wrapper-block_item-icon
+							background-image: url('../../icons/side-menu-product-list-icon-orange.svg')
+
+						.sidebar-mob_wrapper-block_item-title
+							color: $orange-number
+				&:nth-child(4)
+					.sidebar-mob_wrapper-block_item-icon
+						background-image: url('../../icons/side-menu-basket-icon.svg')
+
+					&:hover
+						.sidebar-mob_wrapper-block_item-icon
+							background-image: url('../../icons/side-menu-basket-icon-orange.svg')
+
+						.sidebar-mob_wrapper-block_item-title
+							color: $orange-number
+				&-icon
+					margin-right: 10px
+					width: 30px
+					height: 30px
+					background-repeat: no-repeat
+					background-position: center
+				&-count
+					position: absolute
+					right: 10px
+					color: $orange-number
+					font-weight: 500
+					font-size: 16px
+
+				&-title
+					font-size: 11px
+					color: $color-text
+					animation: ShowTitleSidebar ease 1.2s forwards
+					@media screen and (max-width: 560px)
+						display: none
+
+
+
+.title-min
+	animation: ShowTitleSidebar ease 1.2s forwards
+	display: none
+
+.arrow-active
+	animation: RotationArrowSidebarButton ease 1.2s forwards
+
+.arrow-noactive
+	animation: RotationCloseArrowSidebarButton ease 1.2s forwards
+
+@keyframes RotationArrowSidebarButton
+	0%
+		transform: rotate(0)
+	100%
+		transform: rotate(180deg)
+
+@keyframes RotationCloseArrowSidebarButton
+	0%
+		transform: rotate(180deg)
+	100%
+		transform: rotate(360deg)
+
+@keyframes ShowTitleSidebar
+	0%
+		opacity: 0
+	100%
+		opacity: 1
+
+
+@keyframes HideBlockSidebarBlock
+	0%
+		width: 150px
+	100%
+		width: 359px
+
+@keyframes ShowBlockSidebarBlock
+	0%
+		width: 359px
+	100%
+		width: 150px
+
+@keyframes HideBlockSidebar
+	0%
+		width: 93px
+	100%
+		width: 209px
+
+@keyframes ShowBlockSidebar
+	0%
+		width: 209px
+	100%
+		width: 93px

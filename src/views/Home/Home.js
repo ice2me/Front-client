@@ -10,13 +10,6 @@ import {
 } from "react-router-dom";
 import Loader from "../../components/Loader/Loader"
 import HomeCategory from "./HomeCategory"
-import arrowDown from "../../assets/icons/arrowDown.svg";
-import StoreSelection from "../StoreSelection/StoreSelection";
-import { APP_ROUTE } from "../../utils/constants";
-import myBasket from "../../assets/icons/backet.svg";
-import { FormattedMessage } from "react-intl";
-import { useSelector } from "react-redux";
-import Basket from "../Basket/Basket";
 
 const Home = ({
 	toggleViewHandler,

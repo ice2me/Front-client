@@ -1,18 +1,15 @@
-/* eslint-disable */
-import Header from "../Header/Header"
-import Footer from "../Footer/Footer"
-import Navbar from "../Navbar/Navbar";
+import React from 'react'
+import Header from "./Header"
+import Sidebar from "./Sidebar"
 
 export default function Layout({children}) {
 	return (
-		<div className="appWrapper">
-			<div className="contentBox">
-				<Navbar />
-				<div className="contentBox-children">
-					<Header />
-					{children}
-				</div>
+		<>
+			<Header />
+			<div className='content'>
+				<Sidebar />
+				{children}
 			</div>
-		</div>
+		</>
 	)
 }

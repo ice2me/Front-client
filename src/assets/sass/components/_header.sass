@@ -1,0 +1,210 @@
+@import '../_variables'
+
+.header
+	width: 100%
+	&-desktop
+		width: 100%
+		height: 80px
+		background-color: $white
+		display: flex
+		align-items: center
+		justify-content: space-between
+		@media screen and (max-width: 992px)
+			display: none
+	&-logo
+		margin: 0px 25px
+		&_link
+			width: 250px
+			height: 100%
+		&_image
+			width: 112px
+			height: 37px
+	&-search
+		width: 350px
+		height: 48px
+		&_wrapper
+			width: 100%
+			height: 100%
+			position: relative
+			div
+				width: 100%
+				height: 100%
+				input
+					width: 100%
+					height: 100%
+					background-color: $bg-grey-color
+					border-radius: $border-radius-input
+					padding: 0 15px
+					@include  calc(font-size,18,12)
+			&-icon
+				position: absolute
+				top: 30%
+				right: 20px
+			.rbt
+				.dropdown-item
+					display: flex
+					align-items: center
+					justify-content: flex-start
+					border-radius: 6px
+					color: $color-text
+					padding: 8px
+					margin-left: 6px
+					&:hover
+						background-color: $bg-grey-color
+				.show
+					background-color: $bg-white-color
+					min-height: 300px
+					display: flex
+					border-radius: $border-radius-input
+	&-backet
+		width: 40px
+		display: flex
+		align-items: center
+		justify-content: space-around
+		background-color: transparent
+		&_icon
+		&_count
+			color: $orange-number
+			font-weight: 500
+			font-size: 16px
+	&-shopInfo
+		width: max-content
+		display: flex
+		align-items: center
+		justify-content: flex-start
+		margin-right: 20px
+		&:hover
+			.header-shopInfo_shopName
+				color: $orange-number
+		&_logo
+			width: 50px
+			height: 50px
+			background-repeat: no-repeat
+			background-size: cover
+			background-position: center
+			border-radius: 50%
+			margin-right: 20px
+		&_shopName
+			font-size: 20px
+			font-weight: 500
+			white-space: nowrap
+		&_phoneNumber
+			display: flex
+			align-items: center
+			justify-content: flex-start
+			color: $color-text-opacity
+			a
+				color: $color-text-opacity
+	&-mobile
+		width: 100%
+		@include  calc(height,90,50)
+		background-color: $white
+		display: flex
+		align-items: center
+		justify-content: space-between
+		position: relative
+		border-radius: 1px
+		@media screen and (min-width: 992px)
+			display: none
+		&_logo
+			width: 20%
+			display: flex
+			justify-content: center
+			&-image
+			@media screen and (max-width: 780px)
+				transform: scale(0.7)
+			@media screen and (max-width: 480px)
+				transform: scale(0.5)
+		&_shopInfo
+			width: 50%
+			display: flex
+			align-items: center
+			justify-content: center
+			@media screen and (max-width: 480px)
+				transform: scale(0.8)
+			&-logo
+				width: 40px
+				min-width: 40px
+				min-height: 40px
+				height: 40px
+				background-repeat: no-repeat
+				background-size: cover
+				background-position: center
+				border-radius: 50%
+				margin-right: 5px
+			&-shopName
+				@include  calc(font-size,18,15)
+				font-weight: 500
+				white-space: break-spaces
+		&_block
+			width: 20%
+			height: 100%
+			display: flex
+			align-items: center
+			justify-content: flex-end
+		&_search
+			width: 50px
+			height: 100%
+			display: flex
+			align-items: center
+			justify-content: center
+			background-color: transparent
+			border-radius: $border-radius-input
+			&-block
+				position: absolute
+				bottom: -49px
+				right: 0
+				width: 100%
+				height: 48px
+				opacity: -1
+				z-index: 20
+				@media screen and (min-width: 480px)
+					width: 320px
+				div
+					width: 100%
+					height: 100%
+					input
+						width: 100%
+						height: 100%
+						background-color: $bg-white-color
+						border: 1px solid $orange-number
+						border-radius: $border-radius-input
+						padding: 0 15px
+						@include  calc(font-size,18,16)
+				.rbt
+				.dropdown-item
+					display: flex
+					align-items: center
+					justify-content: flex-start
+					border-radius: 6px
+					color: $color-text
+					padding: 8px
+					margin-left: 6px
+					&:hover
+						background-color: $bg-grey-color
+				.show
+					background-color: $bg-white-color
+					min-height: 300px
+					display: flex
+					border-radius: $border-radius-input
+
+.open-search
+	animation: ShowBlockSearch ease 0.7s forwards
+
+.close-search
+	animation: HideBlockSearch ease 0.7s forwards
+.active-button-search
+	background-color: $orange-number
+
+@keyframes ShowBlockSearch
+	0%
+		opacity: 0
+	100%
+		opacity: 1
+
+
+@keyframes HideBlockSearch
+	0%
+		opacity: 1
+	100%
+		opacity: 0

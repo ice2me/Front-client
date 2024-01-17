@@ -1,0 +1,121 @@
+@import '../_variables'
+
+.home
+	width: inherit
+	height: inherit
+
+	&-wrapper
+		display: flex
+		align-items: flex-start
+		justify-content: flex-start
+		position: relative
+		@media screen and (max-width: 992px)
+			flex-direction: column
+
+		&_content
+			width: 100%
+			//padding: 30px
+			@media screen and (max-width: 992px)
+				max-width: 100%
+				//padding: 5px 10px
+
+		&_header
+			&-title
+				display: flex
+				align-items: center
+				justify-content: flex-start
+				&_img
+					width: 40px
+					height: 40px
+					background-size: cover
+					background-repeat: no-repeat
+					background-position: center
+					border-radius: 50%
+					margin-right: 15px
+					padding-top: 10px
+					margin-left: 10px
+				&_naming
+					font-size: 32px
+					font-weight: 600
+					margin-top: 10px
+
+			&-view
+				display: flex
+				align-items: center
+				justify-content: space-between
+				margin-top: 10px
+				margin-bottom: 10px
+				padding: 0 10px
+				&_buttons
+					display: flex
+					align-items: center
+					justify-content: flex-start
+				&_list, &_block
+					width: 25px
+					height: 25px
+					margin-right: 10px
+					cursor: pointer
+					background-size: cover
+					background-repeat: no-repeat
+				&_list
+					background-image: url('../../icons/list-view-icon.svg')
+				&_block
+					background-image: url('../../icons/block-view-icon.svg')
+
+		&_promotion
+			max-width: 320px
+			width: 100%
+			max-height: 690px
+			margin-top: 88px
+			height: 100%
+			@media screen and (max-width: 992px)
+				max-width: 100%
+			&-header
+				display: flex
+				justify-content: center
+				@media screen and (max-width: 992px)
+					justify-content: flex-end
+			&-wrapper
+				max-height: 620px
+				height: 100%
+				overflow-x: hidden
+				margin-top: 10px
+				&_content
+					width: 100%
+					overflow-x: auto
+					display: flex
+					justify-content: center
+					flex-wrap: wrap
+					@media screen and (max-width: 992px)
+						align-items: flex-start
+						justify-content: flex-start
+						padding: 30px
+					.cardForCategory
+						margin: 0 0 10px 0
+
+		&_body
+			width: 100%
+			height: 80vh
+			overflow-y: hidden
+			&-wrapper
+				width: 100%
+				height: 90%
+				overflow-x: auto
+				display: flex
+				flex-wrap: wrap
+				align-items: flex-start
+				justify-content: center
+				padding: 10px
+				@media screen and (min-width: 992px)
+					//height: auto
+					justify-content: flex-start
+
+.active-list-view
+	background-image: url('../../icons/list-orange-view-icon.svg')
+.active-block-view
+	background-image: url('../../icons/block-orange-view-icon.svg')
+
+.active-list-horizontal-style
+	flex-direction: column
+	flex-wrap: nowrap
+	justify-content: flex-start

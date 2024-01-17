@@ -1,4 +1,3 @@
-/* eslint-disable */
 import {useSelector} from "react-redux"
 import React, {
 	useEffect,
@@ -24,7 +23,7 @@ import {
 	InputGroup
 } from "react-bootstrap";
 import searchIcon from '../../assets/icons/search.svg'
-import {Typeahead} from "react-bootstrap-typeahead";
+import {Typeahead} from "react-bootstrap-typeahead"
 
 
 const HomeCategory = ({

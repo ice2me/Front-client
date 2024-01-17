@@ -1,0 +1,228 @@
+@import '../_variables'
+
+.basket
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	background-color: $bg-grey-color
+	z-index: 9
+	&-wrapper
+		overflow: hidden
+		padding: 30px
+		&_content
+			padding: 30px 0
+			@media screen and (max-width: 992px)
+				display: none
+			&-title
+				font-size: 24px
+				font-weight: 500
+				margin-bottom: 20px
+			&-list
+				width: 100%
+				&_item
+					width: 100%
+					height: 100px
+					display: flex
+					align-items: center
+					justify-content: center
+					margin-bottom: 30px
+					&-photo
+						width: 117px
+						height: 100%
+						border-radius: $border-radius
+					&-block
+						width: 100%
+						height: inherit
+						display: flex
+						align-items: center
+						justify-content: space-between
+						margin: 0 30px
+						border-bottom: 1px solid $color-text-opacity
+					&-content
+						max-width: 350px
+						width: 100%
+						height: inherit
+						display: flex
+						align-items: flex-start
+						justify-content: space-around
+						flex-direction: column
+						&_name
+							font-size: 18px
+							font-weight: 600
+						&_price
+							font-size: 18px
+							font-weight: 400
+							color: $color-text-opacity
+					&-counter
+						display: flex
+						align-items: center
+						justify-content: flex-end
+						font-size: 20px
+						&_minus
+							width: 50px
+							height: 50px
+							background-color: transparent
+							border: 1px solid $color-text-opacity
+						&_num
+							width: 50px
+							height: 50px
+							@include centering
+							margin: 0
+							background-color: transparent
+							border-top: 1px solid $color-text-opacity
+							border-bottom: 1px solid $color-text-opacity
+						&_plus
+							width: 50px
+							height: 50px
+							background-color: transparent
+							border: 1px solid $color-text-opacity
+					&-price
+						max-width: 180px
+						width: 100%
+						@include centering
+						font-size: 24px
+						font-weight: 700
+						margin: 0 30px
+					&-remove
+						max-width: 80px
+						width: 100%
+						height: inherit
+						background-repeat: no-repeat
+						background-position: center
+						background-color: transparent
+						background-image: url('../../icons/remove-grey-icon.svg')
+						&:hover
+							background-image: url('../../icons/remove-orange-icon.svg')
+			&-footer
+				margin-top: 50px
+				display: flex
+				align-items: center
+				justify-content: flex-start
+				&_res
+					font-size: 25px
+					font-weight: 600
+					margin-right: 30px
+				&_make
+					width: 232px
+					height: 43px
+					background-color: $orange-number
+					border-radius: $border-radius-input
+					font-size: 14px
+					font-weight: 600
+
+
+	&-wrapperMob
+		overflow: hidden
+		padding: 30px
+		&_content
+			padding: 30px 0
+			@media screen and (min-width: 992px)
+				display: none
+			&-title
+				font-size: 24px
+				font-weight: 500
+				margin-bottom: 20px
+			&-list
+				width: 100%
+				&_item
+					width: 100%
+					height: max-content
+					display: flex
+					align-items: center
+					justify-content: center
+					flex-direction: column
+					margin-bottom: 30px
+					&-photo
+						width: 135px
+						height: 95px
+						border-radius: $border-radius
+						margin-right: 30px
+					&-block
+						width: 100%
+						height: inherit
+						display: flex
+						align-items: flex-start
+						justify-content: center
+					&-content
+						width: 100%
+						min-height: 95px
+						display: flex
+						align-items: flex-start
+						justify-content: center
+						flex-direction: column
+						&_name
+							@include calc(font-size, 18, 16)
+							font-weight: 600
+						&_price
+							@include calc(font-size, 18, 12)
+							font-weight: 400
+							color: $color-text-opacity
+					&-counter
+						width: 100%
+						display: flex
+						align-items: center
+						justify-content: flex-start
+						font-size: 20px
+						margin-top: 30px
+						&_minus
+							min-width: 50px
+							width: 50px
+							height: 50px
+							background-color: transparent
+							border: 1px solid $color-text-opacity
+						&_num
+							min-width: 50px
+							width: 50px
+							height: 50px
+							@include centering
+							margin: 0
+							background-color: transparent
+							border-top: 1px solid $color-text-opacity
+							border-bottom: 1px solid $color-text-opacity
+						&_plus
+							min-width: 50px
+							width: 50px
+							height: 50px
+							background-color: transparent
+							border: 1px solid $color-text-opacity
+					&-price
+						max-width: 180px
+						width: 100%
+						@include centering
+						@include calc(font-size, 24, 18)
+						font-weight: 700
+						margin: 0 30px
+					&-remove
+						width: 100%
+						min-height: 48px
+						height: 100%
+						margin-top: 20px
+						color: $bg-white-color
+						border-radius: $border-radius-input
+						background-color: $green-button
+						background-repeat: no-repeat
+						background-position: right
+						background-image: url('../../icons/remove-white-icon.svg')
+						&:hover
+							background-image: url('../../icons/remove-orange-icon.svg')
+			&-footer
+				margin-top: 50px
+				display: flex
+				align-items: center
+				justify-content: flex-start
+				&_res
+					font-size: 25px
+					font-weight: 600
+					margin-right: 30px
+				&_make
+					width: 232px
+					height: 43px
+					background-color: $orange-number
+					border-radius: $border-radius-input
+					font-size: 14px
+					font-weight: 600
+					color: $bg-white-color
+					@media screen and (max-width: 992px)
+						width: 100%

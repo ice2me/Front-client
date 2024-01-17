@@ -1,13 +1,21 @@
-@import 'App'
-@import 'Header'
-@import 'Home'
-@import 'Profile'
-@import 'ProductList'
-@import 'Navbar'
-@import 'Basket'
-@import 'storeSelection'
 @import '_variables'
 
+//components
+@import 'components/_header'
+@import 'components/_sidebar'
+@import 'components/_card-for-category'
+@import 'components/_card-for-product'
+@import 'components/_button-add'
+@import 'components/_product-info'
+@import 'components/_alert'
+@import 'components/_basket'
+@import 'components/_form-order'
+
+//pages
+@import 'pages/_app'
+@import 'pages/_home'
+
+@import 'bootstrap/dist/css/bootstrap.min.css'
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap')
 
 *
@@ -17,9 +25,8 @@
 	box-sizing: border-box
 	transition: .1s forward
 
+
 *:before *:after
-	-moz-box-sizing: border-box
-	-webkit-box-sizing: border-box
 	box-sizing: border-box
 
 *:disabled
@@ -42,9 +49,9 @@ html, body
 	margin: 0 auto
 	outline: none
 	scroll-behavior: smooth
-	overflow: hidden
-	background: rgba($gray-500, 0.1)
-	color: $basic-color
+	//overflow: hidden
+	background: rgba(144,160,183, 0.1)
+	color: $color-text
 
 input::-ms-clear
 	display: none
@@ -107,8 +114,9 @@ h1, h2, h3, h4, h5, h6
 	cursor: default
 	margin-bottom: 0
 
-p, span
+p, span, div
 	cursor: default
+	margin: 0
 
 html:not(.touch-screen)::-webkit-scrollbar-track, html:not(.touch-screen) *::-webkit-scrollbar-track
 	background: #ffffff
@@ -124,45 +132,3 @@ html:not(.touch-screen)::-webkit-scrollbar, html:not(.touch-screen) *::-webkit-s
 	width: 6px
 	border-radius: 6px
 	height: 6px
-
-.loader-full
-	position: fixed
-	top: 0
-	right: 0
-	left: 0
-	bottom: 0
-	z-index: 9999
-	display: flex
-	align-items: center
-	justify-content: center
-	background-color: rgba(199,206,225, 0.3)
-
-.loader-wrapperForProduct
-	width: 250px
-	min-width: 250px
-	height: 350px
-	border-radius: 6px
-	box-shadow: 3px 0 15px 3px rgba(0, 0, 0, 0.1)
-	margin: 8px
-	padding: 5px 0
-	display: flex
-	align-items: center
-	justify-content: center
-	background-color: rgba(199,206,225, 0.3)
-.small-loader
-	width: 10px
-	height: 10px
-	margin: 8px
-	padding: 5px 0
-	display: flex
-	align-items: center
-	justify-content: center
-	position: absolute
-	right: 30%
-	div
-		width: 40px
-		height: 40px
-		img
-			width: 40px
-			height: 40px
-			min-height: 40px

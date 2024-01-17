@@ -1,0 +1,318 @@
+@import '../_variables'
+
+.cardForProduct
+	&-content
+		width: 100%
+		padding: 30px
+		@media screen and (max-width: 992px)
+			padding: 10px
+			max-width: 100%
+	&-header
+		width: inherit
+		margin-bottom: 10px
+		&_title
+			width: inherit
+			display: flex
+			align-items: flex-start
+			justify-content: center
+			flex-direction: column
+
+			&-top
+				width: inherit
+				display: flex
+				align-items: center
+				justify-content: space-between
+				&_button
+					width: 200px
+					height: 25px
+					font-size: 14px
+					color: $color-text-opacity
+					display: flex
+					align-items: center
+					justify-content: flex-end
+					position: relative
+					padding: 0 5px
+
+					&:after
+						content: ''
+						width: 20px
+						height: 20px
+						position: absolute
+						top: 0
+						left: 0
+						background-image: url('../../icons/arrow-back-icon.svg')
+
+			&-bottom
+				width: inherit
+				display: flex
+				align-items: center
+				justify-content: space-between
+				margin-top: 10px
+				@media screen and (max-width: 992px)
+					flex-direction: column
+					justify-content: center
+				&_name
+					font-size: 32px
+					font-weight: 600
+
+				&_block
+					display: flex
+					align-items: center
+					justify-content: flex-end
+					@media screen and (max-width: 992px)
+						flex-wrap: wrap
+					&-select
+						margin-left: 20px
+						width: 265px
+						height: 32px
+						border-radius: $border-radius-input
+						padding: 0 10px
+						@media screen and (max-width: 492px)
+							width: 100%
+							margin: 5px 0 0 0
+	&-body
+		width: 100%
+		height: auto
+		position: relative
+		&_wrapper
+			width: 100%
+			//height: 98%
+			overflow-x: auto
+			display: flex
+			flex-wrap: wrap
+			align-items: flex-start
+			justify-content: flex-start
+			padding-bottom: 20px
+			@media screen and (max-width: 992px)
+				justify-content: center
+				padding-bottom: 40px
+
+	&-card
+		min-width: 180px
+		max-width: 250px
+		width: 100%
+		height: 348px
+		background-color: $bg-white-color
+		border-radius: $border-radius
+		margin: 0 20px 15px 0
+		overflow: hidden
+		display: flex
+		align-items: flex-start
+		justify-content: space-between
+		flex-direction: column
+		&:hover, &:active, &:focus
+			box-shadow: 0 11px 12px -10px rgba(0,0,0,0.75)
+		@media screen and (max-width: 392px)
+			margin: 0 0 15px 0
+		&_header
+			width: inherit
+			display: flex
+			align-items: flex-start
+			justify-content: flex-start
+			flex-direction: column
+			padding: 0 15px 10px
+			border-top-left-radius: $border-radius
+			border-top-right-radius: $border-radius
+			&-name
+				width: 220px
+				font-size: 16px
+				font-weight: 600
+				margin: 10px 0
+				overflow: hidden
+				text-overflow: ellipsis
+				white-space: nowrap
+			&-price
+				font-size: 18px
+				font-weight: bold
+			&-count
+				font-size: 14px
+				font-weight: 600
+				color: $orange-number
+				margin: 8px 0
+			&-button
+				width: 100%
+				height: 42px
+				background-color: $green-button
+				border-radius: $border-radius-input
+				color: $bg-white-color
+				position: relative
+				display: flex
+				align-items: center
+				justify-content: flex-start
+				padding-left: 20px
+				&:after
+					content: ''
+					width: 20px
+					height: 20px
+					position: absolute
+					right: 20px
+					animation: AnimationOffBasket ease 0.7s forwards
+					background-image: url('../../icons/backet-for-button-icon.svg')
+				&:hover, &:active, &:focus
+					color: transparent
+					background-color: $color-text
+					&:after
+						animation: AnimationOnBasket ease 0.7s forwards
+						right: 50%
+						transform: translate(50%, 0)
+					&:before
+						content: ''
+						width: 25px
+						height: 12px
+						position: absolute
+						left: 20px
+						animation: AnimationArrowBasket ease 1.5s infinite
+						background-image: url('../../icons/arrow-right-for-basket-icon.svg')
+						background-repeat: no-repeat
+		&_image
+			width: 100%
+			height: 210px
+			background-size: cover
+			background-repeat: no-repeat
+			background-position: center
+			border-top-left-radius: $border-radius
+			border-top-right-radius: $border-radius
+		&_list
+			width: 100%
+			height: 100px
+			display: flex
+			align-items: center
+			justify-content: flex-start
+			background-color: $bg-white-color
+			border-radius: $border-radius
+			margin-bottom: 10px
+			overflow: hidden
+			&:hover, &:active, &:focus
+				box-shadow: 0 11px 12px -10px rgba(0,0,0,0.75)
+			&-header
+				width: inherit
+				height: 70px
+				display: flex
+				align-items: center
+				justify-content: space-between
+				padding: 0 10px
+				border-top-left-radius: $border-radius
+				border-top-right-radius: $border-radius
+				overflow-x: hidden
+				@media screen and (max-width: 482px)
+					flex-direction: column
+					align-items: center
+					justify-content: flex-start
+					overflo-x: auto
+					height: auto
+				&-name
+					font-size: 16px
+					font-weight: 600
+					margin-right: 20px
+					@media screen and (max-width: 482px)
+						margin-bottom: 5px
+						margin-right: 0
+						font-size: 13px
+				&_block
+					display: flex
+					align-items: center
+					justify-content: flex-end
+					@media screen and (max-width: 682px)
+						flex-direction: column
+					&-content
+						width: 150px
+						display: flex
+						flex-direction: column
+						align-items: flex-start
+						justify-content: center
+						@media screen and (max-width: 992px)
+							align-items: flex-end
+							width: max-content
+							margin-right: 5px
+						@media screen and (max-width: 682px)
+							flex-direction: row
+				&_price
+					font-size: 18px
+					font-weight: bold
+					@media screen and (max-width: 682px)
+						margin-right: 5px
+					@media screen and (max-width: 482px)
+						font-size: 11px
+				&_count
+					font-size: 16px
+					font-weight: 600
+					color: $orange-number
+					@media screen and (max-width: 482px)
+						font-size: 12px
+				&_button
+					width: 166px
+					height: 42px
+					background-color: $green-button
+					border-radius: $border-radius-input
+					color: $bg-white-color
+					position: relative
+					display: flex
+					align-items: center
+					justify-content: flex-start
+					padding-left: 20px
+					@media screen and (max-width: 482px)
+						height: 30px
+					&:after
+						content: ''
+						width: 20px
+						height: 20px
+						position: absolute
+						right: 20px
+						animation: AnimationOffBasket ease 0.7s forwards
+						background-image: url('../../icons/backet-for-button-icon.svg')
+						background-repeat: no-repeat
+					&:hover, &:active, &:focus
+						color: transparent
+						background-color: $color-text
+						&:after
+							animation: AnimationOnBasket ease 0.7s forwards
+							right: 50%
+							transform: translate(50%, 0)
+						&:before
+							content: ''
+							width: 25px
+							height: 12px
+							position: absolute
+							left: 20px
+							animation: AnimationArrowBasket ease 1.5s infinite
+							background-image: url('../../icons/arrow-right-for-basket-icon.svg')
+							background-repeat: no-repeat
+
+			&-image
+				width: 210px
+				min-width: 100px
+				height: 100%
+				background-size: cover
+				background-repeat: no-repeat
+				background-position: center
+				border-top-left-radius: $border-radius
+				border-bottom-left-radius: $border-radius
+
+@keyframes AnimationOnBasket
+	0%
+		right: 20px
+		transform: translate(0, 0)
+	100%
+		right: 50%
+		transform: translate(50%, 0)
+
+@keyframes AnimationOffBasket
+	0%
+		right: 50%
+		transform: translate(50%, 0)
+	100%
+		right: 20px
+		transform: translate(0, 0)
+@keyframes AnimationArrowBasket
+	0%
+		left: 20px
+		transform: translate(0, 0)
+		opacity: 0.3
+	50%
+		left: 35px
+		transform: translate(50%, 0)
+		opacity: 1
+	100%
+		left: 20px
+		transform: translate(0, 0)
+		opacity: 0.3

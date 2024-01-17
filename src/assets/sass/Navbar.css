@@ -1,45 +1,17 @@
-.navbarApp {
-  width: 250px;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  padding-top: 55px;
-  background-color: #fff;
-  position: relative;
-  white-space: nowrap;
-}
-@media screen and (max-width: 992px) {
-  .navbarApp {
-    display: none;
-  }
-}
-.navbarApp_item {
-  width: 100%;
-  padding: 10px 10px 10px 20px;
-  cursor: pointer;
-  border: 1px solid transparent;
-}
-.navbarApp_item img {
-  width: 28px;
-  height: 28px;
-  margin-right: 10px;
-}
-.navbarApp_eye {
-  position: absolute;
-  left: 8px;
-  top: 8px;
-  background-color: transparent;
-}
+/* Error: Undefined variable.
+ *    ,
+ * 32 |     border: 1px solid $basic-color-opacity
+ *    |                       ^^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   Navbar.sass 32:20  root stylesheet */
 
-.activeButton {
-  border: 1px solid rgba(80, 81, 96, 0.3);
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Undefined variable.\a    \2577 \a 32 \2502      border: 1px solid $basic-color-opacity\d\a    \2502                        ^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   Navbar.sass 32:20  root stylesheet";
 }
-
-.hideNavbar {
-  width: 80px;
-}
-
-/*# sourceMappingURL=Navbar.css.map */
