@@ -8,7 +8,7 @@ import Search from '../../assets/icons/search-icon.svg'
 import { toggleBasketWindow, toggleSearchWindow } from "../../redux/slices/categoriesSlice"
 import { addSpace } from "../../utils/toggleSpaceString"
 import { LINK_FOR_LOGO } from "../../utils/constants"
-import { Loader, Typeahead } from "react-bootstrap-typeahead"
+import { Loader, Typeahead, TypeaheadMenu } from "react-bootstrap-typeahead"
 import { useIntl } from "react-intl"
 import {
 	useGetCategoriesMutation,
@@ -93,10 +93,15 @@ const Header = () => {
 						<Typeahead
 							id='basic-typeahead-single'
 							labelKey='searchProduct'
-							onChange={setSearchValueArr}
+							// onChange={setSearchValueArr}
+							onChange={s => {
+								console.log(s)
+								return setSearchValueArr(s)
+							}}
 							options={optionsSearch}
 							placeholder={formatMessage({id: 'search'})}
 							selected={searchValueArr}
+							defaultSelected={searchValueArr}
 						/>
 						<img
 							className='header-search_wrapper-icon'
@@ -135,9 +140,9 @@ const Header = () => {
 					>
 					</div >
 					<div className='header-shopInfo-wrapper'>
-						<div className='header-shopInfo_shopName'>
+						<a className='header-shopInfo_shopName' href='#'>
 							{shop?.shop_name ? addSpace(shop?.shop_name) : 'Shop Name'}
-						</div >
+						</a >
 						<div className='header-shopInfo_phoneNumber'>
 							<img
 								src={Phone ? Phone : "/"}
@@ -175,9 +180,9 @@ const Header = () => {
 					>
 					</div >
 					<div className='header-mobile_shopInfo-wrapper'>
-						<div className='header-mobile_shopInfo-shopName'>
+						<a className='header-mobile_shopInfo-shopName' href={`/${shop?.shop_name ? shop?.shop_name : ''}`}>
 							{shop?.shop_name ? addSpace(shop?.shop_name) : 'Shop Name'}
-						</div >
+						</a >
 					</div >
 				</div >
 				<div className='header-mobile_block'>
@@ -201,6 +206,7 @@ const Header = () => {
 							options={optionsSearch}
 							placeholder={formatMessage({id: 'search'})}
 							selected={searchValueArr}
+							defaultSelected={searchValueArr}
 						/>
 					</div >
 					}

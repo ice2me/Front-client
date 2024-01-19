@@ -8,7 +8,7 @@ const CardForProduct = ({
 }) => {
 
 	return (
-		<div className={`${view ? 'cardForProduct-card_list' : 'cardForProduct-card'}`}>
+		<div className={`${view ? 'cardForProduct-card_list' : 'cardForProduct-card'}`} onClick={() => showProductInfoHandler(product)}>
 			{
 				view
 					?
@@ -33,7 +33,6 @@ const CardForProduct = ({
 								</div >
 								<button
 									className='cardForProduct-card_list-header_button'
-									onClick={() => showProductInfoHandler(product)}
 								>
 									До кошика
 								</button >
@@ -59,7 +58,7 @@ const CardForProduct = ({
 							</span >
 							<button
 								className='cardForProduct-card_header-button'
-								onClick={() => showProductInfoHandler(product)}
+								// onClick={() => showProductInfoHandler(product)}
 							>
 								До кошика
 							</button >

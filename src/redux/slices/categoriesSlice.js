@@ -22,6 +22,7 @@ const categoriesSlice = createSlice({
 		},
 		toggleSearchWindow: (state, action) => {
 			state.searchWindow = action.payload
+			if (action.payload === false) state.search = []
 		},
 		resetBasketLIst: (state, action) => {
 			state.basket = []

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useSelector } from "react-redux"
 import CardForProduct from "../../components/Card/CardForProduct"
 import ProductInfo from "../../components/Card/ProductInfo"
 import ToggleView from "../../components/ToggleView/ToggleView"
@@ -13,26 +14,29 @@ const Products = ({
 }) => {
 	const [showModalForAddProductInBasket, setShowModalForAddProductInBasket] = useState(false)
 	const [changeProduct, setChangeProduct] = useState({})
+	const {search} = useSelector((state) => state.categories)
+	const [anchorHeight, setAnchorHeight] = useState(false)
+	const forBodyScrolling = useRef()
 	const doc = document.getElementById('root')
+
 
 	const showProductInfoHandler = (value) => {
 		setChangeProduct(value)
 		setShowModalForAddProductInBasket(true)
+		forBodyScrolling?.current?.scrollIntoView()
+
 	}
 	const hideProductInfoHandler = () => {
 		setShowModalForAddProductInBasket(false)
 	}
 
-	// useEffect(() => {
-	// 	if (showModalForAddProductInBasket){
-	// 		doc.style.height = 'max-content'
-	// 	}else {
-	// 		doc.style.height = '100%'
-	// 	}
-	// }, [showModalForAddProductInBasket])
+	useEffect(() => {
+		if(search?.length > 0 ) setAnchorHeight(true)
+		else setAnchorHeight(false)
+	}, [search])
 
 	return (
-		<div className='cardForProduct-content'>
+		<div className='cardForProduct-content' ref={forBodyScrolling} style={{display: `${anchorHeight ? 'none' : 'block'}`}}>
 			<div className='cardForProduct-body'>
 				{
 					showModalForAddProductInBasket

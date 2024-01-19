@@ -1,6 +1,7 @@
 @import '../_variables'
 
 .cardForProduct
+	scroll-behavior: smooth
 	&-content
 		width: 100%
 		padding: 30px
@@ -100,6 +101,7 @@
 		align-items: flex-start
 		justify-content: space-between
 		flex-direction: column
+		cursor: pointer
 		&:hover, &:active, &:focus
 			box-shadow: 0 11px 12px -10px rgba(0,0,0,0.75)
 		@media screen and (max-width: 392px)
@@ -113,6 +115,9 @@
 			padding: 0 15px 10px
 			border-top-left-radius: $border-radius
 			border-top-right-radius: $border-radius
+			cursor: pointer
+			div, span
+				cursor: pointer
 			&-name
 				width: 220px
 				font-size: 16px
@@ -172,6 +177,7 @@
 			background-position: center
 			border-top-left-radius: $border-radius
 			border-top-right-radius: $border-radius
+			cursor: pointer
 		&_list
 			width: 100%
 			height: 100px
@@ -182,6 +188,7 @@
 			border-radius: $border-radius
 			margin-bottom: 10px
 			overflow: hidden
+			cursor: pointer
 			&:hover, &:active, &:focus
 				box-shadow: 0 11px 12px -10px rgba(0,0,0,0.75)
 			&-header
@@ -194,6 +201,9 @@
 				border-top-left-radius: $border-radius
 				border-top-right-radius: $border-radius
 				overflow-x: hidden
+				cursor: pointer
+				div, span
+					cursor: pointer
 				@media screen and (max-width: 482px)
 					flex-direction: column
 					align-items: center
@@ -287,6 +297,7 @@
 				background-position: center
 				border-top-left-radius: $border-radius
 				border-bottom-left-radius: $border-radius
+				cursor: pointer
 
 @keyframes AnimationOnBasket
 	0%
