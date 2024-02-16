@@ -16,9 +16,9 @@ const Products = ({
 	const [changeProduct, setChangeProduct] = useState({})
 	const {search} = useSelector((state) => state.categories)
 	const [anchorHeight, setAnchorHeight] = useState(false)
+	const [changeSorting, setChangeSorting] = useState(0)
+	const [sortProduct, setSortProduct] = useState([])
 	const forBodyScrolling = useRef()
-	const doc = document.getElementById('root')
-
 
 	const showProductInfoHandler = (value) => {
 		setChangeProduct(value)
@@ -31,12 +31,30 @@ const Products = ({
 	}
 
 	useEffect(() => {
-		if(search?.length > 0 ) setAnchorHeight(true)
+		if (search?.length > 0) setAnchorHeight(true)
 		else setAnchorHeight(false)
 	}, [search])
 
+	useEffect(() => {
+		if (changeSorting === 0) {
+			setSortProduct(products)
+		}
+		if (changeSorting === 1) {
+			let res = [...products]?.sort((a,b) => a?.price_product > b?.price_product ? 1 : -1)
+			setSortProduct(res)
+		}
+		if (changeSorting === 2) {
+			let res = [...products]?.sort((a,b) => a?.price_product < b?.price_product ? 1 : -1)
+			setSortProduct(res)
+		}
+	}, [changeSorting])
+
 	return (
-		<div className='cardForProduct-content' ref={forBodyScrolling} style={{display: `${anchorHeight ? 'none' : 'block'}`}}>
+		<div
+			className='cardForProduct-content'
+			ref={forBodyScrolling}
+			style={{display: `${anchorHeight ? 'none' : 'block'}`}}
+		>
 			<div className='cardForProduct-body'>
 				{
 					showModalForAddProductInBasket
@@ -67,11 +85,11 @@ const Products = ({
 								/>
 								<select
 									className='cardForProduct-header_title-bottom_block-select'
-									disabled
+									onChange={e => setChangeSorting(Number(e.target.value))}
 								>
-									<option >-</option >
-									<option >Lorem ipsum dolor.</option >
-									<option >Lorem ip</option >
+									<option value={0}>Популярні</option >
+									<option value={1}>Дешеві</option >
+									<option value={2}>Дорогі</option >
 								</select >
 							</div >
 						</div >
@@ -79,7 +97,7 @@ const Products = ({
 				</div >
 				<div className='cardForProduct-body_wrapper'>
 					{
-						products && products?.map(product => (
+						sortProduct && sortProduct?.map(product => (
 							<CardForProduct
 								key={product?._id}
 								product={product}

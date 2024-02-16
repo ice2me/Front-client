@@ -4,10 +4,11 @@
 	scroll-behavior: smooth
 	&-content
 		width: 100%
-		padding: 30px
+		margin: 10px 30px
 		@media screen and (max-width: 992px)
 			padding: 10px
 			max-width: 100%
+			margin: 0
 	&-header
 		width: inherit
 		margin-bottom: 10px
@@ -53,7 +54,7 @@
 					flex-direction: column
 					justify-content: center
 				&_name
-					font-size: 32px
+					@include calc('font-size', 32, 26)
 					font-weight: 600
 
 				&_block
@@ -118,6 +119,17 @@
 			cursor: pointer
 			div, span
 				cursor: pointer
+			.product-info_wrapper-content_top-body_block-counter
+				width: 100%
+				justify-content: center
+				.product-info_wrapper-content_top-body_block-counter_remove
+					width: 33%
+				.product-info_wrapper-content_top-body_block-counter_minus
+					width: 33%
+				.product-info_wrapper-content_top-body_block-counter_plus
+					width: 33%
+				.product-info_wrapper-content_top-body_block-counter_num
+					width: 33%
 			&-name
 				width: 220px
 				font-size: 16px
@@ -298,6 +310,7 @@
 				border-top-left-radius: $border-radius
 				border-bottom-left-radius: $border-radius
 				cursor: pointer
+
 
 @keyframes AnimationOnBasket
 	0%

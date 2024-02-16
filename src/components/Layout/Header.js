@@ -95,7 +95,6 @@ const Header = () => {
 							labelKey='searchProduct'
 							// onChange={setSearchValueArr}
 							onChange={s => {
-								console.log(s)
 								return setSearchValueArr(s)
 							}}
 							options={optionsSearch}
@@ -111,7 +110,10 @@ const Header = () => {
 					</div >
 
 				</div >
-				<button className='header-backet' onClick={openBasketWindow}>
+				<button
+					className='header-backet'
+					onClick={openBasketWindow}
+				>
 					<img
 						className='header-backet_icon'
 						src={Backet}
@@ -140,7 +142,10 @@ const Header = () => {
 					>
 					</div >
 					<div className='header-shopInfo-wrapper'>
-						<a className='header-shopInfo_shopName' href='#'>
+						<a
+							className='header-shopInfo_shopName'
+							href='#'
+						>
 							{shop?.shop_name ? addSpace(shop?.shop_name) : 'Shop Name'}
 						</a >
 						<div className='header-shopInfo_phoneNumber'>
@@ -180,7 +185,10 @@ const Header = () => {
 					>
 					</div >
 					<div className='header-mobile_shopInfo-wrapper'>
-						<a className='header-mobile_shopInfo-shopName' href={`/${shop?.shop_name ? shop?.shop_name : ''}`}>
+						<a
+							className='header-mobile_shopInfo-shopName'
+							href={`/${shop?.shop_name ? shop?.shop_name : ''}`}
+						>
 							{shop?.shop_name ? addSpace(shop?.shop_name) : 'Shop Name'}
 						</a >
 					</div >

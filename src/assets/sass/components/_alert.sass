@@ -10,17 +10,25 @@
 	z-index: 5
 	@include centering
 	&-wrapper
+		position: fixed
+		left: 50%
+		right: 20px
+		top: 10px
 		background-color: $bg-white-color
-		padding: 30px
+		padding: 20px
 		border-radius: $border-radius
 		flex-wrap: wrap
+		z-index: 20
 		@include centering
+		@media screen and (max-width: 992px)
+			left: 0
+			right: 8px
 		&_text
-			font-size: 22px
+			font-size: 16px
 			font-weight: 600
 			color: $orange-number
 		&_subtext
-			font-size: 18px
+			font-size: 12px
 			font-weight: 500
 			color: $color-text
 			margin-left: 3px

@@ -2,14 +2,19 @@
 
 .sidebar
 	width: 150px
-	height: 812px
-	@include centering
+	max-height: 712px
+	height: 100%
+	display: flex
+	align-items: flex-start
+	justify-content: center
 	animation: ShowBlockSidebarBlock ease 0.7s forwards
 	@media screen and (max-width: 992px)
 		display: none
 	&-wrapper
 		width: 93px
-		height: 752px
+		min-height: 520px
+		height: 80%
+		margin-top: 20px
 		background-color: $color-text
 		position: absolute
 		z-index: 3
@@ -71,6 +76,10 @@
 					background-repeat: no-repeat
 					background-position: center
 					cursor: pointer
+					position: relative
+					.sidebar-mob_wrapper-block_item-count
+						position: absolute
+						right: 0
 				&_title
 					font-size: 11px
 					color: $color-text-light

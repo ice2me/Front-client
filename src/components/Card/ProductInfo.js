@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import DefaultPhoto from "../../assets/images/default-no-photo.png"
 import { pushCardToBasket } from "../../redux/slices/categoriesSlice"
 import AlertForAddProductInBasket from "../Alert/AlertForAddProductInBasket"
+import CounterForCard from "./CounterForCard"
 
 const ProductInfo = ({
 	hide,
@@ -26,7 +27,7 @@ const ProductInfo = ({
 		setTimeout(() => {
 			setAlertForAddProductInBasket(false)
 			hide()
-		}, 1500)
+		}, 2000)
 	}
 
 	if (alertForAddProductInBasket) {
@@ -34,6 +35,7 @@ const ProductInfo = ({
 			name={item?.name_product}
 			count={countValue}
 			unit={item.unit_product}
+			countButton={false}
 		/>
 	}
 
@@ -70,30 +72,13 @@ const ProductInfo = ({
 									{`За 1 ${item?.unit_product}`}
 								</span >
 							</div >
-							<div className='product-info_wrapper-content_top-body_block'>
-								<span className='product-info_wrapper-content_top-body_block-count'>
-									{
-										`${item?.price_product * countValue} ${item?.currency_product}`
-									}
-								</span >
-								<div className='product-info_wrapper-content_top-body_block-counter'>
-									<button
-										className='product-info_wrapper-content_top-body_block-counter_minus'
-										onClick={countMinus}
-									>-</button >
-									<p className='product-info_wrapper-content_top-body_block-counter_num'>{countValue}</p >
-									<button
-										className='product-info_wrapper-content_top-body_block-counter_plus'
-										onClick={countPlus}
-									>+</button >
-								</div >
-							</div >
-							<button
-								className='product-info_wrapper-content_top-body_basket cardForProduct-card_header-button'
-								onClick={pushCardInBasket}
-							>
-								До кошика
-							</button >
+							<CounterForCard
+								item={item}
+								countValue={countValue}
+								countMinus={countMinus}
+								countPlus={countPlus}
+								pushCardInBasket={pushCardInBasket}
+							/>
 						</div >
 					</div >
 					<div className='product-info_wrapper-content_bottom'>
@@ -137,30 +122,13 @@ const ProductInfo = ({
 									{`${item?.price_product} ${item?.currency_product}`}
 								</span >
 							</div >
-							<div className='product-infoMob_wrapper-content_top-body_block'>
-									<div className='product-infoMob_wrapper-content_top-body_block-counter'>
-									<button
-										className='product-infoMob_wrapper-content_top-body_block-counter_minus'
-										onClick={countMinus}
-									>-</button >
-									<p className='product-infoMob_wrapper-content_top-body_block-counter_num'>{countValue}</p >
-									<button
-										className='product-infoMob_wrapper-content_top-body_block-counter_plus'
-										onClick={countPlus}
-									>+</button >
-								</div >
-								<span className='product-infoMob_wrapper-content_top-body_block-count'>
-									{
-										`${item?.price_product * countValue} ${item?.currency_product}`
-									}
-								</span >
-							</div >
-							<button
-								className='product-infoMob_wrapper-content_top-body_basket cardForProduct-card_header-button'
-								onClick={pushCardInBasket}
-							>
-								До кошика
-							</button >
+							<CounterForCard
+								item={item}
+								countValue={countValue}
+								countMinus={countMinus}
+								countPlus={countPlus}
+								pushCardInBasket={pushCardInBasket}
+							/>
 						</div >
 					</div >
 					<div className='product-infoMob_wrapper-content_bottom'>

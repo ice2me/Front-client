@@ -11,6 +11,7 @@ const Categories = ({
 	shop,
 	openCategoryHandler
 }) => {
+
 	return (
 		<>
 			<div className='home-wrapper_content'>
@@ -41,7 +42,7 @@ const Categories = ({
 						{/*/>*/}
 					</div >
 				</div >
-				<div className='home-wrapper_body'>
+				<div className='home-wrapper_body' >
 					<div className={`home-wrapper_body-wrapper ${toggleView ? 'active-list-horizontal-style' : ''}`}>
 						{
 							categories && categories?.map(category => (

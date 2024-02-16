@@ -88,5 +88,5 @@ export const {
 	resetBasketLIst,
 	toggleBasketWindow,
 	toggleSearchWindow
-} = actions;
+} = actions
 export default reducer

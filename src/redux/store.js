@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import categoriesSlice from "./slices/categoriesSlice";
+import categoriesSlice from "./slices/categoriesSlice"
 import { persistReducer } from "redux-persist"
 import storage from "redux-persist/lib/storage"
 import userSlice from "./slices/userSlice"
@@ -11,9 +11,9 @@ import {
 	PURGE,
 	REGISTER,
 	REHYDRATE
-} from "redux-persist/es/constants";
-import { requestErrorLogger } from "../utils/requestErrorLogger";
-import { categoriesAPi } from "./services/categoriesApi";
+} from "redux-persist/es/constants"
+import { requestErrorLogger } from "../utils/requestErrorLogger"
+import { categoriesAPi } from "./services/categoriesApi"
 
 export const store = configureStore({
 	reducer: {

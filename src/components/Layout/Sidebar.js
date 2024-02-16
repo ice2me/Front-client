@@ -39,7 +39,17 @@ const Sidebar = () => {
 							className='sidebar-wrapper_top-item'
 							onClick={openBasketWindow}
 						>
-							<div className='sidebar-wrapper_top-item_icon' />
+							<div className='sidebar-wrapper_top-item_icon'>
+								<p className='sidebar-mob_wrapper-block_item-count'>
+								{
+									basket?.length >= 1
+										?
+										basket?.length
+										:
+										0
+								}
+							</p >
+							</div >
 							<span className={`sidebar-wrapper_top-item_title ${hideTitlesSidebar ? 'title-min' : ''}`}>
 								Мій кошик
 							</span >
