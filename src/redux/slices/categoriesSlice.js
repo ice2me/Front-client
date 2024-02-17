@@ -8,8 +8,9 @@ const initialState = {
 	basket: [],
 	search: [],
 	basketWindow: false,
-	searchWindow: false
-};
+	searchWindow: false,
+	selectedRoot: 'home'
+}
 
 
 const categoriesSlice = createSlice({
@@ -17,6 +18,9 @@ const categoriesSlice = createSlice({
 	initialState,
 	reducers: {
 		resetCategories: () => initialState,
+		toggleSelectedRoot: (state, action) => {
+			state.selectedRoot = action.payload
+		},
 		toggleBasketWindow: (state, action) => {
 			state.basketWindow = action.payload
 		},
@@ -87,6 +91,7 @@ export const {
 	resetBasket,
 	resetBasketLIst,
 	toggleBasketWindow,
-	toggleSearchWindow
+	toggleSearchWindow,
+	toggleSelectedRoot
 } = actions
 export default reducer

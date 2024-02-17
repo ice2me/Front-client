@@ -37,9 +37,6 @@ const Categories = ({
 							toggleView={toggleView}
 							toggleViewHandler={toggleViewHandler}
 						/>
-						{/*<ButtonForAdd*/}
-						{/*	title={'Додати категорiю'}*/}
-						{/*/>*/}
 					</div >
 				</div >
 				<div className='home-wrapper_body' >

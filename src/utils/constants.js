@@ -4,6 +4,7 @@ export const APP_ROUTE = {
 	LOGIN: '/login',
 	SIGNUP: '/registration',
 	PRODUCTS: '/products',
+	PROFILE: '/profile'
 }
 
 export const AUTH_API = {

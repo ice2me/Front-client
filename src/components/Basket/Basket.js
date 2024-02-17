@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import DefaultPhoto from "../../assets/images/default-no-photo.png"
 import { deleteCardToBasket, pushCardToBasket, toggleBasketWindow } from "../../redux/slices/categoriesSlice"
+import { rootingHelpers } from "../../utils/helperFunctions/rootingHelpers"
 import FormOrder from "../FormOrder/FormOrder"
 import WrapperModal from "../WrapperModal/WrapperModal"
 
@@ -53,7 +54,7 @@ const Basket = () => {
 		setOpenModalForOrder(false)
 	}
 
-	const closeBasketWindow = () => dispatch(toggleBasketWindow(false))
+	const closeBasketWindow = () => rootingHelpers('home', dispatch)
 	// console.log(basket)
 	return (
 		<WrapperModal

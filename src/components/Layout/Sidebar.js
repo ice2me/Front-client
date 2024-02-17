@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { ReactComponent as ToggleButton } from '../../assets/icons/side-menu-toggle-button.svg'
 import { ReactComponent as ToggleButtonOrange } from '../../assets/icons/side-menu-orange-toggle-button.svg'
 import { ReactComponent as ArrowLeft } from '../../assets/icons/arrow-left.svg'
-import { toggleBasketWindow, toggleSearchWindow } from "../../redux/slices/categoriesSlice"
+import { rootingHelpers } from "../../utils/helperFunctions/rootingHelpers"
 
 const Sidebar = () => {
 	const {basket} = useSelector((state) => state.categories)
@@ -11,15 +11,8 @@ const Sidebar = () => {
 	const dispatch = useDispatch()
 
 	const showHideSidebar = () => setHideTitlesSidebar(!hideTitlesSidebar)
-	const openBasketWindow = () => {
-		dispatch(toggleBasketWindow(true))
-		dispatch(toggleSearchWindow(false))
-	}
 
-	const navigationHomePage = () => {
-		dispatch(toggleBasketWindow(false))
-		dispatch(toggleSearchWindow(false))
-	}
+
 
 	return (
 		<>
@@ -28,7 +21,7 @@ const Sidebar = () => {
 					<ul className='sidebar-wrapper_top'>
 						<li
 							className='sidebar-wrapper_top-item'
-							onClick={navigationHomePage}
+							onClick={() => rootingHelpers('home', dispatch)}
 						>
 							<div className='sidebar-wrapper_top-item_icon' />
 							<span className={`sidebar-wrapper_top-item_title ${hideTitlesSidebar ? 'title-min' : ''}`}>
@@ -37,7 +30,7 @@ const Sidebar = () => {
 						</li >
 						<li
 							className='sidebar-wrapper_top-item'
-							onClick={openBasketWindow}
+							onClick={() => rootingHelpers('basket', dispatch)}
 						>
 							<div className='sidebar-wrapper_top-item_icon'>
 								<p className='sidebar-mob_wrapper-block_item-count'>
@@ -54,7 +47,10 @@ const Sidebar = () => {
 								Мій кошик
 							</span >
 						</li >
-						<li className='sidebar-wrapper_top-item'>
+						<li
+							className='sidebar-wrapper_top-item'
+							onClick={() => rootingHelpers('profile', dispatch)}
+						>
 							<div className='sidebar-wrapper_top-item_icon' />
 							<span className={`sidebar-wrapper_top-item_title ${hideTitlesSidebar ? 'title-min' : ''}`}>
 								Профіль магазину
@@ -77,10 +73,10 @@ const Sidebar = () => {
 					</button >
 					<ul className='sidebar-wrapper_bottom'>
 						<li className='sidebar-wrapper_bottom-item'>
-							<div className='sidebar-wrapper_bottom-item_icon' />
-							<span className={`sidebar-wrapper_bottom-item_title ${hideTitlesSidebar ? 'title-min' : ''}`}>
-								Зворотнiй зв’язок
-							</span >
+							{/*<div className='sidebar-wrapper_bottom-item_icon' />*/}
+							{/*<span className={`sidebar-wrapper_bottom-item_title ${hideTitlesSidebar ? 'title-min' : ''}`}>*/}
+							{/*	Зворотнiй зв’язок*/}
+							{/*</span >*/}
 						</li >
 					</ul >
 				</div >
@@ -89,25 +85,34 @@ const Sidebar = () => {
 			<div className='sidebar-mob'>
 				<div className='sidebar-mob_wrapper'>
 					<ul className='sidebar-mob_wrapper-block'>
-						<li className='sidebar-mob_wrapper-block_item'>
+						<li
+							className='sidebar-mob_wrapper-block_item'
+							onClick={() => rootingHelpers('profile', dispatch)}
+						>
 							<div className='sidebar-mob_wrapper-block_item-icon' />
 							<span className={`sidebar-mob_wrapper-block_item-title`}>
 								Профіль магазину
 							</span >
 						</li >
 						<li className='sidebar-mob_wrapper-block_item'>
-							<div className='sidebar-mob_wrapper-block_item-icon' />
-							<span className={`sidebar-mob_wrapper-block_item-title`}>
-								Зворотнiй зв’язок
-							</span >
+							{/*<div className='sidebar-mob_wrapper-block_item-icon' />*/}
+							{/*<span className={`sidebar-mob_wrapper-block_item-title`}>*/}
+							{/*	Зворотнiй зв’язок*/}
+							{/*</span >*/}
 						</li >
-						<li className='sidebar-mob_wrapper-block_item' onClick={navigationHomePage}>
+						<li
+							className='sidebar-mob_wrapper-block_item'
+							onClick={() => rootingHelpers('home', dispatch)}
+						>
 							<div className='sidebar-mob_wrapper-block_item-icon' />
 							<span className={`sidebar-mob_wrapper-block_item-title`}>
 								Нашi продукти
 							</span >
 						</li >
-						<li className='sidebar-mob_wrapper-block_item' onClick={openBasketWindow}>
+						<li
+							className='sidebar-mob_wrapper-block_item'
+							onClick={() => rootingHelpers('basket', dispatch)}
+						>
 							<div className='sidebar-mob_wrapper-block_item-icon' />
 							<p className='sidebar-mob_wrapper-block_item-count'>
 								{

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useSelector } from "react-redux"
 import CardForProduct from "../../components/Card/CardForProduct"
 import ProductInfo from "../../components/Card/ProductInfo"
 import ToggleView from "../../components/ToggleView/ToggleView"
@@ -14,8 +13,6 @@ const Products = ({
 }) => {
 	const [showModalForAddProductInBasket, setShowModalForAddProductInBasket] = useState(false)
 	const [changeProduct, setChangeProduct] = useState({})
-	const {search} = useSelector((state) => state.categories)
-	const [anchorHeight, setAnchorHeight] = useState(false)
 	const [changeSorting, setChangeSorting] = useState(0)
 	const [sortProduct, setSortProduct] = useState([])
 	const forBodyScrolling = useRef()
@@ -30,10 +27,6 @@ const Products = ({
 		setShowModalForAddProductInBasket(false)
 	}
 
-	useEffect(() => {
-		if (search?.length > 0) setAnchorHeight(true)
-		else setAnchorHeight(false)
-	}, [search])
 
 	useEffect(() => {
 		if (changeSorting === 0) {
@@ -53,7 +46,6 @@ const Products = ({
 		<div
 			className='cardForProduct-content'
 			ref={forBodyScrolling}
-			style={{display: `${anchorHeight ? 'none' : 'block'}`}}
 		>
 			<div className='cardForProduct-body'>
 				{

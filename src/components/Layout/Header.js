@@ -5,7 +5,8 @@ import Backet from '../../assets/icons/backet-icon.svg'
 import ShopLogo from '../../assets/images/default-shop-logo.png'
 import Phone from '../../assets/icons/phone-icon.svg'
 import Search from '../../assets/icons/search-icon.svg'
-import { toggleBasketWindow, toggleSearchWindow } from "../../redux/slices/categoriesSlice"
+import { toggleBasketWindow, toggleSearchWindow, toggleSelectedRoot } from "../../redux/slices/categoriesSlice"
+import { rootingHelpers } from "../../utils/helperFunctions/rootingHelpers"
 import { addSpace } from "../../utils/toggleSpaceString"
 import { LINK_FOR_LOGO } from "../../utils/constants"
 import { Loader, Typeahead, TypeaheadMenu } from "react-bootstrap-typeahead"
@@ -42,17 +43,25 @@ const Header = () => {
 			}
 
 			if (searchValueArr?.length === 0) {
-				const dataItemsList = await searchTag({
-					id: data?.data?.shop._id
-				})
-				setOptionsSearch(dataItemsList?.data)
+				try {
+					const dataItemsList = await searchTag({
+						id: data?.data?.shop._id
+					})
+					setOptionsSearch(dataItemsList?.data)
+				} catch (e) {
+					console.log(e)
+				}
 			} else {
-				const dataItemsList = await searchProduct({
-					id: data?.data?.shop._id,
-					product_name: searchValueArr[0]
-				})
-				setOptionsSearch(dataItemsList?.data)
-				dispatch(toggleSearchWindow(true))
+				try {
+					const dataItemsList = await searchProduct({
+						id: data?.data?.shop._id,
+						product_name: searchValueArr[0]
+					})
+					setOptionsSearch(dataItemsList?.data)
+					dispatch(rootingHelpers('search', dispatch))
+				} catch (e) {
+					console.log(e)
+				}
 			}
 		} catch (e) {
 			console.log(e)
@@ -64,14 +73,14 @@ const Header = () => {
 	}, [searchValueArr])
 
 	const toggleSearchBlock = () => setOpenSearchBlock(!openSearchBlock)
-	const openBasketWindow = () => {
-		dispatch(toggleBasketWindow(true))
-		dispatch(toggleSearchWindow(false))
-	}
 
 	useEffect(() => {
 		searchWindow === false && setSearchValueArr([])
 	}, [searchWindow])
+
+	// const toggleSelectedRootHandler = (root) => {
+	// 	dispatch(toggleSelectedRoot(root))
+	// }
 
 	return (
 		<div className='header'>
@@ -112,7 +121,7 @@ const Header = () => {
 				</div >
 				<button
 					className='header-backet'
-					onClick={openBasketWindow}
+					onClick={() => rootingHelpers('basket', dispatch)}
 				>
 					<img
 						className='header-backet_icon'

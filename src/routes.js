@@ -12,6 +12,7 @@ import { APP_ROUTE } from "./utils/constants"
 import Home from "./pages/Home/Home"
 
 export const RoutesLink = () => {
+	// const {shop, basket} = useSelector((state) => state.categories)
 	const location = useLocation()
 	const urlSplit = location.pathname.split("/")
 	const nameShop = urlSplit[urlSplit.length - 1]
@@ -31,6 +32,8 @@ export const RoutesLink = () => {
 		document.title = nameShop
 	}, [])
 
+	// const linkForProfile = `${shop?.shop_name}${APP_ROUTE.PROFILE}`
+
 	return (
 		<Routes >
 			<Route
@@ -45,6 +48,10 @@ export const RoutesLink = () => {
 				path={nameShop}
 				element={<Home />}
 			/>
+			{/*<Route*/}
+			{/*	path={linkForProfile}*/}
+			{/*	element={<Profile />}*/}
+			{/*/>*/}
 		</Routes >
 	)
 }

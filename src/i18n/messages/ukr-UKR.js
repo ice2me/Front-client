@@ -19,6 +19,7 @@ export default {
 		enterEmail: 'email@',
 		nameShop: "Ім'я магазину: ",
 		descriptionShop: 'Опис:',
+		forShopDescription: 'Про нас',
 		description: 'Показати опис продукту',
 		search: 'Пошук',
 		nameProduct: "Ім`я продукту",
