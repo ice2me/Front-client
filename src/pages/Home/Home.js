@@ -18,7 +18,6 @@ const Home = () => {
 	const [changeCategoryName, setChangeCategoryName] = useState(null)
 	const dispatch = useDispatch()
 
-	// console.log(shop)
 	const openCategoryHandler = async (value, id, categoryName) => {
 		if (value === true) {
 			const {error} = await getItemList({

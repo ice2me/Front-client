@@ -75,11 +75,12 @@ const categoriesSlice = createSlice({
 				categoriesAPi.endpoints.getItemList.matchFulfilled,
 				(state,
 					action) => {
-					state.items = action.payload.items
+					const availableArr = action.payload.items?.filter(item => item?.available_product === true)
+					state.items = availableArr
 				}
 			)
 	}
-});
+})
 
 const {
 	actions,
