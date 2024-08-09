@@ -45,9 +45,10 @@ const ProductInfo = ({
 				<div className='product-info_wrapper-title'>
 					<button
 						className='cardForProduct-header_title-top_button'
+						style={{width: 'max-content'}}
 						onClick={hide}
 					>
-							Назад до продуктів
+							<span style={{marginLeft: '30px'}}>Закрити опис товару {item?.name_product}</span>
 						</button >
 				</div >
 				<div className='product-info_wrapper-content'>
