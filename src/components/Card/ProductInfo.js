@@ -98,7 +98,7 @@ const ProductInfo = ({
 						className='cardForProduct-header_title-top_button'
 						onClick={hide}
 					>
-							Назад до продуктів
+							Закрити опис товару
 						</button >
 				</div >
 				<div className='product-infoMob_wrapper-content'>
