@@ -149,6 +149,7 @@ const CardForProduct = ({
 										:
 										'шт'
 								}
+								
 							</span >
 							{
 								showCount
