@@ -27,7 +27,6 @@ const Products = ({
 		setShowModalForAddProductInBasket(false)
 	}
 
-
 	useEffect(() => {
 		if (changeSorting === 0) {
 			setSortProduct(products)

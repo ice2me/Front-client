@@ -143,7 +143,13 @@ const CardForProduct = ({
 								className='cardForProduct-card_header-count'
 								onClick={() => showProductInfoHandler(product)}
 							>
-								{product?.unit_product ? `1 ${product?.unit_product}` : 'шт'}
+								{
+									product?.unit_product ?
+										(product?.unit_product === 'грам' ||	product?.unit_product === 'мілілітр') ? `100 ${product?.unit_product}` : `1 ${product?.unit_product}`
+										:
+										'шт'
+								}
+								
 							</span >
 							{
 								showCount
