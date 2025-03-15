@@ -70,7 +70,12 @@ const ProductInfo = ({
 									{`${item?.price_product} ${item?.currency_product}`}
 								</span >
 								<span className='product-info_wrapper-content_top-body_block-price'>
-									{`За 1 ${item?.unit_product}`}
+									{
+										item?.unit_product ?
+											(item?.unit_product === 'грам' ||	item?.unit_product === 'мілілітр') ? `100 ${item?.unit_product}` : `1 ${item?.unit_product}`
+											:
+											'шт'
+									}
 								</span >
 							</div >
 							<CounterForCard
@@ -117,7 +122,12 @@ const ProductInfo = ({
 							></div >
 							<div className='product-infoMob_wrapper-content_top-body_block'>
 								<span className='product-infoMob_wrapper-content_top-body_block-price'>
-									{`За 1 ${item?.unit_product}`}
+									{
+										item?.unit_product ?
+											(item?.unit_product === 'грам' ||	item?.unit_product === 'мілілітр') ? `100 ${item?.unit_product}` : `1 ${item?.unit_product}`
+											:
+											'шт'
+									}
 								</span >
 								<span className='product-infoMob_wrapper-content_top-body_block-price'>
 									{`${item?.price_product} ${item?.currency_product}`}
